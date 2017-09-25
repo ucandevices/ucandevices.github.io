@@ -1,0 +1,20 @@
+<h3>Hardware</h3>
+<p>We are using STM32F0 microcontroller. Device PCB is designed in ki-cad. All source files are available in github <a href="https://github.com/UsbCANConverter-UCCbasic/UCCBPCB">here</a>.
+<img class="img-responsive"   src="usbcanconverter_basic/UCCB12schm.svg">
+</p>
+<h3>Software</h3>
+<p>Converter software is pure C code written in free version of Atollic studio. All sources and <a href="https://github.com/UsbCANConverter-UCCbasic/UCCBEmbedded/releases">releases</a> with compilation instructions are available in our github <a href="https://github.com/UsbCANConverter-UCCbasic/UCCBEmbedded">here</a>.</p>
+<p>Production files:<br>
+<a href="/download/uccb/0203.zip"><i class="glyphicon glyphicon-download-alt"></i> 0203 (2017-06-19) </a>
+</p>
+<h3>Uploading new software</h3>
+<p> UCCB have got embedded DFU USB bootloader. Currently only way to upload new firmware is to use DfuSe utility program supplied by ST microelectronics. To upload new firmware follows those steps:
+<li>Download and Install DfuSe package from ST</li>
+<li>Download .dfu firmware file from this page</li>
+<li>Connect UCCB and type in terminal <code>b</code> device should reset and new device should connect to Your pc</li>
+<li>Install driver for DFU device, drivers are in <q>\DfuSe v3.0.5\Bin\Driver</q> folder </li>
+<li>Run DfuSe you should see windows like this.</li>
+<img class="img-responsive"   src="usbcanconverter_basic/UCCBDfuSe.png">
+<li>Click Choose... and select DFU firmware. Click, <q>Upgrade</q> and <q>Leave DFU mode</q> buttons.</li>
+<li>DONE!</li>
+Additional info on DFU can be found in ST UM0412 User manual.</p>

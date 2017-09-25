@@ -1,0 +1,154 @@
+<h3>Tools</h3>
+<p>You can use UCCB on any operating system with serial terminal program like for example putty. Description of all available commands can be found in About section. UCCB have its own terminal written in JAVA, <a data-toggle="collapse" data-parent="#accordion" href="#java" aria-expanded="true" aria-controls="collapseOne">uCCBViewer</a>. </p>
+
+Tools list:
+<div class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+	<li><a data-toggle="collapse" data-parent="#accordion" href="#java" aria-expanded="true" aria-controls="collapseOne">JAVA</a></li>
+</div>
+<div class="collapse" id="java">
+<div class="card card-block">
+    <p><b>UCCBViewer</b> is GUI program for USBCanConveterBasic device. uCCBViewer functionalities are: frame reception, transmission, filtering, listen-only or loopback configuration. To run this program Java Runtime Enviroment(JRE) needs to be installed.
+    To run <b>UCCBViewer</b> on Linux remember to run this program as superuser. <code>sudo java -jar uCCBViewer-1.3.jar </code><br>
+    <a href="/download/uccb/uCCBViewer-1.3.jar"><i class="glyphicon glyphicon-download-alt"></i> Download UCCBViewer_v1.3.jar (2017-01-24) </a>
+    <br>
+    <a href="https://github.com/UsbCANConverter-UCCbasic/uCCBViewer"><i class="fa fa-github-square"></i> Sources for UCCBViewer  </a>
+	<a href="#" class="pop"> <img id="imageresource"  src="usbcanconverter_basic/UCCBViewer.png" class="img-responsive"> </a>
+    </p>
+
+    <p>uCCBlib is JAVA <b>library</b> for CAN converter.<br>
+        <a href="/download/uccb/uCCBlib-1.2.jar"><i class="glyphicon glyphicon-download-alt"></i> Download UCCBLib_v1.2.jar (2016-11-21) </a>
+        <br>
+        <a href="https://github.com/UsbCANConverter-UCCbasic/uCCBlib"><i class="fa fa-github-square"></i> Sources for UCCBlib </a>
+    </p>
+</div>
+</div>
+
+<div class="panel-heading">
+	<li><a data-toggle="collapse" data-parent="#accordion" href="#python" aria-expanded="true" aria-controls="collapseOne">PYTHON</a></li>
+</div>
+<div class="collapse" id="python">
+<div class="card card-block">
+	<p>pyUSBtin is python Library that partialy works with UCCB (filtering not working). Library can be found on <a href="https://github.com/fishpepper/pyUSBtin">https://github.com/fishpepper/pyUSBtin</a>.</p>
+    <p>Full suport PYTHON tools are under development.</p>
+</div>
+</div>
+
+
+<div class="panel-heading">
+	<li><a data-toggle="collapse" data-parent="#accordion" href="#javascript" aria-expanded="true" aria-controls="collapseOne">	JAVA SCRIPT</a></li>
+</div>
+<div class="collapse" id="javascript">
+<div class="card card-block">
+	<p>JAVA SCRIPT tools are under development.</p>
+</div>
+</div>
+
+
+<div class="panel-heading">
+	<li><a data-toggle="collapse" data-parent="#accordion" href="#cs" aria-expanded="true" aria-controls="collapseOne">C#</a></li>
+</div>
+<div class="collapse" id="cs">
+<div class="card card-block">
+    <p>CsharpUSBtinLib is c# Library that partially works with UCCB (filtering not working). Library can be found on <a href="https://github.com/leonel85/CsharpUSBtinLib">https://github.com/leonel85/CsharpUSBtinLib</a>.</p>
+	<p>Full support C# tools are under development.</p>
+</div>
+</div>
+
+
+<div class="panel-heading">
+<li><a data-toggle="collapse" data-parent="#accordion" href="#socketCAN" aria-expanded="true" aria-controls="collapseOne">LINUX SocketCAN (linux-can)</a></li>
+</div>
+<div class="collapse" id="socketCAN">
+<div class="card card-block">
+	<p> UCCB is compatible with official Linux CAN implementation. Here is step by step guide on UBUNTU:
+	<h3> Load kernel modules </h3>
+	<pre class="listing">
+	 $ sudo modprobe can
+	 $ sudo modprobe can-raw
+	 $ sudo modprobe slcan</pre>
+	<h3> Discover serial device name </h3>
+	<p> If You plug it by USB port it should be something like ttyACM0.
+
+
+	If you connect it by side UART connector you should use one of Your existing serial ports ttyS1 or ttyUSB if you are using usb to serial adapter.
+
+	<h3> CAN-utils compilation</h3>
+	<p> This is done only once. You need to have git installed. If you have one ignore first line </p>
+	<pre class="listing">
+	 $ sudo apt-get install git
+	 $ git clone https://github.com/linux-can/can-utils.git
+	 $ cd can-utils
+	 $ make</pre>
+	<h3> Start CAN interace</h3>
+	<p> See options for slcan_attach by executing </p>
+	<pre class="listing">$ ./slcan_attach</pre>
+	<p> You should get</p>
+	<pre class="listing">Options: -o         (send open command 'O\r')
+	-l         (send listen only command 'L\r', overrides -o)
+	-c         (send close command 'C\r')
+	-f         (read status flags with 'F\r' to reset error states)
+	-s speed (set CAN speed 0..8)
+	-b btr   (set bit time register value)
+	-d         (only detach line discipline)
+	-w         (attach - wait for keypess - detach)
+	-n name  (assign created netdevice name)
+
+	Examples:
+	slcan_attach -w -o -f -s6 -c /dev/ttyS1
+	slcan_attach /dev/ttyS1
+	slcan_attach -d /dev/ttyS1
+	slcan_attach -w -n can15 /dev/ttyS1</pre>
+
+	<p> s0..8 stand for bound rate from 10Kbps to 1Mbps for sampling point 75%. See source code or slcan documentation for details. </p>
+
+	<p> Example with opening for 250Kbs speed connected to ttyACM0.</p>
+	<pre class="listing">
+	$ sudo ./slcan_attach -f -s5 -o /dev/ttyACM0
+		attached tty /dev/ttyACM0 to netdevice slcan0
+	$ sudo ./slcand ttyACM0 slcan0
+	$ sudo ifconfig slcan0 up</pre>
+
+	<h3> Test CAN-utils</h3>
+	There is several features of CAN-utils see folder contests and check all executables for description here are examples.
+	<p>List all received CAN messages.</p>
+	<pre class="listing">$ ./candump slcan0</pre>
+	<h3>Wireshark support</h3>
+	For CAN frame analysis You can use Wireshark. This works only on Linux. To install Wireshark type:
+	<pre class="listing">$ sudo apt-get install Wireshark</pre>
+	After installation run Wireshark, "slcan0" interface should be visible and You are ready to go!
+  <h3>Known Issues</h3>
+	<p> If You get timeout message on connecting to ttyACM then try to remove modemmanager.
+		<pre class="listing">sudo apt-get --purge remove modemmanager</pre>
+	</p>
+
+
+</div>
+</div>
+</div>
+</div>
+<br>
+<p>
+	UCCB protocol is based on usbtin, some tools from <a href="http://www.fischl.de/usbtin/"> usbtin web site </a> should also work.
+</p>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(function() {
+		$('.pop').on('click', function() {
+			$('.imagepreview').attr('src', $(this).find('img').attr('src'));
+			$('#imagemodal').modal('show');
+		});
+});
+</script>

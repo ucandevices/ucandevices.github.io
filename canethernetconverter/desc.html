@@ -1,0 +1,64 @@
+<h3>Description</h3>
+<p>CAN Ethernet Converter (CEC) and CAN logger is single board microcomputer with UCCB internally connected to USB port. Features of CEC:
+    <li>CAN version 2.0 support, for more information on CAN see <a href="/uccb.html">UCCB</a> project</li>
+    <li><a href="http://www.orangepi.org/orangepizero/">Orange Pi Zero</a> microcomputer with Debian based Linux OS, see <a href="https://www.armbian.com/"> armbian </a>project </li>
+    <li>CPU: Allwinner H2+ Quad-core Cortex-A7</li>
+    <li>DDR3 RAM: 256MB</li>
+    <li>Connectivity: 10/100M Cable Ethernet / Wi-Fi</li>
+    <li>Power Supply: DC 5V/2A, micro usb connector</li>
+    <li>Dimension: 50 x 50 x 20 mm</li>
+</p>
+<p> Device has got ready to use SocketCAN user space utilities and tools, see <a href="https://github.com/linux-can/can-utils">can-utils</a> for more info.</p>
+<p> CEC is also supplied with uCANTools web application, tool for CAN data handling, see <a href="/ucantools.html">uCANTools</a> project for more info.</p>
+<img class="img-responsive"   src="canethernetconverter/desc.png" width="600">
+<br>
+
+<p>Video about <a href="https://www.youtube.com/watch?v=rMLax1DJBog&t=4s">can-utils here</a>, english subtitles  included. </p>
+<p>Getting started with <a href="https://youtu.be/2OLR1t_TbMk">uCAN CAN Ethernet converter video here</a>, english version.</p>
+
+<h3> Quick Start </h3>
+<ol>
+<li>Connect CEC device with ethernet cable to your network, </li>
+<li>On your rooter check what ip address was assign to CEC device, 
+<br>or to avoid IP usage, install avahi - <a href = "http://zeroconf.org/">zeroconf </a> client (bonjour for windows). Domain name is <b> ucan.local </b>, </li>
+<li>SSH login: <b>root</b>, password: <b>ucan</b>,  </li>
+<li>On Your web browser go to ucan.local address, ucan web application should display,</li>
+</ol>
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#ec">Ethernet converter</a></li>
+    <li><a data-toggle="tab" href="#l">Logger</a></li>
+    <li><a data-toggle="tab" href="#2">uCANTools</a></li>
+</ul>
+<div class="tab-content">
+    <div id="ec" class="tab-pane fade in active">
+        <p> Device has <a href="https://github.com/dschanoeh/socketcand"> socketcand </a> 
+            program running on ethernet port. Socketcand is a daemon that provides access to
+             CAN interfaces on a machine via a network interface.
+              The communication protocol uses a TCP/IP connection and a specific protocol to transfer CAN frames and control commands. 
+              To establish connection use socket client(ex. PuTTy) on configured port.</p>
+        <img class="img-responsive"   src="canethernetconverter/telnet.png">
+        <p> PuTTy configuration page, remember to set valid port and contention type.
+             After connection you should received  <b>&ltHi&gt</b> message.
+              List off all available commands on 
+              <a href = "https://github.com/dschanoeh/socketcand/blob/master/doc/protocol.md" >socketcand  project page </a>.</p>
+
+        
+    </div>
+    <div id="l" class="tab-pane fade">
+        <p> If You connect USB memory stick, device will log frames automatically on it. Frames will be saved in ASCI format.
+             Frames are automatically packet to 100 MB archives, using logrotate utility. 
+             Logs can be also downloaded from internal website using UCANTools application. 
+        </p>
+    </div>
+    <div id="2" class="tab-pane fade">
+        <p> See <a href="/ucantools.html">uCANTools</a> project
+        </p>
+    </div>
+
+</div>
+
+<br><br><br>
+<p style="text-align:justify; font-size:75%">
+    Product and its documentation is supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of
+    this product. This product is not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
+</p>

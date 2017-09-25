@@ -1,0 +1,193 @@
+<h3>Description</h3>
+<p>Usb CAN Converter Basic(UCCB) works as CAN to UART converter. Two communications port exist, USB(virtual COM port) and side USART port with Raspberry Pi compatible pinout. UCCB can work both with PC or Your custom embedded device. Multiple features are supported like:
+  <li> CAN version 2.0 support</li>
+	<li>receiving and sending of normal and extended frames</li>
+	<li>bound rate selection (from 60kbaund up to 1Mbaud)</li>
+	<li>loop back mode</li>
+	<li>frames filtering (up to 28 filters)</li>
+	<li>listen only mode</li>
+  <li>5V supply voltage</li>
+  <li>device size is 27x15 mm (without USB connector)</li>
+  <li>selectable termination resistors</li>
+<br>
+
+<p>See <a href="https://www.youtube.com/embed/TDPvuyraihU">tutorial on YouTube </a> english subtitles included.</p>
+<img class="img-responsive" src="usbcanconverter_basic/desc.gif">
+</p>
+<p> Device have support for USB DFU bootloader for new firmware upload. Features still to come with new firmware:
+    <li> Time Stamp on SOF transmission, reception </li>
+    <li> Time Trigger Communication</li>
+    <li> and much more </li>
+</p>
+<img class="img-responsive"   src="usbcanconverter_basic/UCCB11back.png">
+
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#hw12">Hardware 1.2</a></li>
+    <li><a data-toggle="tab" href="#hw11">Hardware 1.1</a></li>
+</ul>
+<div class="tab-content">
+  <div id="hw12" class="tab-pane fade in active">
+    <p>After USB enumeration device creates virtual COM port that is used both for data transfer and converter setup. Frames are send on USART only if no HOST is connected to USB. Device can be powered directly from USB or from the P4 port. To enable termination resistors GS1 jumper must be closed.<br>
+    <img class="img-responsive"   src="usbcanconverter_basic/UCCBLayout12.png"> </p>
+  </div>
+
+  <div id="hw11" class="tab-pane fade">
+    <p>After USB enumeration device creates virtual COM port that is used both for data transfer and converter setup. Frames are send on USART only if no HOST is connected to USB. Device can be powered directly from USB or from the P4 port. UCCB can be also supplied from 3,3V to do this jumper GS3 must be sealed, use P4 5V pin to supply with 3,3V. If GS3 is sealed any use of USB will damage the device.<b>Do not use USB if GS3 is sealed!</b> Bottom board layout is shown below.<br>
+    <img class="img-responsive"   src="usbcanconverter_basic/UCCBLayout.png"> </p>
+    <p> To enable termination resistors GS1 and GS2 jumpers must be closed.<br>
+     <img class="img-responsive"  src="usbcanconverter_basic/UCCBLayoutTop.png">
+    </p>
+  </div>
+
+
+</div>
+
+<h3>Drivers</h3>
+<p>For proper work on Windows you need to install virtual com drivers from <a href="http://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-stm32102.html">ST site </a> or download from <a href="/download/uccb/VirtualComportDriver.zip"><i class="glyphicon glyphicon-download-alt"></i> here </a>.</p>
+
+<h3>COM port Commands</h3>
+<p>
+Below is list of all available commands. All those commands can be send by USB or P4 port USART. USART baud rate is <b>115200</b> For the newest list see SLCAN.c file in source codes. All commands are ASCI based. Commands are line based and terminated with newline character CR (0xD). On error the USBtin responses with 0x7. <b>To start CAN frame reception just type "O" as Open command.</b> After reset device CAN speed is 1Mb/s with 75% sampling point.
+
+<table class="table-bordered">
+<tr>
+<td><b>Command</b></td>
+<td><b>Description</b></td>
+</tr>
+
+<tr>
+<td>O</td>
+<td>Enables frame reception.</td>
+</tr>
+
+<tr>
+<td>C</td>
+<td>Close CAN port on device, frame will not be received.</td>
+</tr>
+
+<tr>
+    <td>Sx</td>
+    <td> 	Sets baudrate<br>
+x: Bitrate id (3-8) <br>
+ S3 = 100 kBaud <br>
+ S4 = 125 kBaud <br>
+ S5 = 250 kBaud <br>
+ S6 = 500 kBaud <br>
+ S7 = 800 kBaud <br>
+ S8 = 1 MBaud</td>
+</tr>
+
+<tr>
+<td>V</td>
+<td>Get hardware version.</td>
+</tr>
+
+<tr>
+<td>v</td>
+<td>Get firmware version.</td>
+</tr>
+
+<tr>
+<td>N</td>
+<td>Get serial number.</td>
+</tr>
+
+<tr>
+<td>l</td>
+<td>Open device in loop back mode.</td>
+</tr>
+
+<tr>
+<td>L</td>
+<td>Open device in silent, listen-only mode.</td>
+</tr>
+
+<tr>
+<td>tiiildd</td>
+<td> 	Transmit standard (11 bit) frame. <br>
+iii: Identifier in hexadecimal format (000-7FF) <br>
+l: Data length (0-8) <br>
+dd: Data byte value in hexadecimal format (00-FF) </td>
+</tr>
+
+<tr>
+<td>Tiiiiiiiildd</td>
+<td> Transmit extended (29 bit) frame. <br>
+iiiiiiii: Identifier in hexadecimal format (0000000-1FFFFFFF) <br>
+l: Data length (0-8) <br>
+dd: Data byte value in hexadecimal format (00-FF)
+    </td>
+</tr>
+
+<tr>
+<td>riiil</td>
+<td> Transmit standard RTR (11 bit) frame. <br>
+iii: Identifier in hexadecimal format (000-7FF) <br>
+l: Data length (0-8)
+</td>
+</tr>
+
+<tr>
+<td>Riiiiiiiil</td>
+<td>Transmit extended RTR (29 bit) frame.<br>
+iiiiiiii: Identifier in hexadecimal format (0000000-1FFFFFFF) <br>
+l: Data length (0-8)
+</td>
+</tr>
+
+<tr>
+<td>F</td>
+<td>Read status/error flag of can controller<br>
+</td>
+</tr>
+
+<tr>
+<td>MnnbbfiiiiiiiiI<br>mmmmmmmmF</td>
+<td>M: Set acceptance filter mask. <br>
+    nn: filter number 0-1B<br>
+    bb: bank number 0-1B<br>
+    f: filter flags <br>
+        <li>Filter Activation </li>
+        <li>Mode: Mask or Filter</li>
+        <li>Scale: 2x16 bit or 1x32 bit </li>
+        <li>FIFO selection set as 0</li>
+    iiiiiiii: depends on Scale one 32 bit id or two 16 bit CAN frame id for filtering<br>
+    I: id flags<br>
+        <li>RTR1: filter for retransmission flag</li>
+        <li>EX1: filter for extended flag</li>
+        <li>RTR2: filter for retransmission flag (for 16 bit filtering)</li>
+        <li>EX2: filter for extended flag</li>
+    mmmmmmmm: If mode set to MASK, mask value, else as iiiiiiii <br>
+    F: flags for mask same as I
+
+
+
+</td>
+</tr>
+</table>
+<h3> Example workflow</h3>
+<pre class="listing">
+
+000005: C  (send close command) <br>
+000006: v  (ask for firmware version)<br>
+000007: v0102 (get version number from device)<br>
+000008: V   (ask for hardware version)<br>
+000009: V0101<br>
+000010: N   <br>
+000011: N16000000<br>
+000012: W2D00<br>
+000013:<br>
+000014: S8  (set speed to 1000000 b/s)<br>
+000015: <br>
+000016: O   (open CAN for frame transmission and reception)<br>
+000017: <br>
+000018: t00181122334455667788 (transmit frame type standard id = 1 length 8 bytes)<br>
+000019: z<br>
+000020: t0890<br>
+000021: M00007000000010000000010    (set id filter for ID=1 and ID=1)<br>
+</pre>
+
+
+<p style="text-align:justify; font-size:75%">
+Product and its documentation is supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of this product. This product is not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
+</p>

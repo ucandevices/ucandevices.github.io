@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>ucandevices.pl</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/creative.css" type="text/css">
+    <link rel="stylesheet" href="css/simple-sidebar.css" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" ng-app="agmodule" ng-controller="pagecontroller">
+	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+		<div ng-include="'header.html'"> </div>
+	</nav>
+	<header></header>
+
+<section id="services">
+
+<div class="container">
+    <p style="text-align:justify; font-size:75%">
+    Product, evaluation kits and its documentation are supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of this products. This products are not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
+    </p>
+</div>
+
+<!-- vendors Buy -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">BUY FROM VENDORS</h2>
+                <hr class="primary">
+            </div>
+        </div>
+
+		<div class="row">
+			<div class="col-lg-3 col-md-4 col-xs-4 text-center">
+				<div class="service-box">
+                    <a href="https://www.tindie.com/stores/lll7/">
+                    <img class="img-responsive" src="img/portfolio/tindie-logo@2x.png" >
+                    </a>
+				</div>
+			</div>
+
+            <div class="col-lg-3 col-md-4 col-xs-4 text-center">
+				<div class="service-box">
+                    <a href="https://botland.com.pl/">
+                    <img class="img-responsive" src="img/portfolio/botland.png" >
+                    </a>
+				</div>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-xs-4 text-center">
+				<div class="service-box">
+                    <a href="https://www.arduinosolutions.com/">
+                    <img class="img-responsive" src="img/portfolio/elty.png" >
+                    </a>
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+
+<br>
+    <!-- direct Buy -->
+<!-- <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 text-center">
+            <b><h2 class="section-heading">BUY DIRECTLY</h2></b>
+        <hr class="primary">
+    </div>
+</div>
+<div class="row ">
+
+    <form name="buyForm" class="form-horizontal">
+        <div class="col-xs-10 col-xs-offset-1 text-center">
+                <div class="row form-group">
+                    <div ng-repeat="p in products | filter:{canbuy: true}" class="row text-left">
+                        <div class="col-xs-8 col-md-3">
+                            <a href="{{p.link}}" class="portfolio-box daPad"> {{p.title}} </a>
+                        </div>
+                        <div class="col-xs-2 col-md-1">
+                            <input name="{{p.name}}" class="inline form-control daPad" ng-model="p.quantity" onkeypress="javascript:return checkDigit(event);" placeholder="Quantity" >
+                        </div>
+                        <div class="col-xs-2 col-md-2">
+                            <p class="daPad"> {{p.cost}} $</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-right">
+                    <div class="col-xs-0 col-md-4"> </div>
+                    <div class="col-xs-1 col-md-1">
+                    <button class="btn btn-success" data-toggle="collapse" data-target="#direct_buy"> CHECKOUT, PAY WITH BITCOINT OR DASH </button>
+                    </div>
+                </div>
+                <br>
+       <div id="direct_buy" class="collapse">
+                <h3 class="underline text-left"> DELIVERY ADDRESS </h3>
+                <div class="row">
+                    <div class="col-xs-6 col-md-4 col-lg-5">
+                        <div class="row text-left daPad ng-invalid"> FIRST NAME</div>
+                        <div class="row daPad"><input name="firstName" class="form-control" ng-model="ship.firstName"  type="text" required> </div>
+                    </div>
+                    <div class="col-xs-6 col-md-4 col-lg-5">
+                        <div class="row text-left daPad"> LAST NAME</div>
+                        <div class="row daPad"><input name="lastName" class="form-control" ng-model="ship.lastName"  type="text"> </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-7 col-md-5 col-lg-6">
+                        <div class="row text-left daPad"> STREET NAME</div>
+                        <div class="row daPad"><input name="streetName" class="form-control" ng-model="ship.streetName"  type="text" required> </div>
+                    </div>
+                    <div class="col-xs-5 col-md-3 col-lg-4">
+                        <div class="row text-left daPad">FLAT NO</div>
+                        <div class="row daPad"><input  name="flatNumber" class="form-control" ng-model="ship.flatNumber"  type="text" required> </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-7 col-md-5 col-lg-6">
+                        <div class="row text-left daPad"> TOWN</div>
+                        <div class="row daPad"><input name="town" class="form-control" ng-model="ship.town"  type="text" required> </div>
+                    </div>
+                    <div class="col-xs-5 col-md-3 col-lg-4">
+                        <div class="row text-left daPad"> ZIP CODE</div>
+                        <div class="row daPad"><input  name="zipCode" class="form-control" ng-model="ship.zipCode"  type="text" required> </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-7 col-md-5 col-lg-6">
+                        <div class="row text-left daPad"> ADDITIONAL INFO</div>
+                        <div class="row daPad"><input name="additionalInfo" class="form-control" ng-model="ship.additionalInfo"  type="text"> </div>
+                    </div>
+                    <div class="col-xs-5 col-md-3 col-lg-4">
+                        <div class="row text-left daPad"> COUNTRY</div>
+                        <div class="row daPad"><input name="country" class="form-control" ng-model="ship.country"  type="text" required> </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 col-md-4 col-lg-5">
+                        <div class="row text-left daPad"> MAIL</div>
+                        <div class="row daPad"><input class="form-control" name="mail" ng-model="ship.mail"  type="email" required> </div>
+                    </div>
+                    <div class="col-xs-6 col-md-4 col-lg-5">
+                        <div class="row text-left daPad"> PAY WITH</div>
+                        <div class="row daPad"><select name="paywith" class="form-control" ng-model="ship.paywith">
+                          <option value="Bitcoin">Bitcoin</option>
+                          <option value="Dash">Dash</option>
+                        </select>  </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h3 class="underline">  </h3>
+                    <div class="col-xs-4 col-md-2 text-left">
+                      <p>SHIPMENT {{shipment()}}$</p>
+                    </div>
+                    <div class="col-xs-4 col-md-2 text-left">
+                        <p>TOTAL {{totalCost()}}$</p>
+                    </div>
+                    <div class="col-xs-4 col-md-2 text-left">
+                        <p> <button class="btn btn-success" ng-disabled="orderSend" ng-click="sendMail()"><i class="glyphicon glyphicon-shopping-cart" ></i> BUY </button></p>
+                    </div>
+
+                    <div class="alert alert-danger text-left" ng-show=orderInvalid>
+                        <strong>Required delivery data invalid!</strong> Please Fill all delivery data.
+                    </div>
+
+                    <div class="alert alert-success text-left"  ng-show=orderSend>
+                        <strong>Order proceed successfully.</strong> You should receive a confirmation mail with order details. When we prepare Your order You will receive payment address. In case of problem contact us.
+                    </div>
+
+                    <div class="alert alert-danger text-left"  ng-show=orderErr>
+                        <strong>Internal error</strong> Try page reload.
+                    </div>
+                </div>
+                <div class="row">
+                    <i>Shipping worldwide done with </i> <a href="http://www.polish-post.pl/"> PolishPost </a> 
+                </div>
+            </div>
+        </div>
+    </form> -->
+
+</div>
+<!-- Donate us -->
+		<div class="row">
+			<div class="col-xs-12 col-lg-8 col-lg-offset-2 text-center">
+				<h2 class="section-heading">DONATE US</h2>
+				<hr class="primary">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 text-center">
+                <p class="text-left">If You found this page helpful send some
+                    <a class="curror_pointer" data-toggle="collapse" data-target="#dash"><b>DASH</b></a > or
+                    <a class="curror_pointer" data-toggle="collapse" data-target="#btc"><b>BITCOIN</b></a> cryptocurrencies.
+                </p>
+                <div id="dash" class="collapse">
+                    Dash address: <b>XnzT KPtJ Bwck xwZAT PisK xeZB vHV8 wd8Gf</b>
+                </div>
+                 <div id="btc" class="collapse">
+                    BTC address: <b>1Pvj Y5Bu YXoN oBMHS 5UFr Ynk3 o53R dgzMU</b>
+                </div>
+            </div>
+        </div>
+
+</section>
+    <script>
+      function checkDigit(event)
+      {
+          if ((event.keyCode == 8) || (event.keyCode == 46))
+            return true;
+          if ((event.charCode >= 48) && (event.charCode <= 57))
+            return true;
+          return false;
+      }
+    </script>
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/wow.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/creative.js"></script>
+
+        <!--    Angular-->
+    <script src="js/angular.min.js"></script>
+    <script src="js/products.js"></script>
+
+</body>
+
+</html>

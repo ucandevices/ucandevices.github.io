@@ -1,0 +1,28 @@
+[
+    {
+     "title":"USB CAN CONVERTER",
+     "desc": "Converter of CAN signals with USB and UART interfaces",
+     "category": "DEVICES",
+     "img":"img/products/uccb.png",
+     "link": "uccb.html",
+     "canbuy": true,
+     "cost": 16
+    },
+    {
+     "title":"CAN LOG/ETH CONVERTER",
+     "desc": "Linux microcomputer with Ethernet and CAN",
+     "category": "DEVICES",
+     "img":"img/products/cec.png",
+     "link": "cec.html",
+     "canbuy": false,
+     "cost": 25
+   },
+   {
+    "title":"UCAN TOOLS",
+    "desc": "Web Aplication for CAN",
+    "category": "SOFTWARE",
+    "img":"img/products/utools.png",
+    "link": "ucantools.html",
+    "canbuy": false
+   }
+]

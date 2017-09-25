@@ -1,0 +1,31 @@
+<h3>Tools</h3>
+<p> CEC Linux distribution comes with many pre-installed applications see list below for details. Tools list:
+	<div class="panel-group">
+		<div class="panel panel-default">
+
+			<div class="panel-heading">
+				<li><a data-toggle="collapse" data-parent="#accordion" href="#uCANTools" aria-expanded="true" aria-controls="collapseOne">uCANTools</a></li>
+			</div>
+			<div class="collapse" id="uCANTools">
+				<div class="card card-block">
+					<p> <b> uCANTools </b> is web application working on port 8080, it has got features like CAN data handling, logs downloading and many more see <a href="/ucantools.html"> uCANTools </a> project for more info.</p>
+				</div>
+			</div>
+
+			<div class="panel-heading">
+				<li><a data-toggle="collapse" data-parent="#accordion" href="#logrotate" aria-expanded="true" aria-controls="collapseOne">LogRotate</a></li>
+			</div>
+			<div class="collapse" id="logrotate">
+				<div class="card card-block">
+						<p> Logroate Linux program is used to handle with logs saved on USB stick. Logroate creates new log files and aggregates them. Log rotate is triggered by cron.hourly task.</p>
+				</div>
+			</div>
+
+	<script>
+		$(function() {
+			$('.pop').on('click', function() {
+				$('.imagepreview').attr('src', $(this).find('img').attr('src'));
+				$('#imagemodal').modal('show');
+			});
+		});
+	</script>

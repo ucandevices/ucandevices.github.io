@@ -1,0 +1,16 @@
+{
+  "name": "ucandevices_www",
+  "version": "1.0.0",
+  "description": "[Creative](http://startbootstrap.com/template-overviews/creative/) is a one page creative theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/).",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "LJ",
+  "license": "ISC",
+  "dependencies": {
+    "connect": "^3.6.2",
+    "serve-static": "^1.12.3"
+  }
+}

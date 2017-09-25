@@ -1,0 +1,147 @@
+<?php
+// Multiple recipients
+$data = json_decode(file_get_contents("php://input"));
+
+$to = "contact@ucandevices.pl, $data->mailTo"; // note the comma
+// Subject
+$subject = 'uCAN Order confirmation';
+// Message
+$message = "
+<html>
+<head>
+  <title>uCAN Order confirmation</title>
+</head>
+<body>
+	
+  <p>Message generated automatically please do not respond</p>
+  <p>Thanks, for placing order in uCAN. We will send You a mail with payment instructions shortly. </p>
+  <br>Order details are below<br>
+  <table>
+    <tr>
+      <td><b>Name</b> $data->firstName </td> <td>$data->lastName </td>
+    </tr>
+    <tr>
+      <td><b>Street</b> $data->streetName </td> <td>$data->flatNumber </td>
+    </tr>
+    <tr>
+      <td><b>Town</b> $data->town </td> <td> $data->zipCode </td> <td>  $data->country </td>
+    </tr>
+    <tr>
+      <td><b>Pay using</b> $data->paywith </td>
+    </tr>
+    <tr>
+      <td><b>Additional info</b> $data->additionalInfo </td>
+    </tr>
+  </table>
+
+  <p> When we prepare Your order You will receive payment address. In case of problem contact us.  <i>Shipping worldwide done with </i> <a href='http://www.polish-post.pl/'> PolishPost </a>  </p>
+
+</body>
+</html>
+";
+
+// To send HTML mail, the Content-type header must be set
+$headers[] = 'MIME-Version: 1.0';
+$headers[] = 'Content-type: text/html; charset=iso-8859-1';
+
+// Additional headers
+$headers[] = 'Reply-To: <contact@ucandevices.pl>';
+$headers[] = 'From: <contact@ucandevices.pl>';
+
+// Mail it
+mail($to, $subject, $message, implode("\r\n", $headers));
+
+
+if (!function_exists('http_response_code')) {
+    function http_response_code($code = NULL) {
+
+        if ($code !== NULL) {
+
+            switch ($code) {
+                case 100: $text = 'Continue'; break;
+                case 101: $text = 'Switching Protocols'; break;
+                case 200: $text = 'OK'; break;
+                case 201: $text = 'Created'; break;
+                case 202: $text = 'Accepted'; break;
+                case 203: $text = 'Non-Authoritative Information'; break;
+                case 204: $text = 'No Content'; break;
+                case 205: $text = 'Reset Content'; break;
+                case 206: $text = 'Partial Content'; break;
+                case 300: $text = 'Multiple Choices'; break;
+                case 301: $text = 'Moved Permanently'; break;
+                case 302: $text = 'Moved Temporarily'; break;
+                case 303: $text = 'See Other'; break;
+                case 304: $text = 'Not Modified'; break;
+                case 305: $text = 'Use Proxy'; break;
+                case 400: $text = 'Bad Request'; break;
+                case 401: $text = 'Unauthorized'; break;
+                case 402: $text = 'Payment Required'; break;
+                case 403: $text = 'Forbidden'; break;
+                case 404: $text = 'Not Found'; break;
+                case 405: $text = 'Method Not Allowed'; break;
+                case 406: $text = 'Not Acceptable'; break;
+                case 407: $text = 'Proxy Authentication Required'; break;
+                case 408: $text = 'Request Time-out'; break;
+                case 409: $text = 'Conflict'; break;
+                case 410: $text = 'Gone'; break;
+                case 411: $text = 'Length Required'; break;
+                case 412: $text = 'Precondition Failed'; break;
+                case 413: $text = 'Request Entity Too Large'; break;
+                case 414: $text = 'Request-URI Too Large'; break;
+                case 415: $text = 'Unsupported Media Type'; break;
+                case 500: $text = 'Internal Server Error'; break;
+                case 501: $text = 'Not Implemented'; break;
+                case 502: $text = 'Bad Gateway'; break;
+                case 503: $text = 'Service Unavailable'; break;
+                case 504: $text = 'Gateway Time-out'; break;
+                case 505: $text = 'HTTP Version not supported'; break;
+                default:
+                    exit('Unknown http status code "' . htmlentities($code) . '"');
+                break;
+            }
+
+            $protocol = (isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
+
+            header($protocol . ' ' . $code . ' ' . $text);
+
+            $GLOBALS['http_response_code'] = $code;
+
+        } else {
+
+            $code = (isset($GLOBALS['http_response_code']) ? $GLOBALS['http_response_code'] : 200);
+
+        }
+
+        return $code;
+
+    }
+}
+
+function json_response($message = null, $code = 202)
+{
+    // clear the old headers
+    header_remove();
+    // set the actual code
+    http_response_code($code);
+    // set the header to make sure cache is forced
+    header("Cache-Control: no-transform,public,max-age=300,s-maxage=900");
+    // treat this as json
+    header('Content-Type: application/json');
+    $status = array(
+        200 => '200 OK',
+        400 => '400 Bad Request',
+        422 => 'Unprocessable Entity',
+        500 => '500 Internal Server Error'
+        );
+    // ok, validation error, or failure
+    header('Status: '.$status[$code]);
+    // return the encoded json
+    return json_encode(array(
+        'status' => $code < 300, // success or not?
+        'message' => $message
+        ));
+}
+
+echo json_response('OK',200); // {"status":true,"message":"working"}
+
+?>
