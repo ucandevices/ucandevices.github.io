@@ -45,8 +45,8 @@ $headers[] = 'MIME-Version: 1.0';
 $headers[] = 'Content-type: text/html; charset=iso-8859-1';
 
 // Additional headers
-$headers[] = 'Reply-To: <contact@ucandevices.pl>';
-$headers[] = 'From: <contact@ucandevices.pl>';
+$headers[] = 'Reply-To: <ucandevices@mail.com>';
+$headers[] = 'From: <ucandevices@mail.com>';
 
 // Mail it
 mail($to, $subject, $message, implode("\r\n", $headers));
