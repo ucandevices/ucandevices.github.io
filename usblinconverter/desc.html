@@ -1,0 +1,118 @@
+
+<p style="text-align:justify; font-size:75%">
+    Product and its documentation is supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of this product. This product is not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
+</p>
+
+<h3>Description</h3>
+<p>Usb LIN(Local interconnect network) Converter(ULC) works as LIN to USB converter. Two communications port exist, USB(virtual COM port) and side USART port. UCCB can work both with PC or Your custom embedded device. Multiple features are supported like:
+  <li> LIN 2.1 support</li>
+	<li>Listen only mode, for all frame reception, and sending single frames.</li>
+	<li>Master mode, with up to 15 frame slots</li>
+	<li>19200 baud rate</li>	
+  <li>External 7-12V is needed for LIN network</li>
+  <li>Device size is 31x18 mm (without USB connector)</li>
+  <li>Termination resistors controlled by software</li>
+  <li>USB dfu compatible bootlader for new features</li>
+  <li>SLCAN compatible, works with LINUX socket-can and some of CAN-utils</li>
+<br>
+
+<img class="img-responsive"   src="usblinconverter/UCCB11back.png">
+
+<p>After USB enumeration device creates virtual COM port that is used both for data transfer and converter setup.
+     Frames are send on USART only if no HOST is connected to USB. 
+     Device is be powered directly from USB, External 12V is needed to supply LIN transcriver. 
+     Board layout is shown below.<br>
+    <img class="img-responsive"   src="usblinconverter/Layout.svg"> 
+</p>
+
+<h3>Drivers</h3>
+<p>For proper work on Windows no special drivers are needed </p>
+<h3>COM port Commands</h3>
+<p>
+    Below is list of all available commands. All those commands can be send by USB or P4 port USART.
+    USART baud rate is virtual so can be any. For the newest list see SLCAN.c file in source codes.
+    All commands are ASCI based. Commands are line based and terminated with newline character CR (0xD). 
+    On error the device responses with 0x7. 
+    To start LIN frame reception just type "L" as Listen mode command.
+    
+<table class="table-bordered">
+<tr>
+<td><b>Command</b></td>
+<td><b>Description</b></td>
+</tr>
+
+<tr>
+<td>O</td>
+<td>Opens device in master mode.</td>
+</tr>
+
+<tr>
+<td>C</td>
+<td>Close LIN port on device, frame will not be received.</td>
+</tr>
+
+<tr>
+    <td>Sx</td>
+    <td>Currently no baud rate selection<br>
+</tr>
+
+<tr>
+<td>V</td>
+<td>Get hardware version.</td>
+</tr>
+
+<tr>
+<td>v</td>
+<td>Get firmware version.</td>
+</tr>
+
+<tr>
+<td>N</td>
+<td>Get serial number.</td>
+</tr>
+
+<tr>
+<td>L</td>
+<td>Open device in, silent, message analyzer mode.</td>
+</tr>
+
+<tr>
+<td>tiiildd</td>
+<td>In Silent mode, transmits full header and data frame. <br>
+    In Master mode, puts or updates table set with new frame<br>
+0ii: Identifier in hexadecimal format (000-0FF) <br>
+l: Data length (0-8) <br>
+dd: Data byte value in hexadecimal format (00-FF) </td>
+</tr>
+
+<tr>
+<td>riiil</td>
+<td>In Silent mode, transmits header only with set ID and Lenght, subscibed slave should answer the header.<br>
+    In Master mode, puts or updates table set with this id for continous sending.
+    Proper timing is set according to LIN standard. <br>
+0ii: Identifier in hexadecimal format (000-0FF) <br>
+l: Data length (0-8)
+</td>
+</tr>
+
+</table>
+<h3> Example workflow</h3>
+<pre class="listing">
+
+000005: C  (send close command) <br>
+000006: v  (ask for firmware version)<br>
+000007: v0102 (get version number from device)<br>
+000008: V   (ask for hardware version)<br>
+000009: V0101<br>
+000010: N   <br>
+000011: N16000000<br>
+000012: W2D00<br>
+000013:<br>
+000014: S0  (currently not supported but can be send)<br>
+000015: <br>
+000016: L   (open in silent mode)<br>
+000017: <br>
+000018: r0128 (transmit header with 8 data bytes request, id 0x12, checksum will be added by device)<br>
+000019: z<br>
+000020: t01280011223344556677 (slave responded for header request with 8 byte data frame, checksum is calculated by device)<br>
+</pre>

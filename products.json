@@ -1,7 +1,7 @@
 [
     {
      "title":"USB CAN CONVERTER",
-     "desc": "Converter of CAN signals with USB and UART interfaces",
+     "desc": "Converter CAN signals with USB and UART interfaces",
      "category": "DEVICES",
      "img":"img/products/uccb.png",
      "link": "uccb.html",
@@ -14,15 +14,16 @@
      "category": "DEVICES",
      "img":"img/products/cec.png",
      "link": "cec.html",
-     "canbuy": false,
-     "cost": 25
+     "canbuy": true,
+     "cost": 40
    },
    {
-    "title":"UCAN TOOLS",
-    "desc": "Web Aplication for CAN",
-    "category": "SOFTWARE",
-    "img":"img/products/utools.png",
-    "link": "ucantools.html",
-    "canbuy": false
+    "title":"USB LIN CONVERTER",
+    "desc": "LIN network master and monitoring device as USB dongle",
+    "category": "DEVICES",
+    "img":"img/products/ulc.png",
+    "link": "ulc.html",
+    "canbuy": true,
+    "cost": 16
    }
 ]

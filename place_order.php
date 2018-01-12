@@ -2,7 +2,7 @@
 // Multiple recipients
 $data = json_decode(file_get_contents("php://input"));
 
-$to = "contact@ucandevices.pl, $data->mailTo"; // note the comma
+$to = "ucandevices@mail.com, $data->mailTo"; // note the comma
 // Subject
 $subject = 'uCAN Order confirmation';
 // Message

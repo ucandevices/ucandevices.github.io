@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="Open source usb can converter.">
     <meta name="author" content="">
 
     <title>ucandevices.github.io/</title>
@@ -23,7 +23,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/creative.css" type="text/css">
     <link rel="stylesheet" href="css/simple-sidebar.css" type="text/css">
-    
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,57 +44,50 @@
 </head>
 
 <body id="page-top" ng-app="agmodule" ng-controller="pagecontroller">
+	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+		<div ng-include="'header.html'"> </div>
+	</nav>
+	<header></header>
 
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="index.html">https://ucandevices.github.io/</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                    <a class="page-scroll curror_pointer" data-toggle="dropdown" >Products</a>
-                            <ul class="dropdown-menu">
-                                <li ng-repeat="p in products"><a href="{{p.link}}">{{p.title}}</a></li>
-                            </ul>
-                        </li>
-                    <li>
-                        <a class="page-scroll" href="https://github.com/UsbCANConverter-UCCbasic">Github</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="https://groups.google.com/forum/?hl=pl#!forum/usbcanconverter-uccbasic">Forum</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="index.html">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-    <header></header>
     <section id="services">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Usb CAN converter basic.</h2>
+                    <h2 class="section-heading">Usb LIN converter.</h2>
                     <hr class="primary">
                 </div>
             </div>
         </div>
-        
-        
+
+
 <!--        page contents tabs-->
+        <div class="container-fluid">
+            <!-- <nav class="navbar navbar-inverse navbar-fixed-top"> -->
+                <ul class="nav navbar-nav">
+                    <li><a  href="#tc_desc">About</a></li>
+                    <li><a  href="#tc_device">Sources</a></li>
+                    <li><a  href="#tc_td">Tools</a></li>
+                    <!-- <li><a data-toggle="tab" href="#tc_howto">Tests & Tutorials</a></li> -->
+                </ul>
+            <!-- </nav> -->
+                    <br/>
+                    <br/>
+                    <br/>
+            <!-- <div class="tab-content"> -->
+                <div id="tc_desc" class="">
+                    <div ng-include="'usblinconverter/desc.html'"></div>
+                </div>
+                <div id="tc_device" class="">
+                    <div ng-include="'usblinconverter/sources.html'"></div>
+                </div>
+                <div id="tc_td" class="">
+                    <div ng-include="'usblinconverter/tools.html'"></div>
+                </div>
+                <!-- <div id="tc_howto" class="">
+                                <div ng-include="'usblinconverter/howto.html'"></div>
+                </div> -->
+        </div>
+        <!-- </div> -->
     </section>
 
     <!-- jQuery -->
@@ -110,7 +103,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
-    
+
         <!--    Angular-->
     <script src="js/angular.min.js"></script>
     <script src="js/products.js"></script>
