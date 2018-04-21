@@ -1,3 +1,6 @@
+<p style="text-align:justify; font-size:75%">
+    Product and its documentation is supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of this product. This product is not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
+</p>
 <h3>Description</h3>
 <p>Usb CAN Converter Basic(UCCB) works as CAN to UART converter. Two communications port exist, USB(virtual COM port) and side USART port with Raspberry Pi compatible pinout. UCCB can work both with PC or Your custom embedded device. Multiple features are supported like:
   <li> CAN version 2.0 support</li>
@@ -14,10 +17,7 @@
 <p>See <a href="https://www.youtube.com/watch?v=8FbeczZ1ydo">tutorial on YouTube </a></p>
 <img class="img-responsive" src="usbcanconverter_basic/desc.gif">
 </p>
-<p> Device have support for USB DFU bootloader for new firmware upload. Features still to come with new firmware:
-    <li> Time Stamp on SOF transmission, reception </li>
-    <li> Time Trigger Communication</li>
-    <li> and much more </li>
+<p> Device have support for USB DFU bootloader for new firmware upload. 
 </p>
 <img class="img-responsive"   src="usbcanconverter_basic/UCCB11back.png">
 
@@ -47,7 +47,7 @@
 
 <h3>COM port Commands</h3>
 <p>
-Below is list of all available commands. All those commands can be send by USB or P4 port USART. USART baud rate is <b>115200</b> For the newest list see SLCAN.c file in source codes. All commands are ASCI based. Commands are line based and terminated with newline character CR (0xD). On error the USBtin responses with 0x7. <b>To start CAN frame reception just type "O" as Open command.</b> After reset device CAN speed is 1Mb/s with 75% sampling point.
+Below is list of all available commands. All those commands can be send by USB or P4 port USART. USART baud rate is <b>115200</b> For more details see SLCAN.c file in source codes. All commands are ASCI format. Each of commands is terminated with newline character CR (0xD). On error the USBtin responses with 0x7 value. <b>To start CAN frame reception just type "O", for Open command.</b> After reset device CAN speed is 1Mb/s with 75% sampling point.
 
 <table class="table-bordered">
 <tr>
@@ -188,6 +188,4 @@ l: Data length (0-8)
 </pre>
 
 
-<p style="text-align:justify; font-size:75%">
-Product and its documentation is supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of this product. This product is not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
-</p>
+

@@ -4,23 +4,25 @@
 </p>
 
 <h3>Description</h3>
-<p>Usb LIN(Local interconnect network) Converter(ULC) works as LIN to USB converter. Two communications port exist, USB(virtual COM port) and side USART port. UCCB can work both with PC or Your custom embedded device. Multiple features are supported like:
+<p>LIN(Local interconnect network) Usb Converter(LUC) can work both with PC without any additional drivers,
+     it creates virtual COM port that handles LIN communication. 
+Multiple features are supported like:
   <li> LIN 2.1 support</li>
-	<li>Listen only mode, for all frame reception, and sending single frames.</li>
+	<li>Monitor mode, for all frame reception, and sending single frames.</li>
 	<li>Master mode, with up to 15 frame slots</li>
-	<li>19200 baud rate</li>	
-  <li>External 7-12V is needed for LIN network</li>
+    <li>19200 baud rate</li>	
+  <li><b>Optical isolation for LIN</b></li>
+  <li>External 4.5 V to 28 V is needed for LIN network</li>
   <li>Device size is 31x18 mm (without USB connector)</li>
   <li>Termination resistors controlled by software</li>
-  <li>USB dfu compatible bootlader for new features</li>
+  <li>USB dfu compatible bootloader for new software</li>
   <li>SLCAN compatible, works with LINUX socket-can and some of CAN-utils</li>
 <br>
 
 <img class="img-responsive"   src="usblinconverter/UCCB11back.png">
 
-<p>After USB enumeration device creates virtual COM port that is used both for data transfer and converter setup.
-     Frames are send on USART only if no HOST is connected to USB. 
-     Device is be powered directly from USB, External 12V is needed to supply LIN transcriver. 
+<p>After USB enumeration device creates virtual COM port that is used both for data transfer and converter setup. 
+     Device is be powered directly from USB, but external 4.5-28V is needed to supply LIN transceiver. 
      Board layout is shown below.<br>
     <img class="img-responsive"   src="usblinconverter/Layout.svg"> 
 </p>
@@ -29,11 +31,10 @@
 <p>For proper work on Windows no special drivers are needed </p>
 <h3>COM port Commands</h3>
 <p>
-    Below is list of all available commands. All those commands can be send by USB or P4 port USART.
-    USART baud rate is virtual so can be any. For the newest list see SLCAN.c file in source codes.
-    All commands are ASCI based. Commands are line based and terminated with newline character CR (0xD). 
-    On error the device responses with 0x7. 
-    To start LIN frame reception just type "L" as Listen mode command.
+    Below is list of all available commands. 
+    USART baud rate is virtual so can be any. 
+    All commands are ASCI format. Commands are terminated with newline character CR (0xD). 
+    On error the device responses with 0x7 value. 
     
 <table class="table-bordered">
 <tr>
@@ -52,8 +53,8 @@
 </tr>
 
 <tr>
-    <td>Sx</td>
-    <td>Currently no baud rate selection<br>
+<td>Sx</td>
+<td>Currently no baud rate selection<br>
 </tr>
 
 <tr>
@@ -73,12 +74,12 @@
 
 <tr>
 <td>L</td>
-<td>Open device in, silent, message analyzer mode.</td>
+<td>Open device in, monitor mode, message analyzer mode, with single frame sending possibility .</td>
 </tr>
 
 <tr>
 <td>tiiildd</td>
-<td>In Silent mode, transmits full header and data frame. <br>
+<td>In Monitor mode, transmits full header and data frame. <br>
     In Master mode, puts or updates table set with new frame<br>
 0ii: Identifier in hexadecimal format (000-0FF) <br>
 l: Data length (0-8) <br>
@@ -87,8 +88,8 @@ dd: Data byte value in hexadecimal format (00-FF) </td>
 
 <tr>
 <td>riiil</td>
-<td>In Silent mode, transmits header only with set ID and Lenght, subscibed slave should answer the header.<br>
-    In Master mode, puts or updates table set with this id for continous sending.
+<td>In Monitor mode, transmits header only with set ID and Length, subscribed slave should answer the header.<br>
+    In Master mode, puts or updates table set with this id for continuous sending.
     Proper timing is set according to LIN standard. <br>
 0ii: Identifier in hexadecimal format (000-0FF) <br>
 l: Data length (0-8)
@@ -110,7 +111,7 @@ l: Data length (0-8)
 000013:<br>
 000014: S0  (currently not supported but can be send)<br>
 000015: <br>
-000016: L   (open in silent mode)<br>
+000016: L   (open in monitor mode)<br>
 000017: <br>
 000018: r0128 (transmit header with 8 data bytes request, id 0x12, checksum will be added by device)<br>
 000019: z<br>
