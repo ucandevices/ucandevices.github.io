@@ -45,6 +45,25 @@ Tools list:
 </div>
 </div>
 
+<div class="panel-heading">
+	<li><a data-toggle="collapse" data-parent="#accordion" href="#cs" aria-expanded="true" aria-controls="collapseOne">GSUSB</a></li>
+</div>
+<div class="collapse" id="cs">
+<div class="card card-block">
+    <p>UCCB has alternative firmware for that implments the gs_usb protocol. This is supported by the mainline Linux kernel and SocketCAN. It does not require use of slcand and should be more reliable at high bitrates. For this reason, GSUSB is recommended if you are only using UCCB on Linux.
+		The GSYSB firmware was written by Hubert Denkmair, and is released under the MIT license. The source code is available on Github. Thanks to Hubert for his work on this project! To see how to flash new firmware look to Sources tab.
+		<h3> UCCB_GSUSB firmware hex files</h3>
+			To use UCCB with GSUSB You need upload new software. Binaries can be found <a href="https://github.com/UsbCANConverter-UCCbasic/UCCB_GS_Embedded/releases">GitHub Release</a>. Sources are on <a href="https://github.com/UsbCANConverter-UCCbasic/UCCB_GS_Embedded">GitHub</a> 
+		<h3> Using UCCB_GSUSB firware</h3>
+		<p>
+			Ensure the gs_usb kernel module is enabled: <pre class="listing">sudo modprobe gs_usb <br>sudo modprobe can_dev</pre>
+			Connect device to USB, and check if initialized properly <pre class="listing">ip link list</pre>There should be sth like this <pre class="listing">10: can0: NOARP,ECHO mtu 16 qdisc noop state DOWN mode DEFAULT group default qlen 10 link/can </pre>  Connect UCCB device to CAN network. <br> 
+			Configure the device: <pre class="listing">sudo ip link set can0 type can bitrate 500000.</pre>Replace can0 with the name of your device, and 500000 with the desired bitrate.
+			<br>Bring the device up: <pre class="listing">sudo ifconfig can0 up</pre>
+			<br>Use the device with SocketCAN. For example, candump can0. See SocketCAN for more information.
+		</p>
+</div>
+</div>
 
 <div class="panel-heading">
 	<li><a data-toggle="collapse" data-parent="#accordion" href="#cs" aria-expanded="true" aria-controls="collapseOne">C#</a></li>
