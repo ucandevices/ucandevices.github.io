@@ -95,7 +95,7 @@ dd: Data byte value in hexadecimal format (00-FF) </td>
 </tr>
 
 <tr>
-<td>riiil</td>
+<td>r0iil</td>
 <td>In Monitor mode, transmits header only with set ID and Length, subscribed slave should answer the header.<br>
     In Master mode, puts or updates table set with this id for continuous sending.
     Proper timing is set according to LIN standard. <br>
@@ -104,8 +104,21 @@ l: Data length (0-8)
 </td>
 </tr>
 
+<tr>
+    <td>r1ff0</td>
+    <td>In Master mode, starts sending frames from table.
+</td>
+</tr>
+
+<tr>
+    <td>r2ff0</td>
+    <td>In Master mode, clears schedule table.
+</td>
+</tr>
+
 </table>
-<h3> Example workflow</h3>
+
+<h3> Example workflow for Monitor Mode</h3>
 <pre class="listing">
 
 000005: C  (send close command) <br>
@@ -117,11 +130,26 @@ l: Data length (0-8)
 000011: N16000000<br>
 000012: W2D00<br>
 000013:<br>
-000014: S0  (currently not supported but can be send)<br>
+000014: S0  (speed setting, currently not supported but can be send)<br>
 000015: <br>
 000016: L   (open in monitor mode)<br>
 000017: <br>
-000018: r0128 (transmit header with 8 data bytes request, id 0x12, checksum will be added by device)<br>
+000018: r0128 (transmit header with 8 data bytes request, id 0x12)<br>
 000019: z<br>
-000020: t01280011223344556677 (slave responded for header request with 8 byte data frame, checksum is calculated by device)<br>
+000020: t01280011223344556677 (slave responded for header request with 8 byte data frame)<br>
 </pre>
+
+<h3> Example workflow for Master Mode</h3>
+<pre class="listing">
+000015: <br>
+000016: O   (open in master mode)<br>
+000017: <br>
+000018: r0018 (add to schedule table frame transmission header with 8 data bytes request, id 0x01)<br>
+000019: z<br>
+000018: r0022 (add to schedule table frame transmission header with 2 data bytes request, id 0x02)<br>
+000019: z<br>
+000018: r1ff0 (start sending frames)<br>
+000019: z<br>
+</pre>
+
+

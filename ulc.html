@@ -62,18 +62,12 @@
  
 <!--        page contents tabs-->
         <div class="container-fluid">
-            <!-- <nav class="navbar navbar-inverse navbar-fixed-top"> -->
-                <ul class="nav navbar-nav">
-                    <li><a  href="#tc_desc">About</a></li>
-                    <li><a  href="#tc_device">Sources</a></li>
-                    <li><a  href="#tc_td">Tools</a></li>
-                    <!-- <li><a data-toggle="tab" href="#tc_howto">Tests & Tutorials</a></li> -->
-                </ul>
-            <!-- </nav> -->
-                    <br/>
-                    <br/>
-                    <br/>
-            <!-- <div class="tab-content"> -->
+            <ul class="nav nav-tabs">
+                <li><a  href="#tc_desc">About</a></li>
+                <li><a  href="#tc_device">Sources</a></li>
+                <li><a  href="#tc_td">Tools</a></li>
+            </ul>
+            <div class="tab-content">
                 <div id="tc_desc" class="">
                     <div ng-include="'usblinconverter/desc.html'"></div>
                 </div>
@@ -83,11 +77,8 @@
                 <div id="tc_td" class="">
                     <div ng-include="'usblinconverter/tools.html'"></div>
                 </div>
-                <!-- <div id="tc_howto" class="">
-                                <div ng-include="'usblinconverter/howto.html'"></div>
-                </div> -->
+            </div>
         </div>
-        <!-- </div> -->
     </section>
 
     <!-- jQuery -->
