@@ -5,6 +5,7 @@
      "category": "DEVICES",
      "img":"img/products/uccb.png",
      "link": "uccb.html",
+     "github": "https://github.com/UsbCANConverter-UCCbasic",
      "canbuy": true,
      "cost": 16
     },
@@ -14,6 +15,7 @@
      "category": "DEVICES",
      "img":"img/products/cec.png",
      "link": "cec.html",
+     "github": "https://github.com/CanEthernetConverter",     
      "canbuy": true,
      "cost": 40
    },
@@ -23,6 +25,17 @@
     "category": "DEVICES",
     "img":"img/products/ulc.png",
     "link": "ulc.html",
+    "github": "https://github.com/uCAN-LIN/LinUSBConverter",
+    "canbuy": true,
+    "cost": 16
+   },
+   {
+    "title":"USB RELAY",
+    "desc": "Setup relay timings using USB and memorize them",
+    "category": "DEVICES",
+    "img":"img/products/usb_relay.png",
+    "link": "urly.html",
+    "github": "https://github.com/Lukasz-Juranek/usbRelay",
     "canbuy": true,
     "cost": 16
    }

@@ -26,9 +26,7 @@
 				<li>
 					<a class="page-scroll curror_pointer" data-toggle="dropdown" >Github</a>
 					<ul class="dropdown-menu">
-						<li><a class="page-scroll" href="https://github.com/UsbCANConverter-UCCbasic">CAN USB CONVERTER</a></li>
-						<li><a class="page-scroll" href="https://github.com/uCAN-LIN">LIN DEVICES</a></li>
-						<li><a class="page-scroll" href="https://github.com/CanEthernetConverter">CAN LOG/ETH TOOLS</a></li>
+					    <li ng-repeat="p in products"><a href="{{p.github}}">{{p.title}}</a></li>						
 					</ul>
 				</li>
 				<!-- <li>
