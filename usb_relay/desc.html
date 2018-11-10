@@ -105,7 +105,10 @@
 
 <h3> Example workflow</h3>
 <pre class="listing">
-TO BE POSTED
+    000000: R0D800,S1P5000,S0P2000 (Set Relay0 with delay 800ms, [Step1] state 1 period 5000ms, [Step2] state 0 period 2000ms)
+    OK
+    000001:R1D200,S1P1000,S0P1000 (Set Relay1 with delay 200ms, [Step1] state 1 period 1000ms, [Step2] state 0 period 1000ms)
+    OK
+    000002: SC (Save configuration to non volatile memory)
+    OK
 </pre>
-
-
