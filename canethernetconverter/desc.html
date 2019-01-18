@@ -2,16 +2,44 @@
     Product and its documentation is supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of this product. This product is not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
 </p>
 
+
+<div class="tab-content">
 <h3>Description</h3>
-<p>CAN Ethernet Converter (CEC) and CAN logger is single board microcomputer with UCCB internally connected to USB port. Features of CEC:
-    <li>CAN version 2.0 support, for more information on CAN see <a href="/uccb.html">UCCB</a> project</li>
-    <li><a href="http://www.orangepi.org/orangepizero/">Orange Pi Zero</a> microcomputer with Debian based Linux OS, see <a href="https://www.armbian.com/"> armbian </a>project </li>
-    <li>CPU: Allwinner H2+ Quad-core Cortex-A7</li>
-    <li>DDR3 RAM: 256MB</li>
-    <li>Connectivity: 10/100M Cable Ethernet / Wi-Fi</li>
-    <li>Power Supply: DC 5V/2A, micro usb connector</li>
-    <li>Dimension: 50 x 50 x 20 mm</li>
-</p>
+<ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#hw12">Hardware 1.2</a></li>
+        <li><a data-toggle="tab" href="#hw11">Hardware 1.1</a></li>
+    </ul>
+
+<div id="hw12" class="tab-pane fade in active">
+        <p>CAN Ethernet Converter (CEC) and CAN logger is single board microcomputer with up to two UCCB or LUC internally connected to USB port. Features of CEC:
+            <li>CAN version 2.0 support based on socketcan gsusb driver, for more information on CAN see <a href="/uccb.html">UCCB</a> project</li>
+            <li>LIN support based on socketcan interface, for more information on LIN see <a href="/ulc.html">LUC</a> project</li>
+            <li><a href="http://www.orangepi.org/OrangePiZeroPlus/">Orange Pi Zero Plus</a> microcomputer with Debian based Linux OS, see <a href="https://www.armbian.com/"> armbian </a>project </li>
+            <li>CPU: H5 Quad-core 64-bit Cortex-A53</li>
+            <li>DDR3 RAM: 512MB</li>
+            <li>Connectivity: 1GB Cable Ethernet / Wi-Fi</li>
+            <li>Power Supply: DC 5V/2A, micro usb connector</li>
+            <li>Dimension: 50 x 50 x 20 mm</li>
+            <li>Dedicated 3d printed housing </li>
+            <li>Many possible options 1xCAN/2xCAN/1xLIN+CAN/1xLIN/2xLIN</li>
+        </p>
+        Example of CEC with two CAN interfaces                 
+        <img class="img-responsive"   src="canethernetconverter/cec12.png"> </p>
+    </div>
+  
+    <div id="hw11" class="tab-pane fade">
+        <p>CAN Ethernet Converter (CEC) and CAN logger is single board microcomputer with UCCB internally connected to USB port. Features of CEC:
+            <li>CAN version 2.0 support, for more information on CAN see <a href="/uccb.html">UCCB</a> project</li>
+            <li><a href="http://www.orangepi.org/orangepizero/">Orange Pi Zero</a> microcomputer with Debian based Linux OS, see <a href="https://www.armbian.com/"> armbian </a>project </li>
+            <li>CPU: Allwinner H2+ Quad-core Cortex-A7</li>
+            <li>DDR3 RAM: 256MB</li>
+            <li>Connectivity: 10/100M Cable Ethernet / Wi-Fi</li>
+            <li>Power Supply: DC 5V/2A, micro usb connector</li>
+            <li>Dimension: 50 x 50 x 20 mm</li>
+        </p>                
+    </div>
+</div>
+
 <p> Device has got ready to use SocketCAN user space utilities and tools, see <a href="https://github.com/linux-can/can-utils">can-utils</a> for more info.</p>
 <p> CEC is also supplied with uCANTools web application, tool for CAN data handling, see <a href="/ucantools.html">uCANTools</a> project for more info.</p>
 <img class="img-responsive"   src="canethernetconverter/desc.png" width="600">
