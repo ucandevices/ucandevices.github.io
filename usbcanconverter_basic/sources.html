@@ -10,13 +10,17 @@
 <p>There is also firmare that supports Linux <b>GSUSB</b> driver. For more info see Tools page.</p>
 
 <h3>Uploading new software</h3>
-<p> UCCB have got embedded DFU USB bootloader. Currently only way to upload new firmware is to use DfuSe utility program supplied by ST microelectronics. To upload new firmware follows those steps:
-<li>Download and Install DfuSe package from ST</li>
-<li>Download .dfu firmware file from this page</li>
-<li>Connect UCCB and type in terminal <code>boot</code> device should reset and new device should connect to Your pc</li>
-<li>Install driver for DFU device, drivers are in <q>\DfuSe v3.0.5\Bin\Driver</q> folder </li>
-<li>Run DfuSe you should see windows like this.</li>
-<img class="img-responsive"   src="usbcanconverter_basic/UCCBDfuSe.png">
-<li>Click Choose... and select DFU firmware. Click, <q>Upgrade</q> and <q>Leave DFU mode</q> buttons.</li>
-<li>DONE!</li>
+<p> UCCB have got embedded DFU USB bootloader. To upload new firmware use STM32CubeProgrammer software supplied by ST microelectronics. To upload new firmware follows those steps:
+<li>Download and STM32CubeProgrammer package from ST</li>
+<li>Download .bin firmware file from this page</li>
+<li>In case of SLCAN software connect UCCB and type in terminal <code>boot</code> device should reset and new device should connect to Your pc</li>
+<li>(optional) Install driver for DFU device, drivers are in <q>\DfuSe v3.0.5\Bin\Driver</q> folder </li>
+<li>Run STM32CubeProgrammer and check verify programming, run after programming, and select firmware to upload, you should see windows like this.</li>
+<img class="img-responsive"   src="usbcanconverter_basic/UCCBDfuSe.png" width="40%">
 Additional info on DFU can be found in ST UM0412 User manual.</p>
+<p>Under Linux you can also use dfu-utils software example command
+    <pre class="listing">dfu-util --dfuse-address -d 0483:df11 -c 1 -i 0 -a 0 -s 0x08000000:leave -D MyBinary.bin</pre>
+</p>
+<p> In case You have gsusb software to enter dfu mode use 
+    <pre class="listing">dfu-util -e</pre>
+</p>
