@@ -9,8 +9,9 @@
 Multiple features are supported like:
   <li> LIN 2.1 support</li>
 	<li>Monitor mode, for all frame reception, and sending single frames.</li>
-	<li>Master mode, with up to 15 frame slots</li>
-    <li>19200 baud rate</li>	
+    <li>Master mode, with up to 15 frame slots</li>
+    <li>Slave mode, with up to 15 frame slots</li>
+    <li>19200/9600 option baud rate</li>	
   <li><b>Optical isolation for LIN</b></li>
   <li>External 4.5 V to 28 V is needed for LIN network</li>
   <li>Device size is 31x18 mm (without USB connector)</li>
@@ -63,7 +64,10 @@ Multiple features are supported like:
 
 <tr>
 <td>Sx</td>
-<td>Currently no baud rate selection<br>
+<td>Baud rate selection: <br>
+    S2 - 9600<br>
+    S1,S3-S8 - 19200<br>
+</td>
 </tr>
 
 <tr>
@@ -82,14 +86,20 @@ Multiple features are supported like:
 </tr>
 
 <tr>
-<td>L</td>
+<td>l</td>
+<td>Open device in, slave mode, for LIN slave simulation.</td>
+</tr>
+
+<tr>
+<td>l</td>
 <td>Open device in, monitor mode, message analyzer mode, with single frame sending possibility .</td>
 </tr>
 
 <tr>
 <td>tiiildd</td>
 <td>In Monitor mode, transmits full header and data frame. <br>
-    In Master mode, puts or updates table set with new frame<br>
+    In Master mode, updates table set with new frame<br>
+    In Slave mode, updates table set with new data<br>
 0ii: Identifier in hexadecimal format (000-0FF) <br>
 l: Data length (0-8) <br>
 dd: Data byte value in hexadecimal format (00-FF) </td>
@@ -98,7 +108,8 @@ dd: Data byte value in hexadecimal format (00-FF) </td>
 <tr>
 <td>r0iil</td>
 <td>In Monitor mode, transmits header only with set ID and Length, subscribed slave should answer the header.<br>
-    In Master mode, puts or updates table set with this id for continuous sending.
+    In Master mode, puts or updates table set with this id for continuous sending.<br>
+    In Slave mode, updates table set with reception slot<br>
     Proper timing is set according to LIN standard. <br>
 0ii: Identifier in hexadecimal format (000-0FF) <br>
 l: Data length (0-8)
@@ -113,7 +124,7 @@ l: Data length (0-8)
 
 <tr>
     <td>r2ff0</td>
-    <td>In Master mode, clears schedule table.
+    <td>In Master, Slave mode, clears schedule table.
 </td>
 </tr>
 
@@ -131,7 +142,7 @@ l: Data length (0-8)
 000011: N16000000<br>
 000012: W2D00<br>
 000013:<br>
-000014: S0  (speed setting, currently not supported but can be send)<br>
+000014: S0  (speed setting, 19200)<br>
 000015: <br>
 000016: L   (open in monitor mode)<br>
 000017: <br>
@@ -149,8 +160,10 @@ l: Data length (0-8)
 000019: z<br>
 000018: r0022 (add to schedule table frame transmission header with 2 data bytes request, id 0x02)<br>
 000019: z<br>
-000018: r1ff0 (start sending frames)<br>
-000019: z<br>
+000020: t01280011223344556677 (add to schedule table frame transmission header + data (slave task) with 8 data bytes, id 0x12)<br>
+000021: z<br>
+000022: r1ff0 (start sending frames)<br>
+000023: z<br>
 </pre>
 
 
