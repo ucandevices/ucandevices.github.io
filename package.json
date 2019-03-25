@@ -10,7 +10,7 @@
   "author": "LJ",
   "license": "ISC",
   "dependencies": {
-    "connect": "^3.6.2",
-    "serve-static": "^1.12.3"
+    "connect": "^3.6.6",
+    "serve-static": "^1.13.2"
   }
 }
