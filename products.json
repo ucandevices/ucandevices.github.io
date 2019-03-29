@@ -7,7 +7,7 @@
      "link": "uccb.html",
      "github": "https://github.com/UsbCANConverter-UCCbasic",
      "canbuy": true,
-     "cost": 16
+     "cost": 18
     },
     {
      "title":"CAN LOG/ETH CONVERTER",
@@ -16,7 +16,7 @@
      "img":"img/products/cec.png",
      "link": "cec.html",
      "github": "https://github.com/CanEthernetConverter",     
-     "canbuy": true,
+     "canbuy": false,
      "cost": 40
    },
    {
@@ -27,7 +27,7 @@
     "link": "ulc.html",
     "github": "https://github.com/uCAN-LIN/LinUSBConverter",
     "canbuy": true,
-    "cost": 16
+    "cost": 21
    },
    {
     "title":"USB RELAY",
