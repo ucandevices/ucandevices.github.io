@@ -30,8 +30,14 @@ Tools list:
 </div>
 <div class="collapse" id="python">
 <div class="card card-block">
+	<p>python-can libray is supporting UCCB for capabilities of python tools see this tutorial</p>
+	<div class="video-container">
+		
+		<iframe src="https://www.youtube.com/embed/J0fb247lwXY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	</div>
+
 	<p>pyUSBtin is python Library that partialy works with UCCB (filtering not working). Library can be found on <a href="https://github.com/fishpepper/pyUSBtin">https://github.com/fishpepper/pyUSBtin</a>.</p>
-    <p>Full suport PYTHON tools are under development.</p>
+    
 </div>
 </div>
 
@@ -46,9 +52,9 @@ Tools list:
 </div>
 
 <div class="panel-heading">
-	<li><a data-toggle="collapse" data-parent="#accordion" href="#cs" aria-expanded="true" aria-controls="collapseOne">GSUSB</a></li>
+	<li><a data-toggle="collapse" data-parent="#accordion" href="#gs" aria-expanded="true" aria-controls="collapseOne">GSUSB</a></li>
 </div>
-<div class="collapse" id="cs">
+<div class="collapse" id="gs">
 <div class="card card-block">
     <p>UCCB has alternative firmware for that implments the <a href="https://github.com/torvalds/linux/blob/master/drivers/net/can/usb/gs_usb.c">gs_usb protocol</a>. This is supported by the mainline Linux kernel and SocketCAN. It does not require use of slcand and should be more reliable at high bitrates. For this reason, GSUSB is recommended if you are only using UCCB on Linux.
 		The GSYSB firmware was written by Hubert Denkmair, and is released under the MIT license. The source code is available on Github. Thanks to Hubert for his work on this project! To see how to flash new firmware look to Sources tab.
