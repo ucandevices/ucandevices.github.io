@@ -19,7 +19,7 @@
 <p>See <a href="https://www.youtube.com/watch?v=8FbeczZ1ydo">tutorial on YouTube </a></p>
 <img class="img-responsive" src="usbcanconverter_basic/desc.gif">
 </p>
-<p> Device have support for USB DFU bootloader for new firmware upload. 
+<p> Device have support for USB DFU bootloader for new firmware upload see <a href="https://www.youtube.com/watch?v=-gnX25AGyI0">tutorial</a>. 
 </p>
 <img class="img-responsive"   src="usbcanconverter_basic/UCCB11back.png">
 
@@ -189,5 +189,23 @@ l: Data length (0-8)
 000021: M00007000000010000000010    (set id filter for ID=1 and ID=1)<br>
 </pre>
 
+<h3> Example workflow</h3>
 
+Example 1, ignore all extended CAN packets
+<pre class="listing">M0000500000000000000000F</pre>  
 
+Example 2, delete all filters 
+<pre class="listing">Md</pre>
+
+Example 3, 
+  If You would like to have ids from 0x600-0x7FF then :
+  You need two separate filters one for 0x600 (in bank 0 )2nd for 0x700 ( in bank 1) so enter two command like this
+  
+  <pre class="listing">
+  M0000500000600000000F000
+  M0100500000700000000F000
+</pre>
+If only 0x600 - 0x6FF then 
+<pre class="listing">
+  M0000500000600000000F000  
+</pre>

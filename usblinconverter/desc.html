@@ -127,6 +127,11 @@ l: Data length (0-8)
     <td>In Master, Slave mode, clears schedule table.
 </td>
 </tr>
+ 
+<tr>
+    <td>xm</td>
+    <td>Swich checksum for classic x2 for enhanced x1 </td>
+</tr>
 
 </table>
 
@@ -166,4 +171,19 @@ l: Data length (0-8)
 000023: z<br>
 </pre>
 
-
+<h2> Custom frame timing  </h2>
+You can tweek the timing in master mode just type upper letter T instead of t or R instead of r 
+then format is similar  
+<pre class="listing">
+T 0 id id t1 t1 t2 t2 len d0 d0 d1 d1 d2 d2 
+</pre>
+where: <br>
+id - frame id same as standard <br>
+t1 - frame offset in ms<br>
+t2 - response wait time in ms<br>
+len - frame length <br>
+d0 .... - data   <br>
+example frame with id 1 5 ms offset and 1 ms wait time after sending 3 bytes of data AA BB CC
+<pre class="listing">
+T0005013AABBCC
+</pre>

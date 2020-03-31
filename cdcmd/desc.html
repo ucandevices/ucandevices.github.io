@@ -14,15 +14,124 @@
 </p>
 
 <h3>Description</h3>
-<p> CAN motor controller can work with both stepper and dc motors. Motors can be controller for driection, position, speed, or PWM. Motor Speed and position can be send via CAN.  
+<p> CAN motor controller can work with both stepper and dc motors. Motors can be controller for direction, position, speed, or PWM. Motor Speed and position can be send via CAN.  
 Multiple features are supported like:
-  <li>Stepper motors driven by DRV8825 module</li>
-  <li>DC brushed motors driven by DRV8801 module </li>
-  <li>Position control via ADC voltage measurment</li>
+  <li>Stepper motors driven by DRV8825 module (8-45V supply, 1,5A continuous, 2.2A peak)</li>
+  <li>DC brushed motors driven by DRV8801 module (8-36V supply, 1A continuous, 2.8A peak)</li>
+  <li>Position control via ADC voltage measurement</li>
   <li>Speed control via optical or hall sensor</li>
   <li>One supply voltage for motor and electronics</li>
   <li>USB dfu compatible bootloader for new software</li>
 <br>
+
+
+<p>Board overview</p>
+<img class="img-responsive"  style="max-width: 20%;" src="cdcmd/CAN_BDC.png">
+
+<h3> Frames </h3>
+
+<h4>Stepper motor status and control frame</h4>
+<pre class="listing">
+typedef struct tCANStepperCMD1 {
+	union {
+		struct {
+			union {
+				struct {
+					uint16_t stepSize :8;
+					uint16_t dir :1;
+					uint16_t unused :7;
+				};
+				uint16_t byte;
+			} flags;
+			uint16_t stepCount;
+			struct {
+				uint16_t position;
+				uint16_t speed;
+			} regulatorControl;
+		};
+		uint8_t data[8];
+	};
+} CANStepperCMD1;
+
+typedef struct tCANStatusFrame1 {
+	union {
+		struct {
+			union {
+				struct {
+					uint16_t Speed;
+					uint16_t Position;
+				};
+				uint32_t whole;
+			} sensors;
+
+			union {
+				struct {
+					uint32_t nowStepping:1;
+					uint32_t StepCount:31;
+				};
+				uint32_t whole;
+			} stepper;
+		};
+		uint8_t data[8];
+	};
+} ;
+
+
+</pre>
+
+<h4>Brush motor status and control frame</h4>
+<pre class="listing">
+    typedef struct tCANBrushCMD1 {
+        union {
+            struct {
+                struct {
+                    uint32_t pwm: 16;
+                    uint32_t breakingOn : 1;
+                    uint32_t dir : 1;
+                    uint32_t speedControl: 1;
+                    uint32_t positionControl: 1;
+                    uint32_t unused: 12;
+                } directControl;
+                struct {
+                    uint16_t position;
+                    uint16_t speed;
+                } regulatorControl;
+            };
+            uint8_t data[8];
+        };
+    } CANBrushedCMD1;
+
+    typedef struct tCANStatusFrame1 {
+        union {
+            struct {
+                union {
+                    struct {
+                        uint16_t Speed;
+                        uint16_t Position;
+                    };
+                    uint32_t whole;
+                } sensors;
+
+    
+            union {
+                struct {
+                    uint32_t state:3; // running, braking
+                    uint32_t dir : 1;
+                    uint32_t pwmValue:16;
+                };
+                uint32_t whole;
+            } brushed;
+    
+            };
+            uint8_t data[8];
+        };
+    };
+    
+    
+</pre>
+
+
+
 
 
 <!-- <h3>Introduction video</h3>
