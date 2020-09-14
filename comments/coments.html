@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gitment Demo Page</title>
+  <meta name="viewport" content="width=640, user-scalable=no">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./default.css">
+</head>
+<body>
+  <div>
+  </div>
+  <div id="container"></div>
+
+  <script src="./gitment.browser.js"></script>
+  <script>
+    var clientId = '8e1960fcb28f119bc82f'
+    var clientSecret = '652465d1d4c7a7867c3e87ee006160ce226a6b96'
+    var gitment = new Gitment({
+      id: 'ucan devices comments',
+      owner: 'ucandevices',
+      repo: 'ucandevices.github.io',
+      oauth: {
+        client_id: clientId,
+        client_secret: clientSecret,
+      },
+    })
+
+    gitment.render('container')
+  </script>
+</body>
+</html>
