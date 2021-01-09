@@ -10,15 +10,16 @@
      "cost": 18
     },
     {
-     "title":"CAN LOG/ETH CONVERTER",
-     "desc": "Linux microcomputer with Ethernet and CAN",
-     "category": "DEVICES",
-     "img":"img/products/cec.png",
-     "link": "cec.html",
-     "github": "https://github.com/CanEthernetConverter",     
-     "canbuy": false,
-     "cost": 40
-   },
+      "title":"FDCAN USB CONVERTER",
+      "desc": "Convert FDCAN signals to USB",
+      "category": "DEVICES",
+      "img":"img/products/cfuc.png",
+      "link": "cfuc.html",
+      "github": "https://github.com/ucandevices/CFDC_embedded",
+      "canbuy": false,
+      "cost": 30
+     },
+
    {
     "title":"USB LIN CONVERTER",
     "desc": "LIN network master and monitoring device as USB dongle",
@@ -29,6 +30,16 @@
     "canbuy": true,
     "cost": 21
    },
+   {
+    "title":"CAN LOG/ETH CONVERTER",
+    "desc": "Linux microcomputer with Ethernet and CAN",
+    "category": "DEVICES",
+    "img":"img/products/cec.png",
+    "link": "cec.html",
+    "github": "https://github.com/CanEthernetConverter",     
+    "canbuy": false,
+    "cost": 40
+  },
    {
     "title":"USB RELAY",
     "desc": "Setup relay timings using USB and memorize them",

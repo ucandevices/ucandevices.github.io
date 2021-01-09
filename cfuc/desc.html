@@ -1,0 +1,62 @@
+<p style="text-align:justify; font-size:75%">
+    Product and its documentation is supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of this product. This product is not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
+</p>
+<h3>Description</h3>
+<p> <b> BE AWARE THAT DEVICE IS CURRENTLY ONLY SUPPORTED ON LINUX SOCKET CAN ! </b></p> 
+<p>FDCAN USB Converter (CFDC) works as CAN to USB converter. Multiple features are supported like:
+  <li>CAN Flexible Data Rate version  1.0 (CAN FD) supported, Microchip MCP2542FD FD CAN Transceiver </li>
+  <li>CAN version 2.0 support (ISO 11898-1: 2015)</li>  
+	<li>receiving and sending of normal and extended frames, brs frames</li>
+	<li>CAN baudrate up to 8 Mbps</li>
+  <li>internal/external loop back mode, listen only mode</li>
+  <li>device size is 26x14 mm (including USB connector)</li>
+  <li>selectable termination resistors</li>
+  <li>SocketCAN support</li>
+  <li>LIBUSB driver support, USB hot plugin is supported</li>
+  <li>J1939 support</li>
+  <li>currently no hardware frames filtering</li>
+<br>
+
+<p>See <a href="">tutorial on YouTube </a></p>
+<!-- <img class="img-responsive" src="cfuc/desc.gif"> -->
+</p>
+<p> Device have support for USB DFU bootloader for new firmware upload see <a href="https://www.youtube.com/watch?v=-gnX25AGyI0">tutorial</a>. 
+</p>
+<img class="img-responsive"   src="cfuc/cfuc_bottom.png">
+
+<h3>Drivers</h3>
+<p> LINUX: To use CFDC you need to compile and run <a href="https://github.com/ucandevices/ucan_utils">ucan_utils</a>. Application will connect to SocketCAN selected network. Also for proper work linux needs to have libusb driver in kernel (Most of desktop distributions have this).</p>
+<p> WINDOWS: LibUSB is also supported on windows, but currently there is no application for windows (work in progress) </p>
+
+<h3>ucan_utils commands</h3>
+<pre class="listing">
+  Adapter for applications using the uCAN USB protocol(V1.0). Any not specified argument is taken from cfuc_adapter.ini. See also cfuc_adapter.ini file for additional options.
+
+    -h, --help                    show this help message and exit
+    --boot                        go to bootlader mode
+    -c, --can_interface=&lt;str&gt;     CAN interface
+    -u, --usb_serial=&lt;str&gt;        USB CFUC SERIAL ID in HEX
+    -d, --data_baud=&lt;int&gt;         CAN DATA BAUDRATE kBaud
+    -i, --id_baud=&lt;int&gt;           ID BAUDRATE in kBaud
+    -f, --frame_type=&lt;str&gt;        &apos;c&apos; for CLASSIC / b for BRS / n for noBRS
+    -m, --mode=&lt;str&gt;              &apos;n&apos; for NORMAL / &apos;m&apos; for BUS_MONITORING / &apos;e&apos; EXTERNAL_LOOPBACK / &apos;i&apos; INTERNAL_LOOPBACK
+    --verbose                     verbose, additional logs
+
+Example: cfuc_adapter can0 21354  - attaches to can0 socketCAN interface usb device with serial 21354.
+</pre>
+<h3>ucan_utils.ini file options</h3>
+
+<h3>Example Workflow</h3>
+<p>0. Connect CFDC device to USB port. (this can be done at any step)</p>
+<p>1. Init socketCAN port</p>
+<pre class="listing">
+  sudo modprobe vcan
+  sudo ip link add dev vcan0 type vcan
+  sudo ip link set up vcan0
+</pre>
+<p>2. Edit cfuc_adapter.ini to suite your needs, or just run uccbso cketcan. Example below shall configure device to connect to vcan0 socketCAN with ID baudrate 1M, and data 4M with bitrate switching enabled and normal mode.</p>
+<pre class="listing">
+  sudo ./uccbsocketcan -cvcan0 -d4000 -i1000 -fb -mn
+</pre>
+<p>3. Now You can send/receive FDCAN frames using SocketCAN, can-utils(cansend/candump), pythonCAN and all the nice can tools</p>
+
