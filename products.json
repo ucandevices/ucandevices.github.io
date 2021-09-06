@@ -49,5 +49,15 @@
     "github": "https://github.com/Lukasz-Juranek/usbRelay",
     "canbuy": true,
     "cost": 16
+   },    
+   {
+    "title":"USB CAN CONVERTER mPCIe adapter",
+    "desc": "Converter CAN signals with USB interface mini PIC express adapter",
+    "category": "DEVICES",
+    "img":"img/products/mpcie_uccb.png",
+    "link": "mpcie_uccb.html",
+    "github": "https://github.com/UsbCANConverter-UCCbasic/uCCB-mPICe",
+    "canbuy": true,
+    "cost": 30
    }
 ]
