@@ -59,5 +59,15 @@
     "github": "https://github.com/UsbCANConverter-UCCbasic/uCCB-mPICe",
     "canbuy": true,
     "cost": 30
+   },
+   {
+    "title":"IO-LINK USB/Ethernet converter",
+    "desc": "Converter IO-LINK signals to USB/Ethernet interface ",
+    "category": "DEVICES",
+    "img":"img/products/iolink.png",
+    "link": "iolink.html",
+    "github": "https://github.com/ucandevices/IO-LINK-Covnerter",
+    "canbuy": true,
+    "cost": 30
    }
 ]
