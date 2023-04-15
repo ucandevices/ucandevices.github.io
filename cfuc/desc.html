@@ -7,16 +7,16 @@
   <li>CAN version 2.0 support (ISO 11898-1: 2015)</li>  
 	<li>receiving and sending of normal and extended frames, brs frames</li>
 	<li>CAN baudrate up to 8 Mbps</li>
-  <li>device size is 26x14 mm (including USB connector)</li>
-  <li>selectable termination resistors</li>
+    <li>internal/external loop back mode, listen only mode </li>
+    <li>hardware frames filtering</li>
+  <li> <a href="https://github.com/linux-can/can-utils"> socket-can </a> via
+     <a href="https://github.com/torvalds/linux/blob/master/drivers/net/can/usb/gs_usb.c">gs_usb driver</a> </li>
+  <li>  Works under windows (WSL is needed)</li>
   <li> <a href=https://github.com/hardbyte/python-can>python-can </a> support </li>
-  <li>***currently not supported *** internal/external loop back mode, listen only mode </li>
-  <li>***currently not supported *** hardware frames filtering</li>
+  <li>device size is 26x14 mm (including USB connector)</li>
+  <li>manual selectable termination resistors</li>
+  <li>dfu bootloader with <a href="https://dfu-util.sourceforge.net/">dfu-utils</a></li>
 <br>
-
-<p>See <a href="https://www.youtube.com/channel/UChoxQZ-glgn0xsofWPo-AJw/videos">tutorial on YouTube </a></p>
-<!-- <img class="img-responsive" src="cfuc/desc.gif"> -->
-</p>
 
 </p>
 
@@ -24,75 +24,23 @@
 <img class="img-responsive"   src="cfuc/bottom.png" style="max-width: 30%;">
 
 <!-- <img class="img-responsive"   src="cfuc/cfuc_bottom.png"> -->
+<h3>Application support</h3>
+<p>
+    Ensure the gs_usb kernel module is enabled: <pre class="listing">sudo modprobe gs_usb <br>sudo modprobe can_dev</pre>
+    Connect device to USB, and check if initialized properly <pre class="listing">ip link list</pre>There should be sth like this <pre class="listing">10: can0: NOARP,ECHO mtu 16 qdisc noop state DOWN mode DEFAULT group default qlen 10 link/can </pre>  Connect UCCB device to CAN network. <br> 
+    Configure the device: <pre class="listing">sudo ip link set can1 type can bitrate 1000000 dbitrate 4000000 fd on </pre>Replace can0 with the name of your device, and 500000 with the desired bitrate.
+    <br>Bring the device up: <pre class="listing">sudo ifconfig can0 up</pre>
+    <br>Use the device with SocketCAN. For example, <pre class="listing"> candump can0 </pre>For more tools see <a href="https://github.com/linux-can/can-utils">can-utils</a>.
+</p>
+<p>All stuff tools/sources/examples etc can be found <a href="https://github.com/ucandevices/CFDC_embedded"> here </a> </p>
+<h3>Bootloader</h3>
+Device have support for USB DFU bootloader for new firmware upload see  <a href="https://dfu-util.sourceforge.net/">dfu-utils</a> <a href="https://www.youtube.com/watch?v=-gnX25AGyI0">tutorial</a>. 
 
 <h3>Drivers</h3>
-<p>After USB enumeration device creates virtual COM port that is used both for data transfer and converter setup. Device is powered directly from USB</p>
-
-<p>All stuff tools/sources/examples etc can be found <a href="https://github.com/ucandevices/CFDC_embedded"> here </a> </p>
-
-<h3>uCAN ViewerV2</h3>
-<p>
-  For basic interaction with device there is precompiled python application uCANViewerV2. 
-  This application lets you receive and send and log FD and Classic CAN frames. For detailed information see <a href="https://github.com/ucandevices/CFDC_embedded/tree/master/tools/uCAN_CAN_Viewer">uCANViewerV2</a>
-  For CAN interface configuration see <b>assets/can.conf</b> 
-  <img class="img-responsive"   src="cfuc/viewer_v2.png" style="max-width: 40%;">
-</p>
-<h4> <b>Description of assets/can.conf</b></h4>
-  <pre class="listing" >
-    CANBaudRate: int,
-    IsFD: Optional[bool] = False,
-    FDDataBaudRate: Optional[int] = 0,
-    IsBRS: Optional[bool] = False,
-    IsAutoRetransmission: Optional[bool] = False,
-    NominalPrescalerValue: Optional[int] = None,
-    NominalSyncJumpWidthValue: Optional[int] = None,
-    NominalTimeSeg1Value: Optional[int] = None,
-    NominalTimeSeg2Value: Optional[int] = None,
-    DataPrescalerValue: Optional[int] = None,
-    DataSyncJumpWidthValue: Optional[int] = None,
-    DataTimeSeg1Value: Optional[int] = None,
-    DataTimeSeg2Value: Optional[int] = None,
-
-    :param str channel:
-    The serial device to open. For example "/dev/ttyS1" or
-    "/dev/ttyUSB0" on Linux or "COM1" on Windows systems.
-
-    :param int CANBaudRate for ID:
-        Baud rate of CAN device in bit/s .
-
-    :param bool IsFD:
-        Is CAN frame FD (default false).
-
-    :param bool FDDataBaudRate:
-        Baud Rate for data segment for FD-CAN frame (default 0).
-
-    :param bool IsBRS:
-        Enable bit rate switching for FD-CAN frame (default false).
-
-    :param boot IsAutoRetransmission:
-        Enbale auto restramission on tx
-
-    :param int NominalPrescalerValue, NominalSyncJumpWidthValue, NominalTimeSeg1Value, NominalTimeSeg2Value
-        .. warning::
-            USED ONLY WHEN CANBuadRate is set to 0.
-        CAN Perfierial Timming parameters for ID
-
-
-    :param int DataPrescalerValue, DataSyncJumpWidthValue, DataTimeSeg1Value, DataTimeSeg2Value
-        .. warning::
-            USED ONLY WHEN CANBuadRate is set to 0.
-        CAN Perfierial Timming parameters for ID
-
-  </pre>
-
-<h3>python-can support</h3>
-<p> converter can be with <a href="https://github.com/Lukasz-Juranek/python-can"> python-can</a> library fork, for example usage see this <a href="https://github.com/ucandevices/CFDC_embedded/tree/master/tools/examples">link</a> detailed documentation on python-can can be found <a href="https://python-can.readthedocs.io/en/master/">here</a>  </p>
-
-<h3> Bootloader</h3>
-<p> Device have support for USB DFU bootloader for new firmware upload see <a href="https://www.youtube.com/watch?v=-gnX25AGyI0">tutorial</a>. 
+<p>Device support <a href="https://github.com/torvalds/linux/blob/master/drivers/net/can/usb/gs_usb.c">gs_usb driver</a>, Device is powered directly from USB</p>
 
 <h3>Embedded software</h3>
-Embedded software is opensource and details can be found <a href="https://github.com/ucandevices/CFDC_embedded/tree/master/firmware">here</a>
+Embedded software is opensource and details can be found <a href="https://github.com/ucandevices/CFDC_embedded/tree/master/gsusb_firmware/budgetcan_fw">here</a>
 
 <h3>Hardware</h3>
 Hardware is opensource schematic and PCB is done in KiCAD schematics <a href="https://github.com/ucandevices/CFDC_embedded/tree/master/pcb">here</a> 
