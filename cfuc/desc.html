@@ -32,6 +32,22 @@
     <br>Bring the device up: <pre class="listing">sudo ifconfig can0 up</pre>
     <br>Use the device with SocketCAN. For example, <pre class="listing"> candump can0 </pre>For more tools see <a href="https://github.com/linux-can/can-utils">can-utils</a>.
 </p>
+<h3> Windows 10/11 support</h3>
+<p>
+
+  To work with CANFD converter on windows you need:
+  <br>1. Install WSL as described  <a href="https://learn.microsoft.com/en-us/windows/wsl/install">here</a>
+  <br>2. If you are on windows 10 you need to compile latest kernel with CAN support there is no full tutorial on this but take a look at <a href="https://gist.github.com/oleksis/eb6d2f1cd2a6946faefb139aa0e38c35"> this page</a> 
+  <br>3.To connect USB device follow <a href="https://learn.microsoft.com/en-us/windows/wsl/connect-usb"> this tutorial </a> but in short.
+  Install <a href="https://github.com/dorssel/usbipd-win">usbipd</a> 
+  Ensure that device is visible in windows in powershell 
+  <pre class="listing">usbipd wsl list</pre>
+  You should see device like below <pre class="listing"> 5-1    1d50:606f  cfuc, cfuc DFU interface                                      Not attached</pre> 
+  Attach device using (pick your number from list command, in my example 5-1 )
+  <pre class="listing">usbipd wsl attach --busid 5-1</pre>
+  Now devices should be visible in wsl, check with lsusb
+
+</p>
 <p>All stuff tools/sources/examples etc can be found <a href="https://github.com/ucandevices/CFDC_embedded"> here </a> </p>
 <h3>Bootloader</h3>
 Device have support for USB DFU bootloader for new firmware upload see  <a href="https://dfu-util.sourceforge.net/">dfu-utils</a> <a href="https://www.youtube.com/watch?v=-gnX25AGyI0">tutorial</a>. 
@@ -47,3 +63,24 @@ Hardware is opensource schematic and PCB is done in KiCAD schematics <a href="ht
 
 <h3>Releases</h3>
 For releases see <a href="https://github.com/ucandevices/CFDC_embedded/releases"> release link</a>
+If you want some QUI please check <a href="https://github.com/collin80/SavvyCAN"> SavvyCAN</a>
+
+<h3> Random useful commands</h3>
+<pre class="listing"> 
+sudo ip link set can0 type can bitrate 1000000 dbitrate 4000000 fd on
+sudo ifconfig can0 txqueuelen 99 #extending queue optional but if you getting queue full error consider 
+sudo ip link set can0 up
+
+#generate random FD frames on can 
+cangen can0 -g 4 -I i -x -f -b
+
+#go to bootlader
+sudo dfu-util -l
+sudo dfu-util -e
+sudo dfu-util --dfuse-address -d 0483:df11 -c 1 -i 0 -a 0 -s 0x08000000:leave -D ucan_gsusb_fw.bin
+
+#detailed info about can0
+ip -details link show can0
+#loopback test
+sudo ip link set can0 type can bitrate 100000 dbitrate 1000000 fd on loopback on 
+</pre>
