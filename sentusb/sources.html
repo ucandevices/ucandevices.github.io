@@ -1,0 +1,18 @@
+<h3>Hardware</h3>
+<p>The device uses an <b>STM32F042K6</b> microcontroller running at 48 MHz from the internal HSI48 oscillator — no external crystal required.
+PCB is designed in KiCad. Board size is 17×28 mm.
+All hardware source files are available on GitHub: <a href="https://github.com/ucandevices/SENTToUSB">here</a>.
+</p>
+<img class="img-responsive" src="sentusb/sent_pcb.svg" style="max-width: 60%;">
+
+<h3>Software</h3>
+<p>Firmware is written in C using STM32CubeIDE (free). It uses the HAL USB CDC driver and custom SENT input-capture / output-compare logic on TIM2 and TIM14.
+All sources and <a href="https://github.com/ucandevices/SENTToUSB/releases">releases</a> are available on GitHub: <a href="https://github.com/ucandevices/SENTToUSB">here</a>.</p>
+
+<h3>Uploading new firmware</h3>
+<p>The device has an embedded USB DFU bootloader. Use <a href="https://github.com/Stefan-Schmidt/dfu-util">dfu-util</a> to flash new firmware:
+<pre class="listing">
+dfu-util -a 0 -s 0x08000000 -D firmware.bin
+</pre>
+On Windows you can also use <a href="https://www.st.com/en/development-tools/stsw-stm32080.html">ST DfuSe</a> tool.
+</p>

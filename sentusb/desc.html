@@ -1,0 +1,187 @@
+
+<p style="text-align:justify; font-size:75%">
+    Product and its documentation is supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of this product. This product is not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
+</p>
+
+<h3>Description</h3>
+<p>SENT to USB converter decodes <b>SAE J2716 / ISO 21097 SENT</b> automotive sensor signals and streams them to a PC over a standard USB serial (CDC) port using the <b>SLCAN</b> text protocol.
+No custom driver is needed — it enumerates as a Virtual COM Port on Windows 10+, Linux and macOS.
+</p>
+<ul>
+  <li>SAE J2716 / ISO 21097 SENT receive and decode</li>
+  <li>Auto-detect tick period, nibble count and CRC mode (Learn mode)</li>
+  <li>Supports 4-, 6- and 8-nibble sensors</li>
+  <li>Both CRC modes: DATA_ONLY and STATUS_AND_DATA</li>
+  <li>CRC seeds 0x03 (SAE APR2016) and 0x05 (legacy/GM)</li>
+  <li>TX mode — synthesise and transmit SENT frames (PA1)</li>
+  <li>SLCAN-compatible protocol over USB CDC</li>
+  <li>USB-C connector</li>
+  <li>No driver required on Linux, macOS, Windows 10+</li>
+  <li>Device size is 17x28 mm (without USB connector)</li>
+  <li>Open source firmware (STM32F042K6, 48 MHz HSI48)</li>
+  <li>USB DFU compatible bootloader for firmware updates</li>
+</ul>
+
+<h3>Details</h3>
+<p>Front and back of the board:</p>
+<img class="img-responsive" src="sentusb/front.png" style="max-width: 30%; display: inline-block; margin-right: 10px;">
+<img class="img-responsive" src="sentusb/back.png" style="max-width: 30%; display: inline-block;">
+
+<h3>Pinout</h3>
+<table class="table table-bordered table-condensed" style="max-width: 600px;">
+  <thead class="active">
+    <tr><th>Pin</th><th>Direction</th><th>Function</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>PA2</code></td><td>Input</td><td>SENT RX — TIM2 CH3 rising-edge capture</td></tr>
+    <tr><td><code>PA1</code></td><td>Output</td><td>SENT TX — TIM14-driven push-pull (TX mode)</td></tr>
+  </tbody>
+</table>
+<ul style="font-size:90%; margin-top:6px;">
+  <li><b>RX pull-up:</b> a pull-up resistor on the RX line is fitted by default — no external pull-up needed.</li>
+  <li><b>TX pull-up:</b> an optional pull-up on the TX line can be enabled by closing the onboard solder jumper.</li>
+</ul>
+
+<h3>Getting Started</h3>
+<ol>
+  <li>Plug the device into a USB port.</li>
+  <li>The OS creates a Virtual COM Port (<code>COM3</code> on Windows, <code>/dev/ttyACM0</code> on Linux).</li>
+  <li>Open the port at any baud rate — USB CDC ignores baud rate settings.</li>
+  <li>Send <code>O\r</code> to start receiving SENT data.</li>
+</ol>
+
+<h3>COM port Commands</h3>
+<p>All commands are plain ASCII terminated with CR (0x0D). On error the device responds with 0x07 (BEL).</p>
+
+<table class="table-bordered">
+<tr><td><b>Command</b></td><td><b>Description</b></td></tr>
+<tr><td><code>O</code></td><td>Open channel — starts SENT RX</td></tr>
+<tr><td><code>L</code></td><td>Listen-only open — same as O</td></tr>
+<tr><td><code>C</code></td><td>Close channel — stops all activity</td></tr>
+<tr><td><code>V</code></td><td>Hardware version query → <code>V0101</code></td></tr>
+<tr><td><code>v</code></td><td>Firmware version query → <code>v0101</code></td></tr>
+<tr><td><code>N</code></td><td>Serial number query → <code>N0001</code></td></tr>
+<tr><td><code>t&lt;ID&gt;&lt;DLC&gt;&lt;DATA&gt;</code></td><td>Send a CAN frame (config / control / TX data)</td></tr>
+</table>
+
+<h4>Key CAN Frame IDs</h4>
+<table class="table table-bordered table-condensed" style="max-width: 750px;">
+  <thead class="active">
+    <tr><th>ID</th><th>Direction</th><th>Purpose</th><th>Payload bytes</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>0x001</code></td>
+      <td>Host → Device</td>
+      <td>Configuration (DLC up to 6)</td>
+      <td>
+        <table class="table table-condensed" style="margin:0; font-size:90%;">
+          <tr><td><b>B0</b></td><td>Data nibbles: <code>4</code>, <code>6</code>, or <code>8</code></td></tr>
+          <tr><td><b>B1</b></td><td>CRC mode: <code>0</code> = DATA_ONLY &nbsp;|&nbsp; <code>1</code> = STATUS_AND_DATA</td></tr>
+          <tr><td><b>B2</b></td><td>CRC init seed: <code>0x03</code> (SAE APR2016) or <code>0x05</code> (legacy/GM)</td></tr>
+          <tr><td><b>B3</b></td><td>Min tick in units of 0.5 µs (e.g. <code>5</code> → 2.5 µs)</td></tr>
+          <tr><td><b>B4</b></td><td>Max tick in units of 1 µs &nbsp;&nbsp;(e.g. <code>5</code> → 5.0 µs)</td></tr>
+          <tr><td><b>B5–B6</b></td><td>Output RX CAN ID, big-endian (11-bit, <code>0x001</code>–<code>0x7FF</code>) — e.g. <code>0x510</code> → <code>05 10</code></td></tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td><code>0x600</code></td>
+      <td>Host → Device</td>
+      <td>Control (DLC 1)</td>
+      <td>
+        <table class="table table-condensed" style="margin:0; font-size:90%;">
+          <tr><td><code>01</code></td><td>Start RX — begin receiving and decoding SENT frames</td></tr>
+          <tr><td><code>02</code></td><td>Start TX — begin transmitting SENT frames supplied via <code>0x520</code></td></tr>
+          <tr><td><code>03</code></td><td>Stop — halt all activity</td></tr>
+          <tr><td><code>04</code></td><td>Learn — auto-detect tick, nibble count and CRC mode from live signal.
+            Device replies <code>z\r</code> immediately, then streams normal <code>0x510</code> frames while searching.
+            When locked, sends one <code>0x601</code> result frame and <b>stops RX</b> —
+            send <code>O\r</code> or <code>t600101\r</code> to resume with the learned config.</td></tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td><code>0x520</code></td>
+      <td>Host → Device</td>
+      <td>TX frame data (TX mode only, DLC ≥ 5)</td>
+      <td>B0 = status nibble &nbsp;|&nbsp; B1–B4 = data nibbles packed big-endian &nbsp;|&nbsp; B5–B6 = pause ticks LE (optional)</td>
+    </tr>
+    <tr>
+      <td><code>configured ID</code></td>
+      <td>Device → Host</td>
+      <td>Decoded SENT RX frame (default <code>0x510</code>, set via B5–B6 of <code>0x001</code>)</td>
+      <td>
+        Each SENT data nibble is 4 bits (values 0–15). Two nibbles are packed into one byte:
+        the first nibble goes into the upper 4 bits, the second into the lower 4 bits.<br>
+        Example — 6-nibble sensor, nibbles <code>[A, 5, 3, C, 7, F]</code>:<br>
+        <code>Byte 0 = 0xA5</code> &nbsp; <code>Byte 1 = 0x3C</code> &nbsp; <code>Byte 2 = 0x7F</code> → DLC = 3<br>
+        To unpack: <code>nibble[0] = byte[0] &gt;&gt; 4</code>, <code>nibble[1] = byte[0] &amp; 0x0F</code>, and so on.
+      </td>
+    </tr>
+    <tr>
+      <td><code>0x601</code></td>
+      <td>Device → Host</td>
+      <td>Learn result (DLC 4) — sent once when learn mode locks</td>
+      <td>
+        <table class="table table-condensed" style="margin:0; font-size:90%;">
+          <tr><td><b>B0–B1</b></td><td>Learned tick in units of 0.1 µs, little-endian — e.g. <code>1E 00</code> = 30 = <b>3.0 µs</b></td></tr>
+          <tr><td><b>B2</b></td><td>Nibble count locked: <code>4</code>, <code>6</code>, or <code>8</code></td></tr>
+          <tr><td><b>B3</b></td><td>CRC mode locked: <code>0</code> = DATA_ONLY &nbsp;|&nbsp; <code>1</code> = STATUS_AND_DATA</td></tr>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Minimal session example</h4>
+<pre class="listing">
+→  O\r                          open channel / start RX with default config
+←  \r                           ACK
+
+→  t001706000305050510\r        configure: 6 nibbles, DATA_ONLY, seed=0x03,
+←  z\r                              tick 2.5–5 µs, output CAN ID=0x510
+
+←  t5103AABBCC\r                decoded SENT frame (repeats ~100–1000×/s)
+←  t5103DDEEFF\r
+
+→  C\r                          stop
+←  \r
+</pre>
+
+<h4>Learn mode</h4>
+<pre class="listing">
+→  t600104\r        start auto-detect
+←  z\r
+←  t60104...\r      result: learned tick, nibbles, CRC mode
+</pre>
+
+<h3>Sensor Presets</h3>
+<table class="table table-bordered table-condensed" style="max-width: 750px;">
+  <thead class="active">
+    <tr><th>Sensor</th><th>Tick</th><th>Nibbles</th><th>CRC mode</th><th>CRC seed</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MLX90377 (angle)</td>
+      <td>3 µs</td>
+      <td>6</td>
+      <td>DATA_ONLY</td>
+      <td><code>0x03</code></td>
+    </tr>
+    <tr>
+      <td>04L 906 051 L (VW/Audi DPF)</td>
+      <td>~3 µs</td>
+      <td>6</td>
+      <td>STATUS_AND_DATA</td>
+      <td><code>0x05</code></td>
+    </tr>
+    <tr>
+      <td>GM 12643955 (MAP sensor)</td>
+      <td>~3 µs</td>
+      <td>6</td>
+      <td>DATA_ONLY</td>
+      <td><code>0x05</code></td>
+    </tr>
+  </tbody>
+</table>
