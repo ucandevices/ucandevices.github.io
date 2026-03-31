@@ -31,25 +31,25 @@
     "cost": 21
    },
    {
+    "title":"SENT USB CONVERTER",
+    "desc": "SAE J2716 SENT automotive sensor to USB/SLCAN bridge",
+    "category": "DEVICES",
+    "img":"img/products/sent.png",
+    "link": "sentusb.html",
+    "github": "https://github.com/ucandevices/SENTToUSB",
+    "canbuy": false,
+    "cost": 25
+   },
+   {
     "title":"CAN LOG/ETH CONVERTER",
     "desc": "Linux microcomputer with Ethernet and CAN",
     "category": "DEVICES",
     "img":"img/products/cec.png",
     "link": "cec.html",
-    "github": "https://github.com/CanEthernetConverter",     
+    "github": "https://github.com/CanEthernetConverter",
     "canbuy": false,
     "cost": 40
   },
-   {
-    "title":"USB RELAY",
-    "desc": "Setup relay timings using USB and memorize them",
-    "category": "DEVICES",
-    "img":"img/products/usb_relay.png",
-    "link": "urly.html",
-    "github": "https://github.com/Lukasz-Juranek/usbRelay",
-    "canbuy": true,
-    "cost": 16
-   },    
    {
     "title":"USB CAN CONVERTER mPCIe adapter",
     "desc": "Converter CAN signals with USB interface mini PIC express adapter",

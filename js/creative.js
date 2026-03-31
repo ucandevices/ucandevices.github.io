@@ -7,11 +7,38 @@
 (function($) {
     "use strict"; // Start of use strict
 
+    // Smooth-scroll to the hash on page load (e.g., arriving from another page
+    // via index.html#contact). Reset to top first so we animate from the top
+    // instead of just nudging the browser's auto-jump by the navbar offset.
+    if (window.location.hash) {
+        var $hashTarget = $(window.location.hash);
+        if ($hashTarget.length) {
+            $(window).scrollTop(0);
+            setTimeout(function() {
+                $('html, body').stop().animate({
+                    scrollTop: ($hashTarget.offset().top - 50)
+                }, 1250, 'easeInOutExpo');
+            }, 50);
+        }
+    }
+
     // jQuery for page scrolling feature - requires jQuery Easing plugin
-    $('a.page-scroll').bind('click', function(event) {
-        var $anchor = $(this);
+    // Delegated because the navbar is injected later via Angular ng-include.
+    $(document).on('click', 'a.page-scroll', function(event) {
+        var href = $(this).attr('href') || '';
+        var hashIndex = href.indexOf('#');
+        if (hashIndex === -1) return;
+
+        var path = href.substring(0, hashIndex);
+        var hash = href.substring(hashIndex);
+        var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        if (path && path !== currentPage) return;
+
+        var $target = $(hash);
+        if (!$target.length) return;
+
         $('html, body').stop().animate({
-            scrollTop: ($($anchor.attr('href')).offset().top - 50)
+            scrollTop: ($target.offset().top - 50)
         }, 1250, 'easeInOutExpo');
         event.preventDefault();
     });
