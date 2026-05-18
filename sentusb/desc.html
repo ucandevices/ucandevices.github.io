@@ -4,16 +4,16 @@
 </p>
 
 <h3>Description</h3>
-<p>SENT to USB converter decodes <b>SAE J2716 / ISO 21097 SENT</b> automotive sensor signals and streams them to a PC over a standard USB serial (CDC) port using the <b>SLCAN</b> text protocol.
+<p>SENT to USB converter decodes <b>SAE J2716 / ISO 21097 SENT</b> automotive sensor signals and streams them to a PC over a standard USB serial (CDC) port using the SLCAN text protocol.
 No custom driver is needed — it enumerates as a Virtual COM Port on Windows 10+, Linux and macOS.
 </p>
 <ul>
   <li>SAE J2716 / ISO 21097 SENT receive and decode</li>
   <li>Auto-detect tick period, nibble count and CRC mode (Learn mode)</li>
-  <li>Supports 4-, 6- and 8-nibble sensors</li>
+  <li>Support smultiple sensors</li>
   <li>Both CRC modes: DATA_ONLY and STATUS_AND_DATA</li>
   <li>CRC seeds 0x03 (SAE APR2016) and 0x05 (legacy/GM)</li>
-  <li>TX mode — synthesise and transmit SENT frames (PA1)</li>
+  <li>TX mode — synthesise and transmit SENT frames</li>
   <li>SLCAN-compatible protocol over USB CDC</li>
   <li>USB-C connector</li>
   <li>No driver required on Linux, macOS, Windows 10+</li>
@@ -22,25 +22,24 @@ No custom driver is needed — it enumerates as a Virtual COM Port on Windows 10
   <li>USB DFU compatible bootloader for firmware updates</li>
 </ul>
 
+<h3>Introduction video</h3>
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/C2tTHNFDXZ8?rel=0&amp;" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+
 <h3>Details</h3>
 <p>Front and back of the board:</p>
-<img class="img-responsive" src="sentusb/front.png" style="max-width: 30%; display: inline-block; margin-right: 10px;">
-<img class="img-responsive" src="sentusb/back.png" style="max-width: 30%; display: inline-block;">
+<img class="img-responsive" src="sentusb/front.png" style="max-width: 30%; display: inline-block; margin-right: 10px;" alt="SENT (SAE J2716) USB converter - front of the PCB with USB-C connector">
+<img class="img-responsive" src="sentusb/back.png" style="max-width: 30%; display: inline-block;" alt="SENT (SAE J2716) USB converter - back of the PCB with SENT signal and ground pads">
 
-<h3>Pinout</h3>
-<table class="table table-bordered table-condensed" style="max-width: 600px;">
-  <thead class="active">
-    <tr><th>Pin</th><th>Direction</th><th>Function</th></tr>
-  </thead>
-  <tbody>
-    <tr><td><code>PA2</code></td><td>Input</td><td>SENT RX — TIM2 CH3 rising-edge capture</td></tr>
-    <tr><td><code>PA1</code></td><td>Output</td><td>SENT TX — TIM14-driven push-pull (TX mode)</td></tr>
-  </tbody>
-</table>
-<ul style="font-size:90%; margin-top:6px;">
-  <li><b>RX pull-up:</b> a pull-up resistor on the RX line is fitted by default — no external pull-up needed.</li>
-  <li><b>TX pull-up:</b> an optional pull-up on the TX line can be enabled by closing the onboard solder jumper.</li>
+<h3>Connections</h3>
+<ul>
+  <li>Wire the SENT sensor's signal pin to the device's <b>RX</b> pad and connect a common ground; supply the sensor with its required voltage.</li>
+  <li>For TX mode (sensor simulation), drive the target ECU from the device's <b>TX</b> pad and a common ground.</li>
+  <li><b>RX pull-up:</b> fitted on the PCB by default — no external pull-up needed.</li>
+  <li><b>TX pull-up:</b> optional, enabled by closing the onboard solder jumper.</li>
 </ul>
+<p>For exact pin assignments, timer mapping and firmware internals see the <a href="https://github.com/ucandevices/SENTToUSB">SENTToUSB repository on GitHub</a>.</p>
 
 <h3>Getting Started</h3>
 <ol>
@@ -53,7 +52,7 @@ No custom driver is needed — it enumerates as a Virtual COM Port on Windows 10
 <h3>Viewer</h3>
 <p>
   SENT data is supported out of the box with <a href="https://github.com/ucandevices/SENTToUSB/releases/tag/Viewer1">SENT Viewer 1.0</a>
-  <img class="img-responsive"   src="sentusb/sent_tool.png" style="max-width: 60%;">
+  <img class="img-responsive"   src="sentusb/sent_tool.png" style="max-width: 60%;" alt="SENT Viewer 1.0 GUI showing live decoded SAE J2716 frames">
 </p>
 
 <h3>COM port Commands</h3>
@@ -191,3 +190,24 @@ No custom driver is needed — it enumerates as a Virtual COM Port on Windows 10
     </tr>
   </tbody>
 </table>
+
+<h3>FAQ</h3>
+<dl>
+  <dt><b>What is SENT (SAE J2716)?</b></dt>
+  <dd>SENT (Single Edge Nibble Transmission) is the SAE J2716 / ISO 21097 single-wire digital protocol used by many modern automotive sensors &mdash; pressure, position, throttle, MAP and angle &mdash; to transmit data to an ECU. Each frame is a stream of 4-bit nibbles separated by falling edges, with a status nibble, data nibbles and a CRC.</dd>
+
+  <dt><b>What is the cheapest USB SENT analyzer?</b></dt>
+  <dd>The uCanDevices SENT USB Converter is an open-source SAE J2716 / ISO 21097 dongle around $23. It enumerates as a USB CDC virtual COM port on Windows 10+, Linux and macOS with no proprietary driver, and decodes multiple nibble SENT sensors with both DATA_ONLY and STATUS_AND_DATA CRC modes.</dd>
+
+  <dt><b>Can it auto-detect SENT tick period and CRC mode?</b></dt>
+  <dd>Yes. Send <code>t600104</code> to enter Learn mode. The device auto-detects tick period (0.1 µs units), nibble count (4, 6 or 8) and CRC mode, then replies once with a <code>0x601</code> result frame. Send <code>O</code> afterwards to resume RX with the learned configuration.</dd>
+
+  <dt><b>Can it transmit SENT frames to simulate a sensor?</b></dt>
+  <dd>Yes. Start TX mode with <code>t600102</code>, then send frame data as <code>0x520</code> CAN frames (B0 = status nibble, B1&ndash;B4 = data nibbles packed big-endian, B5&ndash;B6 = optional pause ticks).</dd>
+
+  <dt><b>Which sensors are known to work?</b></dt>
+  <dd>Confirmed: MLX90377 angle sensor, VW/Audi 04L 906 051 L DPF sensor, GM 12643955 MAP sensor. For other sensors, use Learn mode.</dd>
+
+  <dt><b>Is the firmware open source?</b></dt>
+  <dd>Yes &mdash; STM32F042K6 firmware on <a href="https://github.com/ucandevices/SENTToUSB">github.com/ucandevices/SENTToUSB</a>. A USB DFU bootloader is included. SENT Viewer 1.0 is a free GUI.</dd>
+</dl>

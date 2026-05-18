@@ -6,8 +6,8 @@ All hardware source files are available on GitHub: <a href="https://github.com/u
 <img class="img-responsive" src="sentusb/sent_pcb.svg" style="max-width: 60%;">
 
 <h3>Software</h3>
-<p>Firmware is written in C using STM32CubeIDE (free). It uses the HAL USB CDC driver and custom SENT input-capture / output-compare logic on TIM2 and TIM14.
-All sources and <a href="https://github.com/ucandevices/SENTToUSB/releases">releases</a> are available on GitHub: <a href="https://github.com/ucandevices/SENTToUSB">here</a>.</p>
+<p>Firmware is written in C using STM32CubeIDE (free) on top of the STM32 HAL USB CDC driver, with custom SENT capture and DMA-driven transmit logic.
+All sources and <a href="https://github.com/ucandevices/SENTToUSB/releases">releases</a> are on GitHub: <a href="https://github.com/ucandevices/SENTToUSB">here</a>. For exact pin assignments, timer mapping and firmware internals see the repository README.</p>
 
 <h3>Uploading new firmware</h3>
 <p>The device has an embedded USB DFU bootloader. Use <a href="https://github.com/Stefan-Schmidt/dfu-util">dfu-util</a> to flash new firmware:

@@ -6,10 +6,61 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Open source usb can converter ">
-    <meta name="author" content="">
+    <meta name="description" content="Affordable open source USB converters for automotive buses: CAN, CAN FD, LIN, SENT (SAE J2716), IO-Link. Plug-and-play SLCAN-compatible dongles for Windows, Linux and macOS. From $18.">
+    <meta name="keywords" content="USB CAN converter, USB LIN converter, SENT USB converter, SAE J2716, CAN FD USB, SLCAN, IO-Link USB, automotive bus dongle, open source CAN sniffer, cheap LIN bus tool">
+    <meta name="author" content="uCanDevices">
+    <link rel="canonical" href="https://ucandevices.github.io/">
 
-    <title>https://ucandevices.github.io/</title>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="uCanDevices - USB CAN, LIN and SENT Converters">
+    <meta property="og:description" content="Affordable open source USB converters for CAN, CAN FD, LIN, SENT (J2716) and IO-Link. Plug-and-play, SLCAN compatible, Windows / Linux / macOS.">
+    <meta property="og:url" content="https://ucandevices.github.io/">
+    <meta property="og:image" content="https://ucandevices.github.io/img/products/uccb.png">
+    <meta property="og:site_name" content="uCanDevices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="uCanDevices - USB CAN, LIN and SENT Converters">
+    <meta name="twitter:description" content="Affordable open source USB converters for CAN, CAN FD, LIN, SENT (J2716) and IO-Link. Plug-and-play, SLCAN compatible.">
+    <meta name="twitter:image" content="https://ucandevices.github.io/img/products/uccb.png">
+
+    <title>uCanDevices - USB CAN, LIN and SENT (J2716) Converters | Open Source Automotive Tools</title>
+
+    <!-- Organization structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "uCanDevices",
+      "url": "https://ucandevices.github.io/",
+      "logo": "https://ucandevices.github.io/favicon.ico",
+      "email": "devices.ucan@gmail.com",
+      "description": "Open source automotive bus tools: USB CAN, CAN FD, LIN, SENT (SAE J2716) and IO-Link converters.",
+      "sameAs": [
+        "https://github.com/ucandevices",
+        "https://www.tindie.com/stores/lll7/",
+        "https://lectronz.com/stores/ucandevices"
+      ]
+    }
+    </script>
+
+    <!-- ItemList of products for rich-result eligibility -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "url": "https://ucandevices.github.io/uccb.html",       "name": "USB CAN Converter (UCCB)"},
+        {"@type": "ListItem", "position": 2, "url": "https://ucandevices.github.io/cfuc.html",       "name": "USB CAN FD Converter (CFUC)"},
+        {"@type": "ListItem", "position": 3, "url": "https://ucandevices.github.io/ulc.html",        "name": "USB LIN Converter"},
+        {"@type": "ListItem", "position": 4, "url": "https://ucandevices.github.io/sentusb.html",    "name": "SENT (SAE J2716) USB Converter"},
+        {"@type": "ListItem", "position": 5, "url": "https://ucandevices.github.io/cec.html",        "name": "CAN Ethernet Converter / Logger"},
+        {"@type": "ListItem", "position": 6, "url": "https://ucandevices.github.io/mpcie_uccb.html", "name": "USB CAN Converter - mPCIe"},
+        {"@type": "ListItem", "position": 7, "url": "https://ucandevices.github.io/iolink.html",     "name": "IO-Link USB / Ethernet Converter"}
+      ]
+    }
+    </script>
 
 	    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
@@ -34,15 +85,13 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+<!-- Google tag (gtag.js) - GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBYPZF7RV0"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-91038702-1', 'auto');
-  ga('send', 'pageview');
-
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZBYPZF7RV0', { 'anonymize_ip': true });
 </script>
 
 
@@ -59,7 +108,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Welcome to CanDevices Project</h2>
+                    <h1 class="section-heading" style="font-size: 1.8em;">USB Converters for CAN, LIN and SENT</h1>
+                    <p class="lead">Affordable open source dongles for CAN, CAN FD, LIN, SENT and IO-Link. Plug-and-play on Windows, Linux and macOS.</p>
                     <hr class="primary">
                 </div>
             </div>
@@ -101,8 +151,8 @@
         <div class="container-fluid">
             <div class="row no-gutter">
                 <div ng-repeat="p in products" class="col-lg-4 col-sm-6 col-img-center ">
-                    <a href="{{p.link}}" class="portfolio-box">
-                        <img src="{{p.img}}" class="img-responsive" alt="">
+                    <a href="{{p.link}}" class="portfolio-box" title="{{p.title}} - {{p.desc}}">
+                        <img src="{{p.img}}" class="img-responsive" alt="{{p.title}} - {{p.desc}}">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -114,11 +164,32 @@
                             </div>
                         </div>
                       <h3 class="text-center"> {{p.title}}</h3>
+                      <p class="text-center text-muted">{{p.desc}}</p>
                     </a>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Crawler / no-JS fallback: keeps product names, descriptions and links
+         indexable even if Googlebot doesn't render Angular ng-repeat. -->
+    <noscript>
+        <section id="portfolio-static">
+            <div class="container">
+                <h2 class="section-heading text-center">Products</h2>
+                <ul>
+                    <li><a href="uccb.html"><strong>USB CAN Converter (UCCB)</strong></a> - CAN bus to USB virtual COM port, SLCAN compatible.</li>
+                    <li><a href="cfuc.html"><strong>USB CAN FD Converter (CFUC)</strong></a> - CAN FD to USB, supports classic CAN and ISO CAN FD.</li>
+                    <li><a href="ulc.html"><strong>USB LIN Converter</strong></a> - LIN 2.1 master, slave and bus monitor with optical isolation.</li>
+                    <li><a href="sentusb.html"><strong>SENT (SAE J2716) USB Converter</strong></a> - decode automotive SENT sensors, multiple nibble, TX mode.</li>
+                    <li><a href="cec.html"><strong>CAN Ethernet Converter / Logger</strong></a> - Linux-based CAN-to-Ethernet bridge and logger.</li>
+                    <li><a href="mpcie_uccb.html"><strong>USB CAN Converter - mPCIe</strong></a> - CAN to USB on a mini-PCIe form factor adapter.</li>
+                    <li><a href="iolink.html"><strong>IO-Link USB / Ethernet Converter</strong></a> - IO-Link master interface over USB or Ethernet.</li>
+                </ul>
+                <p><a href="buy.html">Where to buy &rarr;</a></p>
+            </div>
+        </section>
+    </noscript>
 
 
     <section id="contact">

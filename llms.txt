@@ -1,0 +1,37 @@
+# uCanDevices
+
+> uCanDevices designs and sells affordable, open-source USB converters for
+> automotive and industrial buses: CAN, CAN FD, LIN, SENT (SAE J2716) and
+> IO-Link. All devices enumerate as a USB CDC virtual COM port and speak the
+> SLCAN-style text protocol, so they work out of the box on Windows, Linux
+> (SocketCAN, can-utils, python-can) and macOS without proprietary drivers.
+
+Brand: uCanDevices
+Site: https://ucandevices.github.io/
+Contact: devices.ucan@gmail.com
+Source code: https://github.com/ucandevices and https://github.com/UsbCANConverter-UCCbasic
+Distributors: Tindie (https://www.tindie.com/stores/lll7/), Lectronz (https://lectronz.com/stores/ucandevices), Elty (https://elty.pl/), Kamami (https://kamami.pl/)
+
+## Products
+
+- [USB CAN Converter (UCCB)](https://ucandevices.github.io/uccb.html): Classic CAN to USB dongle. SLCAN compatible. Works with Linux SocketCAN, python-can. ~$23.
+- [USB CAN FD Converter (CFUC)](https://ucandevices.github.io/cfuc.html): ISO CAN FD and classic CAN to USB. SLCAN-style protocol. ~$22.
+- [USB LIN Converter (uLC)](https://ucandevices.github.io/ulc.html): LIN 2.1 master, slave and bus monitor dongle. Optical isolation. Software-controlled termination. SLCAN compatible virtual COM port. ~$27.
+- [SENT (SAE J2716) USB Converter](https://ucandevices.github.io/sentusb.html): Decodes SAE J2716 / ISO 21097 automotive sensor signals (4, 6, 8 nibble; DATA_ONLY and STATUS_AND_DATA CRC). Auto-learn tick and CRC mode. TX mode for signal injection. STM32F042K6 firmware. ~$23.
+- [CAN Ethernet Converter / CAN Logger](https://ucandevices.github.io/cec.html): Linux microcomputer with CAN and Ethernet. Remote CAN-to-IP bridge and standalone CAN data logger. SocketCAN compatible. ~$65.
+- [USB CAN Converter - mini PCIe (UCCB-mPCIe)](https://ucandevices.github.io/mpcie_uccb.html): UCCB in a mini PCI Express form factor for industrial PCs. ~$30.
+- [IO-Link USB / Ethernet Converter](https://ucandevices.github.io/iolink.html): IO-Link master interface over USB or Ethernet. Lab and prototyping tool for IEC 61131-9 IO-Link sensors. ~$30.
+
+## Software and tools
+
+- [uCAN Tools](https://ucandevices.github.io/ucantools.html): Open source CAN / LIN / SENT sniffer, message generator and analyzer.
+- [SENT Viewer 1.0](https://github.com/ucandevices/SENTToUSB/releases/tag/Viewer1): GUI viewer for live decoded SENT frames.
+
+## Where to buy
+
+See [https://ucandevices.github.io/buy.html](https://ucandevices.github.io/buy.html). Worldwide shipping via Tindie and Lectronz; Polish / EU shipping via Elty and Kamami.
+
+## Optional
+
+- [Full content for AI ingestion](https://ucandevices.github.io/llms-full.txt)
+- [Sitemap](https://ucandevices.github.io/sitemap.xml)

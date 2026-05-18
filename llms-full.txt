@@ -1,0 +1,324 @@
+# uCanDevices - Full content for AI ingestion
+
+This file is a plain-text / markdown export of the most important product
+pages on https://ucandevices.github.io, intended for ingestion by LLMs and
+AI coding agents. The content is identical to what is on the corresponding
+HTML pages.
+
+---
+
+## USB LIN Converter (uLC)
+
+Canonical URL: https://ucandevices.github.io/ulc.html
+GitHub: https://github.com/uCAN-LIN/LinUSBConverter
+Price: about USD 27 on Tindie, EUR 25 on Lectronz.
+
+### What it is
+
+The USB LIN Converter (uLC) is an open-source USB dongle that lets a PC act
+as a LIN bus master, slave or passive monitor. It enumerates as a USB CDC
+virtual COM port - no proprietary drivers - and exposes an SLCAN-style ASCII
+command protocol, so it works on Windows, Linux and macOS, and is compatible
+with common tooling such as Linux SocketCAN and parts of can-utils.
+
+### Features
+
+- LIN 2.1 support
+- Monitor mode: full frame reception and single-frame transmission
+- Master mode: up to 15 scheduled frame slots
+- Slave mode: up to 15 scheduled frame slots
+- 19200 / 9600 baud rate selection
+- Optical isolation for the LIN side
+- External 4.5 to 28 V required to power the LIN transceiver
+- Device size 31 x 18 mm without the USB connector
+- Software-controlled termination resistors
+- USB DFU compatible bootloader for firmware updates
+- SLCAN compatible - works with Linux SocketCAN and some can-utils commands
+
+### Driver requirements
+
+On Linux and macOS no driver is required; the device shows up as
+/dev/ttyACM0 or similar. On Windows the ST Virtual COM Port driver is needed
+(also bundled at /download/uccb/VirtualComportDriver.zip on this site).
+
+### COM port command set
+
+All commands are ASCII, terminated by CR (0x0D). On error the device
+responds with 0x07 (BEL). USB CDC ignores baud rate.
+
+| Command          | Description                                                          |
+|------------------|----------------------------------------------------------------------|
+| O                | Open device in master mode                                           |
+| C                | Close LIN port                                                       |
+| Sx               | Baud rate: S2 = 9600, S1 / S3-S8 = 19200                             |
+| V                | Hardware version query                                               |
+| v                | Firmware version query                                               |
+| N                | Serial number query                                                  |
+| L                | Open in slave mode for LIN slave simulation                          |
+| l                | Open in monitor mode (analyzer with single-frame send)               |
+| tiiildd          | In Monitor mode: transmit full header and data frame.                |
+|                  | In Master mode: update schedule table with new frame.                |
+|                  | In Slave mode: update schedule table with new data.                  |
+|                  | 0ii = identifier (000-0FF), l = data length (0-8), dd = data bytes.  |
+| r0iil            | In Monitor mode: header-only, subscribed slave should answer.        |
+|                  | In Master mode: add or update schedule entry.                        |
+|                  | In Slave mode: update reception slot.                                |
+| r1ff0            | In Master mode: start sending frames from schedule table             |
+| r2ff0            | Clear schedule table                                                 |
+| xm               | Switch checksum: x2 = classic, x1 = enhanced                         |
+| T0 id id t1 t1 t2 t2 len d... | Custom frame timing in Master mode               |
+
+### Example - Monitor mode session
+
+```
+C        close
+v        firmware version request
+v0102    response: firmware 01.02
+V        hardware version request
+V0101    response: hardware 01.01
+N
+N16000000
+W2D00
+S0       speed setting (19200)
+L        open in monitor mode
+r0128    transmit header with ID 0x12 requesting 8 data bytes
+t01280011223344556677   slave responded with 8 data bytes
+```
+
+### Example - Master mode session
+
+```
+O        open in master mode
+r0018    schedule header transmission, ID 0x01, 8 data bytes
+r0022    schedule header transmission, ID 0x02, 2 data bytes
+t01280011223344556677   schedule slave task, ID 0x12, 8 data bytes
+r1ff0    start sending frames from schedule
+```
+
+### Typical uses
+
+- Reverse-engineering body-electronics LIN buses (seats, mirrors, climate)
+- Replacing or simulating a single LIN slave for bench tests
+- Capturing LIN traffic alongside CAN during ECU development
+- Education and protocol-learning labs (LIN 2.1)
+
+### Common questions
+
+- Does it work with SocketCAN? It uses SLCAN text format over a virtual COM
+  port, so SocketCAN's slcand bridge attaches it as a CAN-like interface for
+  monitoring; the frame ID and DLC fields carry LIN frame info.
+- Is a separate power supply needed? Yes - the LIN transceiver needs 4.5
+  to 28 V on the external supply pin; USB only powers the MCU side.
+- Does it support LIN 1.x? Yes for classic 2.1-compatible frames; the
+  checksum mode is selectable.
+- Does it support flashing ECUs over LIN? It is a generic LIN interface;
+  flashing routines depend on the target ECU's own LIN bootloader.
+
+---
+
+## SENT (SAE J2716) USB Converter
+
+Canonical URL: https://ucandevices.github.io/sentusb.html
+GitHub: https://github.com/ucandevices/SENTToUSB
+Price: about USD 23 on Tindie, EUR 22 on Lectronz.
+
+### What it is
+
+The SENT USB Converter decodes SAE J2716 / ISO 21097 SENT automotive sensor
+signals and streams the decoded frames to a PC over a USB CDC virtual COM
+port using the SLCAN text protocol. It also supports a TX mode for
+synthesizing and transmitting SENT frames from the PC. No proprietary driver
+is required on Windows 10+, Linux or macOS.
+
+### Features
+
+- SAE J2716 / ISO 21097 SENT receive and decode
+- Auto-detect tick period, nibble count and CRC mode (Learn mode)
+- Supports multiple nibble sensors
+- Both CRC modes: DATA_ONLY and STATUS_AND_DATA
+- CRC seeds 0x03 (SAE APR2016) and 0x05 (legacy / GM)
+- TX mode for synthesizing and transmitting SENT frames
+- SLCAN-compatible protocol over USB CDC
+- USB-C connector
+- No driver required on Linux, macOS, Windows 10+
+- Device size 17 x 28 mm without the USB connector
+- Open source firmware on STM32F042K6 (48 MHz HSI48)
+- USB DFU compatible bootloader for firmware updates
+
+### Connections
+
+- Wire the SENT sensor signal to the device RX pad and a common ground;
+  supply the sensor with its required voltage.
+- For TX mode (sensor simulation), drive the target ECU from the TX pad
+  and a common ground.
+- RX pull-up: fitted on the PCB by default, no external pull-up needed.
+- TX pull-up: optional, enabled by closing the onboard solder jumper.
+
+For exact pin assignments, timer mapping and firmware internals see the
+SENTToUSB repository on GitHub: https://github.com/ucandevices/SENTToUSB
+
+### Getting started
+
+1. Plug the device into a USB port.
+2. The OS creates a Virtual COM Port (COM3 on Windows, /dev/ttyACM0 on
+   Linux).
+3. Open the port at any baud rate - USB CDC ignores baud rate settings.
+4. Send `O\r` to start receiving SENT data.
+
+### Viewer
+
+SENT data is supported out of the box with SENT Viewer 1.0:
+https://github.com/ucandevices/SENTToUSB/releases/tag/Viewer1
+
+### COM port commands
+
+All commands are plain ASCII terminated with CR (0x0D). On error the device
+responds with 0x07 (BEL).
+
+| Command                | Description                                       |
+|------------------------|---------------------------------------------------|
+| O                      | Open channel - start SENT RX                      |
+| L                      | Listen-only open - same as O                      |
+| C                      | Close channel - stop all activity                 |
+| V                      | Hardware version query                            |
+| v                      | Firmware version query                            |
+| N                      | Serial number query                               |
+| t<ID><DLC><DATA>       | Send a CAN-formatted frame (config / control / TX)|
+
+### Key CAN frame IDs
+
+- 0x001 (host to device, configuration, DLC up to 6):
+  - B0: data nibbles 
+  - B1: CRC mode (0 = DATA_ONLY, 1 = STATUS_AND_DATA)
+  - B2: CRC init seed (0x03 SAE APR2016, 0x05 legacy / GM)
+  - B3: min tick in units of 0.5 microseconds (e.g. 5 = 2.5 us)
+  - B4: max tick in units of 1.0 microseconds (e.g. 5 = 5.0 us)
+  - B5 to B6: output RX CAN ID, big-endian, 11-bit, 0x001 to 0x7FF
+- 0x600 (host to device, control, DLC 1):
+  - 0x01 start RX, 0x02 start TX, 0x03 stop, 0x04 learn mode
+- 0x520 (host to device, TX frame data, DLC >= 5):
+  - B0 status nibble
+  - B1 to B4 data nibbles packed big-endian
+  - B5 to B6 pause ticks little-endian (optional)
+- configured ID (device to host, default 0x510):
+  - decoded SENT RX frame; each nibble is 4 bits, two nibbles per byte.
+- 0x601 (device to host, learn result, DLC 4):
+  - B0 to B1 learned tick in units of 0.1 us, little-endian
+  - B2 nibble count locked (4, 6)
+  - B3 CRC mode locked
+
+### Minimal session example
+
+```
+->  O\r                       open channel / start RX with default config
+<-  \r                        ACK
+
+->  t001706000305050510\r     configure: 6 nibbles, DATA_ONLY,
+<-  z\r                       seed 0x03, tick 2.5 to 5 us, CAN ID 0x510
+
+<-  t5103AABBCC\r             decoded SENT frame (repeats ~100-1000x/s)
+<-  t5103DDEEFF\r
+
+->  C\r                       stop
+<-  \r
+```
+
+### Learn mode
+
+```
+->  t600104\r                 start auto-detect
+<-  z\r
+<-  t60104...\r               result: learned tick, nibbles, CRC mode
+```
+
+### Sensor presets
+
+| Sensor                       | Tick | Nibbles | CRC mode        | CRC seed |
+|------------------------------|------|---------|-----------------|----------|
+| MLX90377 angle               | 3 us | 6       | DATA_ONLY       | 0x03     |
+| 04L 906 051 L (VW/Audi DPF)  | ~3us | 6       | STATUS_AND_DATA | 0x05     |
+| GM 12643955 (MAP sensor)     | ~3us | 6       | DATA_ONLY       | 0x05     |
+
+### Typical uses
+
+- Decoding throttle position, pressure and angle sensors that use SENT
+- Reverse-engineering proprietary SENT sensor protocols on the bench
+- Replacing or simulating a SENT sensor for ECU bench testing
+- Education and protocol learning labs (J2716)
+
+### Common questions
+
+- What is SENT? SENT (Single Edge Nibble Transmission) is the SAE J2716 /
+  ISO 21097 protocol used by many modern automotive sensors (pressure,
+  position, throttle, MAP) to deliver digital data on a single wire.
+- Why use this converter? Commercial SENT analyzers from automotive tool
+  vendors typically cost hundreds to thousands of euros; this is an open
+  source USB dongle for around USD 23.
+- Does it support sensor TX simulation? Yes - via the 0x600 / 0x02 control
+  command and 0x520 TX data frames; useful for ECU bench tests.
+- Can it auto-detect an unknown sensor? Yes - the 0x600 / 0x04 learn
+  command auto-detects tick period, nibble count and CRC mode.
+- What if my sensor uses a non-standard CRC seed? Both standard seeds
+  (0x03 SAE APR2016 and 0x05 legacy / GM) are supported via the 0x001
+  configuration frame.
+
+---
+
+## USB CAN Converter (UCCB)
+
+Canonical URL: https://ucandevices.github.io/uccb.html
+GitHub: https://github.com/UsbCANConverter-UCCbasic
+Price: about USD 23 on Tindie.
+
+A classic CAN to USB dongle. SLCAN compatible, works with Linux SocketCAN
+(via slcand), python-can and most CAN tools. Plug-and-play virtual COM
+port on Windows, Linux and macOS.
+
+## USB CAN FD Converter (CFUC)
+
+Canonical URL: https://ucandevices.github.io/cfuc.html
+GitHub: https://github.com/ucandevices/CFDC_embedded
+Price: about USD 22 on Tindie.
+
+ISO CAN FD and classic CAN to USB. SLCAN-style text protocol, plug-and-play
+virtual COM port.
+
+## CAN Ethernet Converter / CAN Logger
+
+Canonical URL: https://ucandevices.github.io/cec.html
+GitHub: https://github.com/CanEthernetConverter
+Price: about USD 65 on Tindie.
+
+Linux microcomputer with CAN and Ethernet. Remote CAN-to-IP bridge and
+standalone CAN data logger. SocketCAN compatible.
+
+## USB CAN Converter - mini PCIe (UCCB-mPCIe)
+
+Canonical URL: https://ucandevices.github.io/mpcie_uccb.html
+GitHub: https://github.com/UsbCANConverter-UCCbasic/uCCB-mPICe
+Price: about USD 30 on Tindie.
+
+UCCB CAN-to-USB interface on a mini PCI Express form factor (connects over
+USB 2.0 via the mPCIe socket). Useful for industrial PCs and embedded x86
+platforms.
+
+## IO-Link USB / Ethernet Converter
+
+Canonical URL: https://ucandevices.github.io/iolink.html
+GitHub: https://github.com/ucandevices/IO-LINK-Covnerter
+Price: about USD 30 on Tindie.
+
+IO-Link master interface over USB or Ethernet. Communicate with IO-Link
+(IEC 61131-9) sensors from a PC for lab work, prototyping and integration
+testing.
+
+---
+
+## Where to buy
+
+- Tindie (worldwide):  https://www.tindie.com/stores/lll7/
+- Lectronz (EU):       https://lectronz.com/stores/ucandevices
+- Elty (Poland/EU):    https://elty.pl/
+- Kamami (Poland/EU):  https://kamami.pl/
+
+Contact: devices.ucan@gmail.com

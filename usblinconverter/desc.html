@@ -28,12 +28,12 @@ Multiple features are supported like:
 
 <h3>Details</h3>
 <p>Board bottom view</p>
-<img class="img-responsive"  style="max-width: 50%;" src="usblinconverter/UCCB11back.png">
+<img class="img-responsive"  style="max-width: 50%;" src="usblinconverter/UCCB11back.png" alt="USB LIN converter dongle - bottom view of the PCB">
 
 <p>After USB enumeration device creates virtual COM port that is used both for data transfer and converter setup. 
      Device is be powered directly from USB, but external 4.5-28V is needed to supply LIN transceiver. 
      Board layout is shown below.<br>
-    <img class="img-responsive"   src="usblinconverter/Layout.svg"> 
+    <img class="img-responsive"   src="usblinconverter/Layout.svg" alt="USB LIN converter PCB layout - pinout for LIN bus, USB and power">
 </p>
 
 <h3>Drivers</h3>
@@ -187,3 +187,21 @@ example frame with id 1 5 ms offset and 1 ms wait time after sending 3 bytes of 
 <pre class="listing">
 T0005013AABBCC
 </pre>
+
+<h3>FAQ</h3>
+<dl>
+  <dt><b>What is the cheapest USB LIN bus converter that works on Linux?</b></dt>
+  <dd>The uCanDevices USB LIN Converter (uLC) is an open-source LIN dongle around $27 that enumerates as a USB CDC virtual COM port on Linux, macOS and Windows. It speaks an SLCAN-style ASCII protocol so it bridges into SocketCAN via <code>slcand</code> and works with parts of can-utils. No proprietary driver is required.</dd>
+
+  <dt><b>Does it support master and slave mode?</b></dt>
+  <dd>Yes &mdash; monitor (full reception plus single-frame transmission), master (up to 15 scheduled slots) and slave (up to 15 slots for slave simulation). Modes are selected over the serial port with the <code>O</code>, <code>L</code> and <code>l</code> commands.</dd>
+
+  <dt><b>Is the LIN side optically isolated from the USB host?</b></dt>
+  <dd>Yes. The LIN transceiver is optically isolated from the PC side, protecting the host from automotive transients. The LIN side needs an external 4.5&ndash;28 V supply since USB only powers the MCU.</dd>
+
+  <dt><b>Which LIN baud rates and LIN version are supported?</b></dt>
+  <dd>LIN 2.1, with selectable 9600 and 19200 baud. Classic and enhanced checksum are switchable with the <code>xm</code> command. Custom frame timing is supported in master mode.</dd>
+
+  <dt><b>Is the firmware open source?</b></dt>
+  <dd>Yes &mdash; firmware and hardware are open source at <a href="https://github.com/uCAN-LIN/LinUSBConverter">github.com/uCAN-LIN/LinUSBConverter</a>. The device also has a USB DFU bootloader for in-field updates.</dd>
+</dl>

@@ -6,12 +6,123 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Open source usb can converter.">
-    <meta name="author" content="">
+    <meta name="description" content="USB LIN converter dongle - LIN 2.1 master, slave and bus monitor with optical isolation. Works on Windows, Linux and macOS as a virtual COM port (SLCAN compatible). Open source, $27.">
+    <meta name="keywords" content="USB LIN converter, LIN bus sniffer, LIN bus monitor, LIN 2.1 USB, LIN master USB, LIN slave USB, SLCAN LIN, automotive LIN dongle, LIN bus analyzer, cheap LIN tool">
+    <meta name="author" content="uCanDevices">
+    <link rel="canonical" href="https://ucandevices.github.io/ulc.html">
 
-    <title>ucandevices.github.io/</title>
-    <!-- Coments CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <!-- Open Graph -->
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="USB LIN Converter - LIN 2.1 Master, Slave and Bus Monitor Dongle">
+    <meta property="og:description" content="Open source USB LIN converter dongle. LIN 2.1 master / slave / monitor mode, optical isolation, SLCAN compatible. Plug-and-play on Windows, Linux and macOS.">
+    <meta property="og:url" content="https://ucandevices.github.io/ulc.html">
+    <meta property="og:image" content="https://ucandevices.github.io/img/products/ulc.png">
+    <meta property="og:site_name" content="uCanDevices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="USB LIN Converter - LIN 2.1 Master / Slave / Monitor Dongle">
+    <meta name="twitter:description" content="Open source USB LIN converter. Master, slave and sniffer mode, optical isolation, SLCAN compatible. Plug-and-play on Windows, Linux and macOS.">
+    <meta name="twitter:image" content="https://ucandevices.github.io/img/products/ulc.png">
+
+    <title>USB LIN Converter - LIN 2.1 Master, Slave and Bus Monitor | uCanDevices</title>
+
+    <!-- Product structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "USB LIN Converter (uLC)",
+      "image": "https://ucandevices.github.io/img/products/ulc.png",
+      "description": "Open source USB LIN converter dongle. Supports LIN 2.1 master, slave and monitor mode, with optical isolation and software-controlled termination. Enumerates as a virtual COM port and is SLCAN compatible, working out of the box on Windows, Linux and macOS.",
+      "sku": "ULC",
+      "mpn": "ULC",
+      "brand": {"@type": "Brand", "name": "uCanDevices"},
+      "manufacturer": {"@type": "Organization", "name": "uCanDevices"},
+      "category": "Automotive bus interface",
+      "url": "https://ucandevices.github.io/ulc.html",
+      "offers": [
+        {
+          "@type": "Offer",
+          "url": "https://www.tindie.com/stores/lll7/",
+          "priceCurrency": "USD",
+          "price": "27.00",
+          "availability": "https://schema.org/InStock",
+          "seller": {"@type": "Organization", "name": "Tindie - uCanDevices"}
+        },
+        {
+          "@type": "Offer",
+          "url": "https://lectronz.com/stores/ucandevices",
+          "priceCurrency": "EUR",
+          "price": "25.00",
+          "availability": "https://schema.org/InStock",
+          "seller": {"@type": "Organization", "name": "Lectronz - uCanDevices"}
+        }
+      ]
+    }
+    </script>
+
+    <!-- BreadcrumbList structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ucandevices.github.io/"},
+        {"@type": "ListItem", "position": 2, "name": "USB LIN Converter", "item": "https://ucandevices.github.io/ulc.html"}
+      ]
+    }
+    </script>
+
+    <!-- FAQ structured data - common LLM-style questions about the LIN converter -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the cheapest USB LIN bus converter that works on Linux?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The uCanDevices USB LIN Converter (uLC) is an open-source LIN dongle around USD 27 that enumerates as a USB CDC virtual COM port on Linux, macOS and Windows. It speaks an SLCAN-style ASCII protocol so it bridges into SocketCAN via slcand and works with parts of can-utils. No proprietary driver is required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the uCanDevices USB LIN Converter support master and slave mode?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The uLC supports three modes: monitor (full frame reception plus single-frame transmission), master (up to 15 scheduled frame slots) and slave (up to 15 scheduled frame slots for slave simulation). Modes are selected over the virtual COM port with the O, L and l commands."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the LIN side optically isolated from the USB host?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The LIN transceiver is optically isolated from the USB / PC side, which protects the host from automotive transients. The LIN side needs an external 4.5 to 28 V supply, since USB only powers the MCU side."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which LIN baud rates and LIN version are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "LIN 2.1 is supported, with selectable 9600 and 19200 baud rates. Classic and enhanced checksum can be toggled with the xm command. Custom frame timing (offset and response wait time) is available in master mode."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the firmware open source?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Both firmware and hardware are open source on GitHub at https://github.com/uCAN-LIN/LinUSBConverter. The device also has a USB DFU bootloader for in-field updates."
+          }
+        }
+      ]
+    }
+    </script>
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 
@@ -32,15 +143,13 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+<!-- Google tag (gtag.js) - GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBYPZF7RV0"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-91038702-1', 'auto');
-  ga('send', 'pageview');
-
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZBYPZF7RV0', { 'anonymize_ip': true });
 </script>
 </head>
 
@@ -54,13 +163,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Usb LIN converter.</h2>
+                    <h1 class="section-heading">USB LIN Converter</h1>
+                    <p class="lead">Open source LIN 2.1 master, slave and bus monitor dongle. SLCAN compatible. Plug-and-play on Windows, Linux and macOS.</p>
+                    <p>
+                        <a class="btn btn-primary btn-lg" href="https://www.tindie.com/products/lll7/usb-lin-converter/" rel="noopener">Buy on Tindie</a>
+                        <a class="btn btn-default btn-lg" href="https://lectronz.com/stores/ucandevices" rel="noopener">Buy on Lectronz</a>
+                        <a class="btn btn-default btn-lg" href="https://github.com/uCAN-LIN/LinUSBConverter" rel="noopener">Source on GitHub</a>
+                    </p>
                     <hr class="primary">
                 </div>
             </div>
         </div>
 
- 
+
 <!--        page contents tabs-->
         <div class="container-fluid">
             <ul class="nav nav-tabs">
@@ -79,28 +194,18 @@
                     <div ng-include="'usblinconverter/tools.html'"></div>
                 </div>
             </div>
-            <div id="gitalk-container"></div>
+            <!-- Questions / contact CTA -->
+            <div class="text-center" style="margin: 40px 0;">
+                <h3>Questions about the USB LIN Converter?</h3>
+                <p>
+                    <a class="btn btn-default" href="https://github.com/uCAN-LIN/LinUSBConverter/issues" rel="noopener"><i class="fa fa-github"></i> Open a GitHub issue</a>
+                    <a class="btn btn-default" href="mailto:devices.ucan@gmail.com"><i class="fa fa-envelope"></i> Email us</a>
+                </p>
+            </div>
         </div>
 
 
     </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-    <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
-
-   
-    <script type="text/javascript">
-      const gitalk = new Gitalk({
-        clientID: '8e1960fcb28f119bc82f',
-        clientSecret: '652465d1d4c7a7867c3e87ee006160ce226a6b96',
-        repo: 'ucandevices',      // The repository of store comments,
-        owner: 'ucandevices',
-        admin: ['ucandevices'],
-        id: "LUC",      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
-      gitalk.render('gitalk-container');
-    </script>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
