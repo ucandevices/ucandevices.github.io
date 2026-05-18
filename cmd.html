@@ -6,10 +6,51 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Open source usb can converter.">
-    <meta name="author" content="">
+    <meta name="description" content="CAN Motor Driver - open source CAN-controlled motor driver for robotics, automotive and industrial applications.">
+    <meta name="author" content="uCanDevices">
+    <link rel="canonical" href="https://ucandevices.github.io/cmd.html">
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="CAN Motor Driver - Open Source CAN-Controlled Motor Driver">
+    <meta property="og:description" content="Open source CAN-controlled brushed DC motor driver with speed and position control. For robotics, automotive and industrial applications.">
+    <meta property="og:url" content="https://ucandevices.github.io/cmd.html">
+    <meta property="og:image" content="https://ucandevices.github.io/cdcmd/CAN_BDC.webp">
+    <meta property="og:site_name" content="uCanDevices">
 
-    <title>ucandevices.github.io/</title>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CAN Motor Driver - Open Source CAN-Controlled Motor Driver">
+    <meta name="twitter:description" content="Open source CAN-controlled brushed DC motor driver with speed and position control. For robotics, automotive and industrial applications.">
+    <meta name="twitter:image" content="https://ucandevices.github.io/cdcmd/CAN_BDC.webp">
+
+    <title>CAN Motor Driver - Open Source | uCanDevices</title>
+
+    <!-- Product structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "CAN Motor Driver (CMD)",
+      "image": "https://ucandevices.github.io/cdcmd/CAN_BDC.webp",
+      "description": "Open source CAN-controlled brushed DC motor driver with speed and position control. Suitable for robotics, automotive and industrial automation.",
+      "sku": "CMD",
+      "brand": {"@type": "Brand", "name": "uCanDevices"},
+      "manufacturer": {"@type": "Organization", "name": "uCanDevices"},
+      "category": "Motor controller",
+      "url": "https://ucandevices.github.io/cmd.html"
+    }
+    </script>
+
+    <!-- BreadcrumbList structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ucandevices.github.io/"},
+        {"@type": "ListItem", "position": 2, "name": "CAN Motor Driver", "item": "https://ucandevices.github.io/cmd.html"}
+      ]
+    }
+    </script>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -31,29 +72,67 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+<!-- Google tag (gtag.js) - GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBYPZF7RV0"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-91038702-1', 'auto');
-  ga('send', 'pageview');
-
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZBYPZF7RV0', { 'anonymize_ip': true });
 </script>
 </head>
 
-<body id="page-top" ng-app="agmodule" ng-controller="pagecontroller">
+<body id="page-top">
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-		<div ng-include="'header.html'"> </div>
-	</nav>
-	<header></header>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="index.html" title="uCanDevices - USB CAN, LIN and SENT converters">uCanDevices</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="uccb.html">USB CAN Converter</a></li>
+                        <li><a href="cfuc.html">FDCAN USB Converter</a></li>
+                        <li><a href="ulc.html">USB LIN Converter</a></li>
+                        <li><a href="sentusb.html">SENT USB Converter</a></li>
+                        <li><a href="cec.html">CAN Log/Eth Converter</a></li>
+                        <li><a href="mpcie_uccb.html">USB CAN Converter mPCIe</a></li>
+                        <li><a href="iolink.html">IO-Link USB/Ethernet Converter</a></li>
+                    </ul>
+                </li>
+                <li><a class="page-scroll" href="buy.html">Buy</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">GitHub <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://github.com/UsbCANConverter-UCCbasic" rel="noopener">USB CAN Converter</a></li>
+                        <li><a href="https://github.com/ucandevices/CFDC_embedded" rel="noopener">FDCAN USB Converter</a></li>
+                        <li><a href="https://github.com/uCAN-LIN/LinUSBConverter" rel="noopener">USB LIN Converter</a></li>
+                        <li><a href="https://github.com/ucandevices/SENTToUSB" rel="noopener">SENT USB Converter</a></li>
+                        <li><a href="https://github.com/CanEthernetConverter" rel="noopener">CAN Log/Eth Converter</a></li>
+                        <li><a href="https://github.com/UsbCANConverter-UCCbasic/uCCB-mPICe" rel="noopener">USB CAN Converter mPCIe</a></li>
+                        <li><a href="https://github.com/ucandevices/IO-LINK-Covnerter" rel="noopener">IO-Link USB/Ethernet Converter</a></li>
+                    </ul>
+                </li>
+                <li><a class="page-scroll" href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 
     <section id="services">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">CAN Motor driver.</h2>
+                    <h1 class="section-heading">CAN Motor Driver</h1>
                     <hr class="primary">
                 </div>
             </div>
@@ -69,13 +148,343 @@
             </ul>
             <div class="tab-content">
                 <div id="tc_desc" class="">
-                    <div ng-include="'cdcmd/desc.html'"></div>
+                    <!-- inlined from cdcmd/desc.html -->
+<!-- {
+    "title":"CAN MOTOR DRIVER",
+    "desc": "Drive low power motor via can with speed and position control",
+    "category": "DEVICES",
+    "img":"img/products/cmd.png",
+    "link": "uccb.html",
+    "github": "https://github.com/CanBrushedDCDriver",
+    "canbuy": false,
+    "cost": 20
+   } -->
+
+<p style="text-align:justify; font-size:75%">
+    Product and its documentation is supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of this product. This product is not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
+</p>
+
+<h3>Description</h3>
+<p> CAN motor controller can work with both stepper and dc motors. Motors can be controller for direction, position, speed, or PWM. Motor Speed and position can be send via CAN.  
+Multiple features are supported like:
+  <li>Stepper motors driven by DRV8825 module (8-45V supply, 1,5A continuous, 2.2A peak)</li>
+  <li>DC brushed motors driven by DRV8801 module (8-36V supply, 1A continuous, 2.8A peak)</li>
+  <li>Position control via ADC voltage measurement</li>
+  <li>Speed control via optical or hall sensor</li>
+  <li>One supply voltage for motor and electronics</li>
+  <li>USB dfu compatible bootloader for new software</li>
+<br>
+
+
+<p>Board overview</p>
+<img class="img-responsive"  style="max-width: 20%;" src="cdcmd/CAN_BDC.webp" alt="CAN brushed DC motor driver board" width="992" height="896">
+
+<h3> Frames </h3>
+
+<h4>Stepper motor status and control frame</h4>
+<pre class="listing">
+typedef struct tCANStepperCMD1 {
+	union {
+		struct {
+			union {
+				struct {
+					uint16_t stepSize :8;
+					uint16_t dir :1;
+					uint16_t unused :7;
+				};
+				uint16_t byte;
+			} flags;
+			uint16_t stepCount;
+			struct {
+				uint16_t position;
+				uint16_t speed;
+			} regulatorControl;
+		};
+		uint8_t data[8];
+	};
+} CANStepperCMD1;
+
+typedef struct tCANStatusFrame1 {
+	union {
+		struct {
+			union {
+				struct {
+					uint16_t Speed;
+					uint16_t Position;
+				};
+				uint32_t whole;
+			} sensors;
+
+			union {
+				struct {
+					uint32_t nowStepping:1;
+					uint32_t StepCount:31;
+				};
+				uint32_t whole;
+			} stepper;
+		};
+		uint8_t data[8];
+	};
+} ;
+
+
+</pre>
+
+<h4>Brush motor status and control frame</h4>
+<pre class="listing">
+    typedef struct tCANBrushCMD1 {
+        union {
+            struct {
+                struct {
+                    uint32_t pwm: 16;
+                    uint32_t breakingOn : 1;
+                    uint32_t dir : 1;
+                    uint32_t speedControl: 1;
+                    uint32_t positionControl: 1;
+                    uint32_t unused: 12;
+                } directControl;
+                struct {
+                    uint16_t position;
+                    uint16_t speed;
+                } regulatorControl;
+            };
+            uint8_t data[8];
+        };
+    } CANBrushedCMD1;
+
+    typedef struct tCANStatusFrame1 {
+        union {
+            struct {
+                union {
+                    struct {
+                        uint16_t Speed;
+                        uint16_t Position;
+                    };
+                    uint32_t whole;
+                } sensors;
+
+    
+            union {
+                struct {
+                    uint32_t state:3; // running, braking
+                    uint32_t dir : 1;
+                    uint32_t pwmValue:16;
+                };
+                uint32_t whole;
+            } brushed;
+    
+            };
+            uint8_t data[8];
+        };
+    };
+    
+    
+</pre>
+
+
+
+
+
+<!-- <h3>Introduction video</h3>
+<div class="video-container">
+<iframe loading="lazy" src="https://www.youtube.com/embed/6_6hLYNj4pU?rel=0&amp;" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+
+<h3>Details</h3>
+<p>Board bottom view</p>
+<img class="img-responsive"  style="max-width: 50%;" src="usblinconverter/UCCB11back.webp" alt="USB LIN Converter board back side" width="1200" height="402">
+
+<p>After USB enumeration device creates virtual COM port that is used both for data transfer and converter setup. 
+     Device is be powered directly from USB, but external 4.5-28V is needed to supply LIN transceiver. 
+     Board layout is shown below.<br>
+    <img class="img-responsive"   src="usblinconverter/Layout.svg" alt="USB LIN Converter PCB layout drawing" width="605" height="582"> 
+</p>
+
+<h3>Drivers</h3>
+<p>For proper work on Windows you need to install virtual com drivers from <a href="http://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-stm32102.html">ST site </a> or download from <a href="/download/uccb/VirtualComportDriver.zip"><i class="glyphicon glyphicon-download-alt"></i> here </a>.</p>
+
+<h3>COM port Commands</h3>
+<p>
+    Below is list of all available commands. 
+    USART baud rate is virtual so can be any. 
+    All commands are ASCI format. Commands are terminated with newline character CR (0xD). 
+    On error the device responses with 0x7 value. 
+    
+<table class="table-bordered">
+<tr>
+<td><b>Command</b></td>
+<td><b>Description</b></td>
+</tr>
+
+<tr>
+<td>O</td>
+<td>Opens device in master mode.</td>
+</tr>
+
+<tr>
+<td>C</td>
+<td>Close LIN port on device, frame will not be received.</td>
+</tr>
+
+<tr>
+<td>Sx</td>
+<td>Baud rate selection: <br>
+    S2 - 9600<br>
+    S1,S3-S8 - 19200<br>
+</td>
+</tr>
+
+<tr>
+<td>V</td>
+<td>Get hardware version.</td>
+</tr>
+
+<tr>
+<td>v</td>
+<td>Get firmware version.</td>
+</tr>
+
+<tr>
+<td>N</td>
+<td>Get serial number.</td>
+</tr>
+
+<tr>
+<td>l</td>
+<td>Open device in, slave mode, for LIN slave simulation.</td>
+</tr>
+
+<tr>
+<td>l</td>
+<td>Open device in, monitor mode, message analyzer mode, with single frame sending possibility .</td>
+</tr>
+
+<tr>
+<td>tiiildd</td>
+<td>In Monitor mode, transmits full header and data frame. <br>
+    In Master mode, updates table set with new frame<br>
+    In Slave mode, updates table set with new data<br>
+0ii: Identifier in hexadecimal format (000-0FF) <br>
+l: Data length (0-8) <br>
+dd: Data byte value in hexadecimal format (00-FF) </td>
+</tr>
+
+<tr>
+<td>r0iil</td>
+<td>In Monitor mode, transmits header only with set ID and Length, subscribed slave should answer the header.<br>
+    In Master mode, puts or updates table set with this id for continuous sending.<br>
+    In Slave mode, updates table set with reception slot<br>
+    Proper timing is set according to LIN standard. <br>
+0ii: Identifier in hexadecimal format (000-0FF) <br>
+l: Data length (0-8)
+</td>
+</tr>
+
+<tr>
+    <td>r1ff0</td>
+    <td>In Master mode, starts sending frames from table.
+</td>
+</tr>
+
+<tr>
+    <td>r2ff0</td>
+    <td>In Master, Slave mode, clears schedule table.
+</td>
+</tr>
+
+</table>
+
+<h3> Example workflow for Monitor Mode</h3>
+<pre class="listing">
+
+000005: C  (send close command) <br>
+000006: v  (ask for firmware version)<br>
+000007: v0102 (get version number from device)<br>
+000008: V   (ask for hardware version)<br>
+000009: V0101<br>
+000010: N   <br>
+000011: N16000000<br>
+000012: W2D00<br>
+000013:<br>
+000014: S0  (speed setting, 19200)<br>
+000015: <br>
+000016: L   (open in monitor mode)<br>
+000017: <br>
+000018: r0128 (transmit header with 8 data bytes request, id 0x12)<br>
+000019: z<br>
+000020: t01280011223344556677 (slave responded for header request with 8 byte data frame)<br>
+</pre>
+
+<h3> Example workflow for Master Mode</h3>
+<pre class="listing">
+000015: <br>
+000016: O   (open in master mode)<br>
+000017: <br>
+000018: r0018 (add to schedule table frame transmission header with 8 data bytes request, id 0x01)<br>
+000019: z<br>
+000018: r0022 (add to schedule table frame transmission header with 2 data bytes request, id 0x02)<br>
+000019: z<br>
+000020: t01280011223344556677 (add to schedule table frame transmission header + data (slave task) with 8 data bytes, id 0x12)<br>
+000021: z<br>
+000022: r1ff0 (start sending frames)<br>
+000023: z<br>
+</pre>
+
+ -->
+<!-- /inlined -->
                 </div>
                 <div id="tc_device" class="">
-                    <div ng-include="'cdcmd/sources.html'"></div>
+                    <!-- inlined from cdcmd/sources.html -->
+<!-- <h3>Hardware</h3>
+<p>We are using ST STM32f04264 microcontroller. Device PCB is designed in ki-cad. All source files are available in github <a href="https://github.com/uCAN-LIN/LinUSBConverter">here</a>.
+<img class="img-responsive"   src="usblinconverter/schm.svg" alt="USB LIN Converter schematic" width="29" height="21">
+</p>
+<h3>Software</h3>
+<p>Converter software is pure C code written in free TrueSTUDIO for STM32.
+    All sources and <a href="https://github.com/uCAN-LIN/LinUSBConverter/releases">releases</a> with compilation instructions are available in our github <a href="https://github.com/uCAN-LIN/LinUSBConverter">here</a>.</p>
+
+<h3>Uploading new software</h3>
+<p> ULC have got embedded DFU USB bootloader for usage see <a href="/uccb.html"> UsbCANConverter(UCCB)</a> project. -->
+<!-- /inlined -->
                 </div>
                 <div id="tc_td" class="">
-                    <div ng-include="'cdcmd/tools.html'"></div>
+                    <!-- inlined from cdcmd/tools.html -->
+<!-- <h3>Tools</h3>
+<p>You can use ULC on any operating system with serial terminal program like for 
+	example putty. Description of all available commands can be found in About section. 
+	All commands are the same as for USB-CAN converter so all tools can be reused, see UCAN USB-CAN converter project for libs and tools. ULC is also compatible with LINUX CAN-UTILS and SOCKET CAN.
+	Device have its own terminal written in JAVA, 
+	<a data-toggle="collapse" data-parent="#accordion" href="#java" aria-expanded="true" aria-controls="collapseOne">uCCBViewer</a>. </p>
+	
+<div class="card card-block">
+	<p><b>UCCBViewer</b> is GUI program for both uCAN CAN and LIN converters. For USB-LIN converter uCCBViewer functionalities are: 
+		frame reception, transmission, master table setup. To run this program Java Runtime Enviroment(JRE) needs to be installed.
+    To run <b>UCCBViewer</b> on Linux remember to run this program as superuser. <code>sudo java -jar uCCBViewer-2.1.jar </code><br>
+    <a href="https://github.com/UsbCANConverter-UCCbasic/uCCBViewer/releases"><i class="fa fa-github-square"></i> Newest release of UCCBViewer  </a>
+	<a href="#" class="pop"> <img id="imageresource"  src="usblinconverter/UCCBViewer.webp" class="img-responsive" alt="UCCBViewer software showing LIN bus frames" width="632" height="551"> </a>
+    </p>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;"  alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(function() {
+		$('.pop').on('click', function() {
+			$('.imagepreview').attr('src', $(this).find('img').attr('src'));
+			$('#imagemodal').modal('show');
+		});
+});
+</script> -->
+<!-- /inlined -->
                 </div>
             </div>
         </div>
@@ -94,11 +503,6 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
-
-        <!--    Angular-->
-    <script src="js/angular.min.js"></script>
-    <script src="js/products.js"></script>
-
 </body>
 
 </html>

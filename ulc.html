@@ -6,12 +6,123 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Open source usb can converter.">
-    <meta name="author" content="">
+    <meta name="description" content="USB LIN converter dongle - LIN 2.1 master, slave and bus monitor with optical isolation. Works on Windows, Linux and macOS as a virtual COM port (SLCAN compatible). Open source, $27.">
+    <meta name="keywords" content="USB LIN converter, LIN bus sniffer, LIN bus monitor, LIN 2.1 USB, LIN master USB, LIN slave USB, SLCAN LIN, automotive LIN dongle, LIN bus analyzer, cheap LIN tool">
+    <meta name="author" content="uCanDevices">
+    <link rel="canonical" href="https://ucandevices.github.io/ulc.html">
 
-    <title>ucandevices.github.io/</title>
-    <!-- Coments CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <!-- Open Graph -->
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="USB LIN Converter - LIN 2.1 Master, Slave and Bus Monitor Dongle">
+    <meta property="og:description" content="Open source USB LIN converter dongle. LIN 2.1 master / slave / monitor mode, optical isolation, SLCAN compatible. Plug-and-play on Windows, Linux and macOS.">
+    <meta property="og:url" content="https://ucandevices.github.io/ulc.html">
+    <meta property="og:image" content="https://ucandevices.github.io/img/products/ulc.webp">
+    <meta property="og:site_name" content="uCanDevices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="USB LIN Converter - LIN 2.1 Master / Slave / Monitor Dongle">
+    <meta name="twitter:description" content="Open source USB LIN converter. Master, slave and sniffer mode, optical isolation, SLCAN compatible. Plug-and-play on Windows, Linux and macOS.">
+    <meta name="twitter:image" content="https://ucandevices.github.io/img/products/ulc.webp">
+
+    <title>USB LIN Converter - LIN 2.1 Master, Slave, Bus Monitor</title>
+
+    <!-- Product structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "USB LIN Converter (uLC)",
+      "image": "https://ucandevices.github.io/img/products/ulc.webp",
+      "description": "Open source USB LIN converter dongle. Supports LIN 2.1 master, slave and monitor mode, with optical isolation and software-controlled termination. Enumerates as a virtual COM port and is SLCAN compatible, working out of the box on Windows, Linux and macOS.",
+      "sku": "ULC",
+      "mpn": "ULC",
+      "brand": {"@type": "Brand", "name": "uCanDevices"},
+      "manufacturer": {"@type": "Organization", "name": "uCanDevices"},
+      "category": "Automotive bus interface",
+      "url": "https://ucandevices.github.io/ulc.html",
+      "offers": [
+        {
+          "@type": "Offer",
+          "url": "https://www.tindie.com/stores/lll7/",
+          "priceCurrency": "USD",
+          "price": "27.00",
+          "availability": "https://schema.org/InStock",
+          "seller": {"@type": "Organization", "name": "Tindie - uCanDevices"}
+        },
+        {
+          "@type": "Offer",
+          "url": "https://lectronz.com/stores/ucandevices",
+          "priceCurrency": "EUR",
+          "price": "25.00",
+          "availability": "https://schema.org/InStock",
+          "seller": {"@type": "Organization", "name": "Lectronz - uCanDevices"}
+        }
+      ]
+    }
+    </script>
+
+    <!-- BreadcrumbList structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ucandevices.github.io/"},
+        {"@type": "ListItem", "position": 2, "name": "USB LIN Converter", "item": "https://ucandevices.github.io/ulc.html"}
+      ]
+    }
+    </script>
+
+    <!-- FAQ structured data - common LLM-style questions about the LIN converter -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the cheapest USB LIN bus converter that works on Linux?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The uCanDevices USB LIN Converter (uLC) is an open-source LIN dongle around USD 27 that enumerates as a USB CDC virtual COM port on Linux, macOS and Windows. It speaks an SLCAN-style ASCII protocol so it bridges into SocketCAN via slcand and works with parts of can-utils. No proprietary driver is required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the uCanDevices USB LIN Converter support master and slave mode?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The uLC supports three modes: monitor (full frame reception plus single-frame transmission), master (up to 15 scheduled frame slots) and slave (up to 15 scheduled frame slots for slave simulation). Modes are selected over the virtual COM port with the O, L and l commands."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the LIN side optically isolated from the USB host?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The LIN transceiver is optically isolated from the USB / PC side, which protects the host from automotive transients. The LIN side needs an external 4.5 to 28 V supply, since USB only powers the MCU side."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which LIN baud rates and LIN version are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "LIN 2.1 is supported, with selectable 9600 and 19200 baud rates. Classic and enhanced checksum can be toggled with the xm command. Custom frame timing (offset and response wait time) is available in master mode."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the firmware open source?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Both firmware and hardware are open source on GitHub at https://github.com/uCAN-LIN/LinUSBConverter. The device also has a USB DFU bootloader for in-field updates."
+          }
+        }
+      ]
+    }
+    </script>
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 
@@ -32,35 +143,79 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+<!-- Google tag (gtag.js) - GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBYPZF7RV0"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-91038702-1', 'auto');
-  ga('send', 'pageview');
-
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZBYPZF7RV0', { 'anonymize_ip': true });
 </script>
 </head>
 
-<body id="page-top" ng-app="agmodule" ng-controller="pagecontroller">
+<body id="page-top">
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-		<div ng-include="'header.html'"> </div>
-	</nav>
-	<header></header>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="index.html" title="uCanDevices - USB CAN, LIN and SENT converters">uCanDevices</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="uccb.html">USB CAN Converter</a></li>
+                        <li><a href="cfuc.html">FDCAN USB Converter</a></li>
+                        <li><a href="ulc.html">USB LIN Converter</a></li>
+                        <li><a href="sentusb.html">SENT USB Converter</a></li>
+                        <li><a href="cec.html">CAN Log/Eth Converter</a></li>
+                        <li><a href="mpcie_uccb.html">USB CAN Converter mPCIe</a></li>
+                        <li><a href="iolink.html">IO-Link USB/Ethernet Converter</a></li>
+                    </ul>
+                </li>
+                <li><a class="page-scroll" href="buy.html">Buy</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">GitHub <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://github.com/UsbCANConverter-UCCbasic" rel="noopener">USB CAN Converter</a></li>
+                        <li><a href="https://github.com/ucandevices/CFDC_embedded" rel="noopener">FDCAN USB Converter</a></li>
+                        <li><a href="https://github.com/uCAN-LIN/LinUSBConverter" rel="noopener">USB LIN Converter</a></li>
+                        <li><a href="https://github.com/ucandevices/SENTToUSB" rel="noopener">SENT USB Converter</a></li>
+                        <li><a href="https://github.com/CanEthernetConverter" rel="noopener">CAN Log/Eth Converter</a></li>
+                        <li><a href="https://github.com/UsbCANConverter-UCCbasic/uCCB-mPICe" rel="noopener">USB CAN Converter mPCIe</a></li>
+                        <li><a href="https://github.com/ucandevices/IO-LINK-Covnerter" rel="noopener">IO-Link USB/Ethernet Converter</a></li>
+                    </ul>
+                </li>
+                <li><a class="page-scroll" href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 
     <section id="services">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Usb LIN converter.</h2>
+                    <h1 class="section-heading">USB LIN Converter</h1>
+                    <p class="lead">Open source LIN 2.1 master, slave and bus monitor dongle. SLCAN compatible. Plug-and-play on Windows, Linux and macOS.</p>
+                    <p>
+                        <a class="btn btn-primary btn-lg" href="https://www.tindie.com/products/lll7/usb-lin-converter/" rel="noopener">Buy on Tindie</a>
+                        <a class="btn btn-default btn-lg" href="https://lectronz.com/stores/ucandevices" rel="noopener">Buy on Lectronz</a>
+                        <a class="btn btn-default btn-lg" href="https://github.com/uCAN-LIN/LinUSBConverter" rel="noopener">Source on GitHub</a>
+                    </p>
                     <hr class="primary">
                 </div>
             </div>
         </div>
 
- 
+
 <!--        page contents tabs-->
         <div class="container-fluid">
             <ul class="nav nav-tabs">
@@ -70,37 +225,288 @@
             </ul>
             <div class="tab-content">
                 <div id="tc_desc" class="">
-                    <div ng-include="'usblinconverter/desc.html'"></div>
+                    <!-- inlined from usblinconverter/desc.html -->
+
+<p style="text-align:justify; font-size:75%">
+    Product and its documentation is supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of this product. This product is not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
+</p>
+
+<h3>Description</h3>
+<p>LIN(Local interconnect network) Usb Converter(LUC) can work both with PC without any additional drivers,
+     it creates virtual COM port that handles LIN communication. 
+Multiple features are supported like:
+  <li> LIN 2.1 support</li>
+	<li>Monitor mode, for all frame reception, and sending single frames.</li>
+    <li>Master mode, with up to 15 frame slots</li>
+    <li>Slave mode, with up to 15 frame slots</li>
+    <li>19200/9600 option baud rate</li>	
+  <li><b>Optical isolation for LIN</b></li>
+  <li>External 4.5 V to 28 V is needed for LIN network</li>
+  <li>Device size is 31x18 mm (without USB connector)</li>
+  <li>Termination resistors controlled by software</li>
+  <li>USB dfu compatible bootloader for new software</li>
+  <li>SLCAN compatible, works with LINUX socket-can and some of CAN-utils</li>
+<br>
+
+
+<h3>Introduction video</h3>
+<div class="video-container">
+<iframe loading="lazy" src="https://www.youtube.com/embed/6_6hLYNj4pU?rel=0&amp;" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+
+<h3>Details</h3>
+<p>Board bottom view</p>
+<img class="img-responsive"  style="max-width: 50%;" src="usblinconverter/UCCB11back.webp" alt="USB LIN converter dongle - bottom view of the PCB" width="1200" height="402">
+
+<p>After USB enumeration device creates virtual COM port that is used both for data transfer and converter setup. 
+     Device is be powered directly from USB, but external 4.5-28V is needed to supply LIN transceiver. 
+     Board layout is shown below.<br>
+    <img class="img-responsive"   src="usblinconverter/Layout.svg" alt="USB LIN converter PCB layout - pinout for LIN bus, USB and power" width="605" height="582">
+</p>
+
+<h3>Drivers</h3>
+<p>For proper work on Windows you need to install virtual com drivers from <a href="http://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-stm32102.html">ST site </a> or download from <a href="/download/uccb/VirtualComportDriver.zip"><i class="glyphicon glyphicon-download-alt"></i> here </a>.</p>
+
+<h3>COM port Commands</h3>
+<p>
+    Below is list of all available commands. 
+    USART baud rate is virtual so can be any. 
+    All commands are ASCI format. Commands are terminated with newline character CR (0xD). 
+    On error the device responses with 0x7 value. 
+    
+<table class="table-bordered">
+<tr>
+<td><b>Command</b></td>
+<td><b>Description</b></td>
+</tr>
+
+<tr>
+<td>O</td>
+<td>Opens device in master mode.</td>
+</tr>
+
+<tr>
+<td>C</td>
+<td>Close LIN port on device, frame will not be received.</td>
+</tr>
+
+<tr>
+<td>Sx</td>
+<td>Baud rate selection: <br>
+    S2 - 9600<br>
+    S1,S3-S8 - 19200<br>
+</td>
+</tr>
+
+<tr>
+<td>V</td>
+<td>Get hardware version.</td>
+</tr>
+
+<tr>
+<td>v</td>
+<td>Get firmware version.</td>
+</tr>
+
+<tr>
+<td>N</td>
+<td>Get serial number.</td>
+</tr>
+
+<tr>
+<td>L</td>
+<td>Open device in, slave mode, for LIN slave simulation.</td>
+</tr>
+
+<tr>
+<td>l</td>
+<td>Open device in, monitor mode, message analyzer mode, with single frame sending possibility .</td>
+</tr>
+
+<tr>
+<td>tiiildd</td>
+<td>In Monitor mode, transmits full header and data frame. <br>
+    In Master mode, updates table set with new frame<br>
+    In Slave mode, updates table set with new data<br>
+0ii: Identifier in hexadecimal format (000-0FF) <br>
+l: Data length (0-8) <br>
+dd: Data byte value in hexadecimal format (00-FF) </td>
+</tr>
+
+<tr>
+<td>r0iil</td>
+<td>In Monitor mode, transmits header only with set ID and Length, subscribed slave should answer the header.<br>
+    In Master mode, puts or updates table set with this id for continuous sending.<br>
+    In Slave mode, updates table set with reception slot<br>
+    Proper timing is set according to LIN standard. <br>
+0ii: Identifier in hexadecimal format (000-0FF) <br>
+l: Data length (0-8)
+</td>
+</tr>
+
+<tr>
+    <td>r1ff0</td>
+    <td>In Master mode, starts sending frames from table.
+</td>
+</tr>
+
+<tr>
+    <td>r2ff0</td>
+    <td>In Master, Slave mode, clears schedule table.
+</td>
+</tr>
+ 
+<tr>
+    <td>xm</td>
+    <td>Swich checksum for classic x2 for enhanced x1 </td>
+</tr>
+
+</table>
+
+<h3> Example workflow for Monitor Mode</h3>
+<pre class="listing">
+
+000005: C  (send close command) <br>
+000006: v  (ask for firmware version)<br>
+000007: v0102 (get version number from device)<br>
+000008: V   (ask for hardware version)<br>
+000009: V0101<br>
+000010: N   <br>
+000011: N16000000<br>
+000012: W2D00<br>
+000013:<br>
+000014: S0  (speed setting, 19200)<br>
+000015: <br>
+000016: L   (open in monitor mode)<br>
+000017: <br>
+000018: r0128 (transmit header with 8 data bytes request, id 0x12)<br>
+000019: z<br>
+000020: t01280011223344556677 (slave responded for header request with 8 byte data frame)<br>
+</pre>
+
+<h3> Example workflow for Master Mode</h3>
+<pre class="listing">
+000015: <br>
+000016: O   (open in master mode)<br>
+000017: <br>
+000018: r0018 (add to schedule table frame transmission header with 8 data bytes request, id 0x01)<br>
+000019: z<br>
+000018: r0022 (add to schedule table frame transmission header with 2 data bytes request, id 0x02)<br>
+000019: z<br>
+000020: t01280011223344556677 (add to schedule table frame transmission header + data (slave task) with 8 data bytes, id 0x12)<br>
+000021: z<br>
+000022: r1ff0 (start sending frames)<br>
+000023: z<br>
+</pre>
+
+<h4> Custom frame timing  </h4>
+You can tweek the timing in master mode just type upper letter T instead of t or R instead of r 
+then format is similar  
+<pre class="listing">
+T 0 id id t1 t1 t2 t2 len d0 d0 d1 d1 d2 d2 
+</pre>
+where: <br>
+id - frame id same as standard <br>
+t1 - frame offset in ms<br>
+t2 - response wait time in ms<br>
+len - frame length <br>
+d0 .... - data   <br>
+example frame with id 1 5 ms offset and 1 ms wait time after sending 3 bytes of data AA BB CC
+<pre class="listing">
+T0005013AABBCC
+</pre>
+
+<h3>FAQ</h3>
+<dl>
+  <dt><b>What is the cheapest USB LIN bus converter that works on Linux?</b></dt>
+  <dd>The uCanDevices USB LIN Converter (uLC) is an open-source LIN dongle around $27 that enumerates as a USB CDC virtual COM port on Linux, macOS and Windows. It speaks an SLCAN-style ASCII protocol so it bridges into SocketCAN via <code>slcand</code> and works with parts of can-utils. No proprietary driver is required.</dd>
+
+  <dt><b>Does it support master and slave mode?</b></dt>
+  <dd>Yes &mdash; monitor (full reception plus single-frame transmission), master (up to 15 scheduled slots) and slave (up to 15 slots for slave simulation). Modes are selected over the serial port with the <code>O</code>, <code>L</code> and <code>l</code> commands.</dd>
+
+  <dt><b>Is the LIN side optically isolated from the USB host?</b></dt>
+  <dd>Yes. The LIN transceiver is optically isolated from the PC side, protecting the host from automotive transients. The LIN side needs an external 4.5&ndash;28 V supply since USB only powers the MCU.</dd>
+
+  <dt><b>Which LIN baud rates and LIN version are supported?</b></dt>
+  <dd>LIN 2.1, with selectable 9600 and 19200 baud. Classic and enhanced checksum are switchable with the <code>xm</code> command. Custom frame timing is supported in master mode.</dd>
+
+  <dt><b>Is the firmware open source?</b></dt>
+  <dd>Yes &mdash; firmware and hardware are open source at <a href="https://github.com/uCAN-LIN/LinUSBConverter">github.com/uCAN-LIN/LinUSBConverter</a>. The device also has a USB DFU bootloader for in-field updates.</dd>
+</dl>
+<!-- /inlined -->
                 </div>
                 <div id="tc_device" class="">
-                    <div ng-include="'usblinconverter/sources.html'"></div>
+                    <!-- inlined from usblinconverter/sources.html -->
+<h3>Hardware</h3>
+<p>We are using ST STM32f04264 microcontroller. Device PCB is designed in ki-cad. All source files are available in github <a href="https://github.com/uCAN-LIN/LinUSBConverter">here</a>.
+<img class="img-responsive" loading="lazy" decoding="async" src="usblinconverter/schm.svg" alt="USB LIN Converter schematic" width="1200" height="849" style="max-width: 100%; height: auto;">
+</p>
+<h3>Software</h3>
+<p>Converter software is pure C code written in free TrueSTUDIO for STM32.
+    All sources and <a href="https://github.com/uCAN-LIN/LinUSBConverter/releases">releases</a> with compilation instructions are available in our github <a href="https://github.com/uCAN-LIN/LinUSBConverter">here</a>.</p>
+
+<h3>Uploading new software</h3>
+<p> ULC have got embedded DFU USB bootloader for usage see <a href="/uccb.html"> UsbCANConverter(UCCB)</a> project see <a href="https://www.youtube.com/watch?v=-gnX25AGyI0">tutorial</a>.
+<!-- /inlined -->
                 </div>
                 <div id="tc_td" class="">
-                    <div ng-include="'usblinconverter/tools.html'"></div>
+                    <!-- inlined from usblinconverter/tools.html -->
+<h3>Tools</h3>
+<h4>Python support</h4>
+<p> There is dedicated python library for LUC, (uCANLinTools) with: LDF parsing support, LIN frame (PIDs) encoding/decoding, LIN master, slave support. See 
+	<a href="https://pypi.org/project/ucanlintools/"> uCANLinTools</a> for more info, source code and examples see <a href="https://github.com/uCAN-LIN/LinUSBConverter/tree/master/python_lib">here</a>
+</p>
+
+<h4>Serial port</h4>
+<p>You can use LUC on any operating system with serial terminal program like for 
+	example putty. Description of all available commands can be found in About section. 
+	All commands are the same as for USB-CAN converter so all tools can be reused, see UCAN USB-CAN converter project for libs and tools. LUC is also compatible with LINUX CAN-UTILS and SOCKET CAN.
+	Device have its own terminal written in JAVA, 
+	<a data-toggle="collapse" data-parent="#accordion" href="#java" aria-expanded="true" aria-controls="collapseOne">uCCBViewer</a>. </p>
+	
+<div class="card card-block">
+	<p><b>UCCBViewer</b> is GUI program for both uCAN CAN and LIN converters. For USB-LIN converter uCCBViewer functionalities are: 
+		frame reception, transmission, master table setup. To run this program Java Runtime Enviroment(JRE) needs to be installed.
+    To run <b>UCCBViewer</b> on Linux remember to run this program as superuser. <code>sudo java -jar uCCBViewer-2.1.jar </code><br>
+    <a href="https://github.com/UsbCANConverter-UCCbasic/uCCBViewer/releases"><i class="fa fa-github-square"></i> Newest release of UCCBViewer  </a>
+	<a href="#" class="pop"> <img id="imageresource"  src="usblinconverter/UCCBViewer.webp" class="img-responsive" alt="UCCBViewer software showing LIN bus frames" width="632" height="551"> </a>
+    </p>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;"  alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(function() {
+		$('.pop').on('click', function() {
+			$('.imagepreview').attr('src', $(this).find('img').attr('src'));
+			$('#imagemodal').modal('show');
+		});
+});
+</script>
+<!-- /inlined -->
                 </div>
             </div>
-            <div id="gitalk-container"></div>
+            <!-- Questions / contact CTA -->
+            <div class="text-center" style="margin: 40px 0;">
+                <h3>Questions about the USB LIN Converter?</h3>
+                <p>
+                    <a class="btn btn-default" href="https://github.com/uCAN-LIN/LinUSBConverter/issues" rel="noopener"><i class="fa fa-github"></i> Open a GitHub issue</a>
+                    <a class="btn btn-default" href="mailto:devices.ucan@gmail.com"><i class="fa fa-envelope"></i> Email us</a>
+                </p>
+            </div>
         </div>
 
 
     </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-    <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
-
-   
-    <script type="text/javascript">
-      const gitalk = new Gitalk({
-        clientID: '8e1960fcb28f119bc82f',
-        clientSecret: '652465d1d4c7a7867c3e87ee006160ce226a6b96',
-        repo: 'ucandevices',      // The repository of store comments,
-        owner: 'ucandevices',
-        admin: ['ucandevices'],
-        id: "LUC",      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
-      gitalk.render('gitalk-container');
-    </script>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
@@ -115,11 +521,6 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
-
-        <!--    Angular-->
-    <script src="js/angular.min.js"></script>
-    <script src="js/products.js"></script>
-
 </body>
 
 </html>

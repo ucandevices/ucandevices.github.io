@@ -6,10 +6,46 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Convert FDCAN signals to USB.">
-    <meta name="author" content="">
+    <meta name="description" content="USB CAN FD converter (CFUC) - open source CAN FD and classic CAN to USB dongle. ISO CAN FD support, SLCAN protocol, virtual COM port on Windows, Linux and macOS.">
+    <meta name="keywords" content="USB CAN FD converter, CAN FD USB, FDCAN dongle, ISO CAN FD, SLCAN FD, CAN FD sniffer, cheap CAN FD interface">
+    <meta name="author" content="uCanDevices">
+    <link rel="canonical" href="https://ucandevices.github.io/cfuc.html">
 
-    <title>CANDevices.com.pl</title>
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="USB CAN FD Converter (CFUC) - ISO CAN FD to USB Dongle">
+    <meta property="og:description" content="Open source CAN FD and classic CAN to USB converter. ISO CAN FD, SLCAN protocol, plug-and-play on Windows, Linux and macOS.">
+    <meta property="og:url" content="https://ucandevices.github.io/cfuc.html">
+    <meta property="og:image" content="https://ucandevices.github.io/img/products/cfuc.webp">
+    <meta property="og:site_name" content="uCanDevices">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="USB CAN FD Converter (CFUC) - ISO CAN FD to USB Dongle">
+    <meta name="twitter:description" content="Open source CAN FD and classic CAN to USB converter. ISO CAN FD, SLCAN protocol, plug-and-play.">
+    <meta name="twitter:image" content="https://ucandevices.github.io/img/products/cfuc.webp">
+
+    <title>USB CAN FD Converter (CFUC) - ISO CAN FD to USB</title>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "USB CAN FD Converter (CFUC)",
+      "image": "https://ucandevices.github.io/img/products/cfuc.webp",
+      "description": "Open source USB CAN FD converter. Supports ISO CAN FD and classic CAN, SLCAN text protocol, virtual COM port enumeration on Windows, Linux and macOS.",
+      "sku": "CFUC",
+      "brand": {"@type": "Brand", "name": "uCanDevices"},
+      "category": "Automotive bus interface",
+      "url": "https://ucandevices.github.io/cfuc.html",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.tindie.com/stores/lll7/",
+        "priceCurrency": "USD",
+        "price": "22.00",
+        "availability": "https://schema.org/InStock",
+        "seller": {"@type": "Organization", "name": "Tindie - uCanDevices"}
+      }
+    }
+    </script>
     <!-- Coments CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
     <!-- Bootstrap Core CSS -->
@@ -33,29 +69,72 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+<!-- Google tag (gtag.js) - GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBYPZF7RV0"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-91038702-1', 'auto');
-  ga('send', 'pageview');
-
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZBYPZF7RV0', { 'anonymize_ip': true });
 </script>
 </head>
 
-<body id="page-top" ng-app="agmodule" ng-controller="pagecontroller">
+<body id="page-top">
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-		<div ng-include="'header.html'"> </div>
-	</nav>
-	<header></header>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="index.html" title="uCanDevices - USB CAN, LIN and SENT converters">uCanDevices</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="uccb.html">USB CAN Converter</a></li>
+                        <li><a href="cfuc.html">FDCAN USB Converter</a></li>
+                        <li><a href="ulc.html">USB LIN Converter</a></li>
+                        <li><a href="sentusb.html">SENT USB Converter</a></li>
+                        <li><a href="cec.html">CAN Log/Eth Converter</a></li>
+                        <li><a href="mpcie_uccb.html">USB CAN Converter mPCIe</a></li>
+                        <li><a href="iolink.html">IO-Link USB/Ethernet Converter</a></li>
+                    </ul>
+                </li>
+                <li><a class="page-scroll" href="buy.html">Buy</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">GitHub <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://github.com/UsbCANConverter-UCCbasic" rel="noopener">USB CAN Converter</a></li>
+                        <li><a href="https://github.com/ucandevices/CFDC_embedded" rel="noopener">FDCAN USB Converter</a></li>
+                        <li><a href="https://github.com/uCAN-LIN/LinUSBConverter" rel="noopener">USB LIN Converter</a></li>
+                        <li><a href="https://github.com/ucandevices/SENTToUSB" rel="noopener">SENT USB Converter</a></li>
+                        <li><a href="https://github.com/CanEthernetConverter" rel="noopener">CAN Log/Eth Converter</a></li>
+                        <li><a href="https://github.com/UsbCANConverter-UCCbasic/uCCB-mPICe" rel="noopener">USB CAN Converter mPCIe</a></li>
+                        <li><a href="https://github.com/ucandevices/IO-LINK-Covnerter" rel="noopener">IO-Link USB/Ethernet Converter</a></li>
+                    </ul>
+                </li>
+                <li><a class="page-scroll" href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 
     <section id="services">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">FDCAN USB converter.</h2>
+                    <h1 class="section-heading">USB CAN FD Converter (CFUC)</h1>
+                    <p class="lead">Open source CAN FD and classic CAN to USB converter. ISO CAN FD, SLCAN-style protocol, plug-and-play virtual COM port.</p>
+                    <p>
+                        <a class="btn btn-primary btn-lg" href="https://www.tindie.com/stores/lll7/" rel="noopener">Buy on Tindie</a>
+                        <a class="btn btn-default btn-lg" href="https://github.com/ucandevices/CFDC_embedded" rel="noopener">Source on GitHub</a>
+                    </p>
                     <hr class="primary">
                 </div>
             </div>
@@ -71,13 +150,126 @@
             </ul>
                 <div class="tab-content">
                     <div id="tc_desc" class="">
-                        <div ng-include="'cfuc/desc.html'"></div>
+                        <!-- inlined from cfuc/desc.html -->
+<p style="text-align:justify; font-size:75%">
+    Product and its documentation is supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of this product. This product is not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
+</p>
+<h3>Description</h3>
+<p>FDCAN USB Converter (CFDC) works as CAN to USB converter. Multiple features are supported like:
+  <li>CAN Flexible Data Rate version  1.0 (CAN FD) supported, Microchip MCP2542FD FD CAN Transceiver </li>
+  <li>CAN version 2.0 support (ISO 11898-1: 2015)</li>  
+	<li>receiving and sending of normal and extended frames, brs frames</li>
+	<li>CAN baudrate up to 8 Mbps</li>
+    <li>internal/external loop back mode, listen only mode </li>
+    <li>hardware frames filtering</li>
+  <li> <a href="https://github.com/linux-can/can-utils"> socket-can </a> via
+     <a href="https://github.com/torvalds/linux/blob/master/drivers/net/can/usb/gs_usb.c">gs_usb driver</a> </li>
+  <li>  Works under windows (WSL is needed)</li>
+  <li> <a href=https://github.com/hardbyte/python-can>python-can </a> support </li>
+  <li>device size is 26x14 mm (including USB connector)</li>
+  <li>manual selectable termination resistors</li>
+  <li>dfu bootloader with <a href="https://dfu-util.sourceforge.net/">dfu-utils</a></li>
+<br>
+
+</p>
+
+<img class="img-responsive"   src="cfuc/top.webp" style="max-width: 30%;" alt="CFUC USB CAN FD Converter PCB top view" width="913" height="449">
+<img class="img-responsive"   src="cfuc/bottom.webp" style="max-width: 30%;" alt="CFUC USB CAN FD Converter PCB bottom view" width="976" height="518">
+
+<!-- <img class="img-responsive"   src="cfuc/cfuc_bottom.webp" alt="CFUC PCB bottom side close-up" width="835" height="433"> -->
+<h3>Application support</h3>
+<p>
+    Ensure the gs_usb kernel module is enabled: <pre class="listing">sudo modprobe gs_usb <br>sudo modprobe can_dev</pre>
+    Connect device to USB, and check if initialized properly <pre class="listing">ip link list</pre>There should be sth like this <pre class="listing">10: can0: NOARP,ECHO mtu 16 qdisc noop state DOWN mode DEFAULT group default qlen 10 link/can </pre>  Connect UCCB device to CAN network. <br> 
+    Configure the device: <pre class="listing">sudo ip link set can1 type can bitrate 1000000 dbitrate 4000000 fd on </pre>Replace can0 with the name of your device, and 500000 with the desired bitrate.
+    <br>Bring the device up: <pre class="listing">sudo ifconfig can0 up</pre>
+    <br>Use the device with SocketCAN. For example, <pre class="listing"> candump can0 </pre>For more tools see <a href="https://github.com/linux-can/can-utils">can-utils</a>.
+</p>
+<h3> Windows 10/11 support</h3>
+<p>
+  CAN is supported out of the box with <a href="https://github.com/ucandevices/CFDC_embedded/releases/tag/viewer2.0">uCANViewer.2.0</a>
+  <img class="img-responsive"   src="cfuc/uCANViewer2desc.webp" style="max-width: 60%;" alt="uCANViewer2 software showing CAN FD bus traffic" width="1125" height="705">
+</p>
+
+<p>
+  For FD support on windows CANFD converter on windows you need:
+  <br>1. Install WSL as described  <a href="https://learn.microsoft.com/en-us/windows/wsl/install">here</a>
+  <br>2. If you are on windows 10 you need to compile latest kernel with CAN support there is no full tutorial on this but take a look at <a href="https://gist.github.com/oleksis/eb6d2f1cd2a6946faefb139aa0e38c35"> this page</a> 
+  <br>3.To connect USB device follow <a href="https://learn.microsoft.com/en-us/windows/wsl/connect-usb"> this tutorial </a> but in short.
+  Install <a href="https://github.com/dorssel/usbipd-win">usbipd</a> 
+  Ensure that device is visible in windows in powershell 
+  <pre class="listing">usbipd wsl list</pre>
+  You should see device like below <pre class="listing"> 5-1    1d50:606f  cfuc, cfuc DFU interface                                      Not attached</pre> 
+  Attach device using (pick your number from list command, in my example 5-1 )
+  <pre class="listing">usbipd wsl attach --busid 5-1</pre>
+  Now devices should be visible in wsl, check with lsusb
+
+</p>
+<p>All stuff tools/sources/examples etc can be found <a href="https://github.com/ucandevices/CFDC_embedded"> here </a> </p>
+<h3>Bootloader</h3>
+Device have support for USB DFU bootloader for new firmware upload see  <a href="https://dfu-util.sourceforge.net/">dfu-utils</a> <a href="https://www.youtube.com/watch?v=-gnX25AGyI0">tutorial</a>. 
+
+<h3>Drivers</h3>
+<p>Device support <a href="https://github.com/torvalds/linux/blob/master/drivers/net/can/usb/gs_usb.c">gs_usb driver</a>, Device is powered directly from USB</p>
+
+<h3>Embedded software</h3>
+Embedded software is opensource and details can be found <a href="https://github.com/ucandevices/CFDC_embedded/tree/master/gsusb_firmware/budgetcan_fw">here</a>
+
+<h3>Hardware</h3>
+Hardware is opensource schematic and PCB is done in KiCAD schematics <a href="https://github.com/ucandevices/CFDC_embedded/tree/master/pcb">here</a> 
+
+<h3>Releases</h3>
+For releases see <a href="https://github.com/ucandevices/CFDC_embedded/releases"> release link</a>
+If you want some QUI please check <a href="https://github.com/collin80/SavvyCAN"> SavvyCAN</a>
+
+<h3> Random useful commands</h3>
+<pre class="listing"> 
+sudo ip link set can0 type can bitrate 1000000 dbitrate 4000000 fd on
+sudo ifconfig can0 txqueuelen 99 #extending queue optional but if you getting queue full error consider 
+sudo ip link set can0 up
+
+#generate random FD frames on can 
+cangen can0 -g 4 -I i -x -f -b
+
+#go to bootlader
+sudo dfu-util -l
+sudo dfu-util -e
+sudo dfu-util --dfuse-address -d 0483:df11 -c 1 -i 0 -a 0 -s 0x08000000:leave -D ucan_gsusb_fw.bin
+
+#detailed info about can0
+ip -details link show can0
+#loopback test
+sudo ip link set can0 type can bitrate 100000 dbitrate 1000000 fd on loopback on 
+</pre>
+<!-- /inlined -->
                     </div>
                     <div id="tc_device" class="">
-                        <div ng-include="'cfuc/sources.html'"></div>
+                        <!-- inlined from cfuc/sources.html -->
+
+<!-- /inlined -->
                     </div>
                     <div id="tc_td" class="">
-                        <div ng-include="'cfuc/tools.html'"></div>
+                        <!-- inlined from cfuc/tools.html -->
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;"  alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(function() {
+		$('.pop').on('click', function() {
+			$('.imagepreview').attr('src', $(this).find('img').attr('src'));
+			$('#imagemodal').modal('show');
+		});
+});
+</script>
+<!-- /inlined -->
                     </div>
                 </div>
                 <div id="gitalk-container"></div>
@@ -87,7 +279,6 @@
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-    <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
 
     
     <script type="text/javascript">
@@ -116,11 +307,6 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
-
-        <!--    Angular-->
-    <script src="js/angular.min.js"></script>
-    <script src="js/products.js"></script>
-
 </body>
 
 </html>

@@ -6,10 +6,46 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="IO-LINK converter.">
-    <meta name="author" content="">
+    <meta name="description" content="IO-Link USB / Ethernet converter - master interface for industrial IO-Link sensors. Lab and prototyping tool for IO-Link communication over USB or Ethernet.">
+    <meta name="keywords" content="IO-Link USB, IO-Link Ethernet, IO-Link master, IO-Link converter, industrial sensor interface, IEC 61131-9">
+    <meta name="author" content="uCanDevices">
+    <link rel="canonical" href="https://ucandevices.github.io/iolink.html">
 
-    <title>CANDevices.com.pl</title>
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="IO-Link USB / Ethernet Converter - Master Interface">
+    <meta property="og:description" content="IO-Link master interface over USB or Ethernet. Talk to IO-Link sensors from a PC for lab work and prototyping.">
+    <meta property="og:url" content="https://ucandevices.github.io/iolink.html">
+    <meta property="og:image" content="https://ucandevices.github.io/img/products/iolink.webp">
+    <meta property="og:site_name" content="uCanDevices">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="IO-Link USB / Ethernet Converter - Master Interface">
+    <meta name="twitter:description" content="IO-Link master interface over USB or Ethernet. Talk to IO-Link sensors from a PC.">
+    <meta name="twitter:image" content="https://ucandevices.github.io/img/products/iolink.webp">
+
+    <title>IO-Link USB / Ethernet Converter - Master Interface</title>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "IO-Link USB / Ethernet Converter",
+      "image": "https://ucandevices.github.io/img/products/iolink.webp",
+      "description": "IO-Link master interface over USB or Ethernet. Communicate with IO-Link (IEC 61131-9) sensors from a PC. Useful for lab work, prototyping and integration testing.",
+      "sku": "IOLINK",
+      "brand": {"@type": "Brand", "name": "uCanDevices"},
+      "category": "Industrial sensor interface",
+      "url": "https://ucandevices.github.io/iolink.html",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.tindie.com/stores/lll7/",
+        "priceCurrency": "USD",
+        "price": "30.00",
+        "availability": "https://schema.org/InStock",
+        "seller": {"@type": "Organization", "name": "Tindie - uCanDevices"}
+      }
+    }
+    </script>
     <!-- Coments CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
     <!-- Bootstrap Core CSS -->
@@ -33,29 +69,72 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+<!-- Google tag (gtag.js) - GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBYPZF7RV0"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-91038702-1', 'auto');
-  ga('send', 'pageview');
-
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZBYPZF7RV0', { 'anonymize_ip': true });
 </script>
 </head>
 
-<body id="page-top" ng-app="agmodule" ng-controller="pagecontroller">
+<body id="page-top">
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-		<div ng-include="'header.html'"> </div>
-	</nav>
-	<header></header>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="index.html" title="uCanDevices - USB CAN, LIN and SENT converters">uCanDevices</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="uccb.html">USB CAN Converter</a></li>
+                        <li><a href="cfuc.html">FDCAN USB Converter</a></li>
+                        <li><a href="ulc.html">USB LIN Converter</a></li>
+                        <li><a href="sentusb.html">SENT USB Converter</a></li>
+                        <li><a href="cec.html">CAN Log/Eth Converter</a></li>
+                        <li><a href="mpcie_uccb.html">USB CAN Converter mPCIe</a></li>
+                        <li><a href="iolink.html">IO-Link USB/Ethernet Converter</a></li>
+                    </ul>
+                </li>
+                <li><a class="page-scroll" href="buy.html">Buy</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">GitHub <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://github.com/UsbCANConverter-UCCbasic" rel="noopener">USB CAN Converter</a></li>
+                        <li><a href="https://github.com/ucandevices/CFDC_embedded" rel="noopener">FDCAN USB Converter</a></li>
+                        <li><a href="https://github.com/uCAN-LIN/LinUSBConverter" rel="noopener">USB LIN Converter</a></li>
+                        <li><a href="https://github.com/ucandevices/SENTToUSB" rel="noopener">SENT USB Converter</a></li>
+                        <li><a href="https://github.com/CanEthernetConverter" rel="noopener">CAN Log/Eth Converter</a></li>
+                        <li><a href="https://github.com/UsbCANConverter-UCCbasic/uCCB-mPICe" rel="noopener">USB CAN Converter mPCIe</a></li>
+                        <li><a href="https://github.com/ucandevices/IO-LINK-Covnerter" rel="noopener">IO-Link USB/Ethernet Converter</a></li>
+                    </ul>
+                </li>
+                <li><a class="page-scroll" href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 
     <section id="services">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">IO-LINK Converter.</h2>
+                    <h1 class="section-heading">IO-Link USB / Ethernet Converter</h1>
+                    <p class="lead">IO-Link master interface over USB or Ethernet. Talk to IO-Link sensors from a PC for lab work and prototyping.</p>
+                    <p>
+                        <a class="btn btn-primary btn-lg" href="https://www.tindie.com/stores/lll7/" rel="noopener">Buy on Tindie</a>
+                        <a class="btn btn-default btn-lg" href="https://github.com/ucandevices/IO-LINK-Covnerter" rel="noopener">Source on GitHub</a>
+                    </p>
                     <hr class="primary">
                 </div>
             </div>
@@ -71,13 +150,59 @@
             </ul>
                 <div class="tab-content">
                     <div id="tc_desc" class="">
-                        <div ng-include="'iolink/desc.html'"></div>
+                        <!-- inlined from iolink/desc.html -->
+<p style="text-align:justify; font-size:75%">
+    Product and its documentation is supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of this product. This product is not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
+</p>
+<h3>Description</h3>
+<p>IO-LINK Phisical layer conveter to USB/Ethernet converter. Pipes most of IO-LINK traffic to PC, to simply plaining with IO-LINK sensors. 
+  <li> 4 IO-LINK ports I/O and IO Link Support </li>
+  <li> Python library support </li>
+  <li> USB Virtual Port</li>
+  <li> L6360 ST IO-LINK Transciver</li>
+  <li> 24 Volts supply</li>
+  <li> New software Upload using DFU </li>
+  <li> Open source HW, Embedded SW, python Libraries</li>
+
+<br>
+
+<!-- <p>See <a href="https://www.youtube.com/watch?v=8FbeczZ1ydo">tutorial on YouTube </a></p> -->
+<img class="img-responsive" src="iolink/desc.webp" alt="IO-Link USB / Ethernet converter overview diagram" width="1200" height="964">  
+<h3>Drivers</h3>
+<p>For proper work on Windows you need to install virtual com drivers from <a href="http://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-stm32102.html">ST site </a> or download from <a href="/download/uccb/VirtualComportDriver.zip"><i class="glyphicon glyphicon-download-alt"></i> here </a>.</p>
+<!-- /inlined -->
                     </div>
                     <div id="tc_device" class="">
-                        <div ng-include="'iolink/sources.html'"></div>
+                        <!-- inlined from iolink/sources.html -->
+<h3>Hardware</h3>
+<p>We are using STM32F0 microcontroller. Device PCB is designed in ki-cad. All source files are available in github <a href="https://github.com/ucandevices/IO-LINK-Covnerter/tree/main/pcb">here</a>.
+    <img class="img-responsive"   src="iolink/Microcontroller.svg" alt="IO-Link converter microcontroller block diagram" width="45" height="25"> </p>
+    <img class="img-responsive"   src="iolink/IO_LINK_0.svg" alt="IO-Link protocol communication diagram" width="41" height="21"> </p>
+</p>
+<h3>Software</h3>
+<p>Converter software is pure C code written in free version of STM32Cube IDE studio. All sources and <a href="https://github.com/UsbCANConverter-UCCbasic/UCCBEmbedded/releases">releases</a> with compilation instructions are available in our github <a href="https://github.com/ucandevices/IO-LINK-Covnerter/tree/main/firmware/IOLINK_MASTER">here</a>.</p>
+<p>Production files:<br>
+    <a href="https://github.com/ucandevices/IO-LINK-Covnerter"><i class="glyphicon glyphicon-download-alt"></i> newest version </a>
+</p>
+
+<h3>Uploading new software</h3>
+<p> UCCB have got embedded DFU USB bootloader. To upload new firmware use STM32CubeProgrammer software supplied by ST microelectronics. To upload new firmware follows those steps:
+<li>Download and STM32CubeProgrammer package from ST</li>
+<li>Download .bin firmware file from this page</li>
+<li>Connect to GND JP1 jumper</li>
+<li>Run STM32CubeProgrammer and check verify programming, run after programming, and select firmware to upload, you should see windows like this.</li>
+<img class="img-responsive"   src="usbcanconverter_basic/UCCBDfuSe.webp" alt="STM32 DfuSe firmware updater screenshot" width="1193" height="704">
+<!-- /inlined -->
                     </div>
                     <div id="tc_td" class="">
-                        <div ng-include="'iolink/tools.html'"></div>
+                        <!-- inlined from iolink/tools.html -->
+<h3>Tools</h3>
+<div class="card card-block">
+    <p><b>Python Tools</b>     
+    <a href="https://github.com/ucandevices/IO-LINK-Covnerter/tree/main/tools/IO-LINK-PythonTools"><i class="glyphicon glyphicon-download-alt"></i> See newset sources </a>
+    <br>    
+</div>
+<!-- /inlined -->
                     </div>
                 </div>
                 <div id="gitalk-container"></div>
@@ -87,7 +212,6 @@
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-    <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
 
     
     <script type="text/javascript">
@@ -116,11 +240,6 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
-
-        <!--    Angular-->
-    <script src="js/angular.min.js"></script>
-    <script src="js/products.js"></script>
-
 </body>
 
 </html>

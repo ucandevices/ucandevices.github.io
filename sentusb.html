@@ -6,12 +6,172 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Open source USB SENT converter for SAE J2716 automotive sensors.">
-    <meta name="author" content="">
+    <meta name="description" content="Open-source USB SENT (SAE J2716) converter. Decodes automotive sensors, auto-learns tick and CRC, TX mode. Virtual COM port on Windows, Linux, macOS. $23.">
+    <meta name="keywords" content="SENT USB converter, SAE J2716 USB, SENT protocol analyzer, SENT decoder, SENT sniffer, ISO 21097 USB, automotive sensor decoder, MAP sensor SENT, MLX90377 USB, J2716 single edge nibble transmission">
+    <meta name="author" content="uCanDevices">
+    <link rel="canonical" href="https://ucandevices.github.io/sentusb.html">
 
-    <title>ucandevices.github.io/</title>
-    <!-- Comments CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <!-- Open Graph -->
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="SENT (SAE J2716) USB Converter - Decode Automotive Sensors">
+    <meta property="og:description" content="USB SENT converter for SAE J2716 / ISO 21097 automotive sensors. multiple nibble decode, auto-learn tick and CRC, TX mode. Open source, no driver needed.">
+    <meta property="og:url" content="https://ucandevices.github.io/sentusb.html">
+    <meta property="og:image" content="https://ucandevices.github.io/img/products/sent.webp">
+    <meta property="og:site_name" content="uCanDevices">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SENT (SAE J2716) USB Converter - Decode Automotive Sensors">
+    <meta name="twitter:description" content="USB SENT converter for SAE J2716 / ISO 21097 automotive sensors. multiple nibble decode, auto-learn tick and CRC, TX mode. Open source, no driver needed.">
+    <meta name="twitter:image" content="https://ucandevices.github.io/img/products/sent.webp">
+
+    <title>SENT (SAE J2716) USB Converter - Automotive Sensors</title>
+
+    <!-- Product structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "SENT USB Converter (SAE J2716)",
+      "image": "https://ucandevices.github.io/img/products/sent.webp",
+      "description": "USB SENT (SAE J2716 / ISO 21097) converter that decodes automotive sensor signals and streams them to a PC over a USB virtual COM port using the SLCAN text protocol. Supports 4, 6 and 8 nibble frames, both DATA_ONLY and STATUS_AND_DATA CRC modes, auto-learn of tick period and CRC seed, and a TX mode for signal injection. Open source firmware on STM32F042K6.",
+      "sku": "SENTUSB",
+      "mpn": "SENTUSB",
+      "brand": {"@type": "Brand", "name": "uCanDevices"},
+      "manufacturer": {"@type": "Organization", "name": "uCanDevices"},
+      "category": "Automotive sensor interface",
+      "url": "https://ucandevices.github.io/sentusb.html",
+      "offers": [
+        {
+          "@type": "Offer",
+          "url": "https://www.tindie.com/stores/lll7/",
+          "priceCurrency": "USD",
+          "price": "23.00",
+          "availability": "https://schema.org/InStock",
+          "seller": {"@type": "Organization", "name": "Tindie - uCanDevices"}
+        },
+        {
+          "@type": "Offer",
+          "url": "https://lectronz.com/stores/ucandevices",
+          "priceCurrency": "EUR",
+          "price": "22.00",
+          "availability": "https://schema.org/InStock",
+          "seller": {"@type": "Organization", "name": "Lectronz - uCanDevices"}
+        }
+      ]
+    }
+    </script>
+
+    <!-- BreadcrumbList structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ucandevices.github.io/"},
+        {"@type": "ListItem", "position": 2, "name": "SENT USB Converter", "item": "https://ucandevices.github.io/sentusb.html"}
+      ]
+    }
+    </script>
+
+    <!-- FAQ structured data - common LLM-style questions about SENT and this device -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is SENT (SAE J2716)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SENT (Single Edge Nibble Transmission) is the SAE J2716 / ISO 21097 single-wire digital protocol used by many modern automotive sensors - pressure, position, throttle, MAP and angle - to transmit data to an ECU. Each frame is a stream of 4-bit nibbles separated by falling edges, with a status nibble, data nibbles and a CRC."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the cheapest USB SENT analyzer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The uCanDevices SENT USB Converter is an open-source SAE J2716 / ISO 21097 dongle around USD 23. It enumerates as a USB CDC virtual COM port on Windows 10+, Linux and macOS with no proprietary driver, and decodes 4, 6 and 8 nibble SENT sensors with both DATA_ONLY and STATUS_AND_DATA CRC modes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can it auto-detect SENT tick period and CRC mode from an unknown sensor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Sending the control frame t600104 (CAN ID 0x600, DLC 1, data 0x04) puts the device in Learn mode. It auto-detects tick period (in 0.1 us units), nibble count (4, 6 or 8) and CRC mode, then replies once with a 0x601 result frame and stops RX. Send O afterwards to resume with the learned configuration."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can it transmit SENT frames to simulate a sensor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. TX mode is started with t600102 (control frame, data 0x02). Frame data is then sent as 0x520 CAN frames where B0 is the status nibble, B1 to B4 are the data nibbles packed big-endian, and B5 to B6 are optional pause ticks in little-endian."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which sensors are known to work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Confirmed presets include MLX90377 angle sensor (3 us tick, 6 nibbles, DATA_ONLY, seed 0x03), the 04L 906 051 L VW/Audi DPF sensor (~3 us, 6 nibbles, STATUS_AND_DATA, seed 0x05) and the GM 12643955 MAP sensor (~3 us, 6 nibbles, DATA_ONLY, seed 0x05). For other sensors, use Learn mode to auto-detect."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the firmware open source?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Firmware runs on an STM32F042K6 (48 MHz HSI48) and is open source at https://github.com/ucandevices/SENTToUSB. A USB DFU bootloader is available for firmware updates. SENT Viewer 1.0 is a free GUI client."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- HowTo structured data - auto-detect an unknown SENT sensor -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to auto-detect an unknown SENT sensor with the uCanDevices SENT USB Converter",
+      "description": "Use Learn mode on the uCanDevices SENT (SAE J2716) USB Converter to auto-detect tick period, nibble count and CRC mode of an unknown sensor.",
+      "tool": [
+        {"@type": "HowToTool", "name": "uCanDevices SENT (SAE J2716) USB Converter"},
+        {"@type": "HowToTool", "name": "Any serial terminal (PuTTY, screen, minicom)"}
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Connect",
+          "text": "Wire the SENT sensor signal to the device RX pad and ground; supply the sensor with its required voltage. Plug the converter into a USB port. The device enumerates as a virtual COM port (COM3 on Windows, /dev/ttyACM0 on Linux)."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Open the serial port",
+          "text": "Open the virtual COM port at any baud rate - USB CDC ignores baud. Use line ending CR (0x0D)."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Start Learn mode",
+          "text": "Send the command t600104 followed by CR. The device replies with z and then streams 0x510 frames while searching for a lock."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Read the learned configuration",
+          "text": "Once locked, the device sends one 0x601 frame with DLC 4: bytes 0-1 are the tick in 0.1 us units little-endian, byte 2 is the nibble count (4, 6 or 8), byte 3 is the CRC mode (0 = DATA_ONLY, 1 = STATUS_AND_DATA)."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Resume normal RX with the learned configuration",
+          "text": "Send O followed by CR (or t600101 to explicitly start RX) and the device will stream decoded SENT frames on the configured CAN ID (default 0x510)."
+        }
+      ]
+    }
+    </script>
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 
@@ -26,80 +186,395 @@
     <link rel="stylesheet" href="css/simple-sidebar.css" type="text/css">
 
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<!-- Google tag (gtag.js) - GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBYPZF7RV0"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-91038702-1', 'auto');
-  ga('send', 'pageview');
-
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZBYPZF7RV0', { 'anonymize_ip': true });
 </script>
 </head>
 
-<body id="page-top" ng-app="agmodule" ng-controller="pagecontroller">
+<body id="page-top">
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-		<div ng-include="'header.html'"> </div>
-	</nav>
-	<header></header>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="index.html" title="uCanDevices - USB CAN, LIN and SENT converters">uCanDevices</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="uccb.html">USB CAN Converter</a></li>
+                        <li><a href="cfuc.html">FDCAN USB Converter</a></li>
+                        <li><a href="ulc.html">USB LIN Converter</a></li>
+                        <li><a href="sentusb.html">SENT USB Converter</a></li>
+                        <li><a href="cec.html">CAN Log/Eth Converter</a></li>
+                        <li><a href="mpcie_uccb.html">USB CAN Converter mPCIe</a></li>
+                        <li><a href="iolink.html">IO-Link USB/Ethernet Converter</a></li>
+                    </ul>
+                </li>
+                <li><a class="page-scroll" href="buy.html">Buy</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">GitHub <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://github.com/UsbCANConverter-UCCbasic" rel="noopener">USB CAN Converter</a></li>
+                        <li><a href="https://github.com/ucandevices/CFDC_embedded" rel="noopener">FDCAN USB Converter</a></li>
+                        <li><a href="https://github.com/uCAN-LIN/LinUSBConverter" rel="noopener">USB LIN Converter</a></li>
+                        <li><a href="https://github.com/ucandevices/SENTToUSB" rel="noopener">SENT USB Converter</a></li>
+                        <li><a href="https://github.com/CanEthernetConverter" rel="noopener">CAN Log/Eth Converter</a></li>
+                        <li><a href="https://github.com/UsbCANConverter-UCCbasic/uCCB-mPICe" rel="noopener">USB CAN Converter mPCIe</a></li>
+                        <li><a href="https://github.com/ucandevices/IO-LINK-Covnerter" rel="noopener">IO-Link USB/Ethernet Converter</a></li>
+                    </ul>
+                </li>
+                <li><a class="page-scroll" href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 
     <section id="services">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">SENT USB converter.</h2>
+                    <h1 class="section-heading">SENT (SAE J2716) USB Converter</h1>
+                    <p class="lead">Decode automotive SENT sensors over USB. Auto-learn tick and CRC, multiple nibble support, TX mode. Plug-and-play on Windows, Linux and macOS.</p>
+                    <p>
+                        <a class="btn btn-primary btn-lg" href="https://www.tindie.com/products/lll7/sent-j2716-usb-converter/" rel="noopener">Buy on Tindie</a>
+                        <a class="btn btn-default btn-lg" href="https://lectronz.com/stores/ucandevices" rel="noopener">Buy on Lectronz</a>
+                        <a class="btn btn-default btn-lg" href="https://github.com/ucandevices/SENTToUSB" rel="noopener">Source on GitHub</a>
+                    </p>
                     <hr class="primary">
                 </div>
             </div>
         </div>
 
-<!--        page contents tabs-->
         <div class="container-fluid">
+            <nav aria-label="Breadcrumb" class="breadcrumb-nav" style="margin: 10px 0; font-size: 90%;">
+                <a href="index.html">Home</a> &rsaquo; <span aria-current="page">SENT USB Converter</span>
+            </nav>
             <ul class="nav nav-tabs">
                 <li><a href="#tc_desc">About</a></li>
                 <li><a href="#tc_device">Sources</a></li>
                 <li><a href="#tc_td">Tools</a></li>
             </ul>
-            <div class="tab-content">
-                <div id="tc_desc" class="">
-                    <div ng-include="'sentusb/desc.html'"></div>
+            <div class="product-content">
+                <div id="tc_desc" class="product-section">
+                    <!-- inlined from sentusb/desc.html -->
+
+<p style="text-align:justify; font-size:75%">
+    Product and its documentation is supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of this product. This product is not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
+</p>
+
+<h3>Description</h3>
+<p>SENT to USB converter decodes <b>SAE J2716 / ISO 21097 SENT</b> automotive sensor signals and streams them to a PC over a standard USB serial (CDC) port using the SLCAN text protocol.
+No custom driver is needed — it enumerates as a Virtual COM Port on Windows 10+, Linux and macOS.
+</p>
+<ul>
+  <li>SAE J2716 / ISO 21097 SENT receive and decode</li>
+  <li>Auto-detect tick period, nibble count and CRC mode (Learn mode)</li>
+  <li>Supports multiple sensors</li>
+  <li>Both CRC modes: DATA_ONLY and STATUS_AND_DATA</li>
+  <li>CRC seeds 0x03 (SAE APR2016) and 0x05 (legacy/GM)</li>
+  <li>TX mode — synthesise and transmit SENT frames</li>
+  <li>SLCAN-compatible protocol over USB CDC</li>
+  <li>USB-C connector</li>
+  <li>No driver required on Linux, macOS, Windows 10+</li>
+  <li>Device size is 17x28 mm (without USB connector)</li>
+  <li>Open source firmware (STM32F042K6, 48 MHz HSI48)</li>
+  <li>USB DFU compatible bootloader for firmware updates</li>
+</ul>
+
+<h3>Introduction video</h3>
+<div class="video-container">
+<iframe loading="lazy" src="https://www.youtube.com/embed/C2tTHNFDXZ8?rel=0&amp;" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+
+<h3>Details</h3>
+<p>Front and back of the board:</p>
+<img class="img-responsive" loading="lazy" decoding="async" src="sentusb/front.webp" style="max-width: 30%; display: inline-block; margin-right: 10px;" alt="SENT (SAE J2716) USB converter - front of the PCB with USB-C connector" width="1200" height="981">
+<img class="img-responsive" loading="lazy" decoding="async" src="sentusb/back.webp" style="max-width: 30%; display: inline-block;" alt="SENT (SAE J2716) USB converter - back of the PCB with SENT signal and ground pads" width="1000" height="752">
+
+<h3>Connections</h3>
+<ul>
+  <li>Wire the SENT sensor's signal pin to the device's <b>RX</b> pad and connect a common ground; supply the sensor with its required voltage.</li>
+  <li>For TX mode (sensor simulation), drive the target ECU from the device's <b>TX</b> pad and a common ground.</li>
+  <li><b>RX pull-up:</b> fitted on the PCB by default — no external pull-up needed.</li>
+  <li><b>TX pull-up:</b> optional, enabled by closing the onboard solder jumper.</li>
+</ul>
+<p>For exact pin assignments, timer mapping and firmware internals see the <a href="https://github.com/ucandevices/SENTToUSB">SENTToUSB repository on GitHub</a>.</p>
+
+<h3>Getting Started</h3>
+<ol>
+  <li>Plug the device into a USB port.</li>
+  <li>The OS creates a Virtual COM Port (<code>COM3</code> on Windows, <code>/dev/ttyACM0</code> on Linux).</li>
+  <li>Open the port at any baud rate — USB CDC ignores baud rate settings.</li>
+  <li>Send <code>O\r</code> to start receiving SENT data.</li>
+</ol>
+
+<h3>Viewer</h3>
+<p>
+  SENT data is supported out of the box with <a href="https://github.com/ucandevices/SENTToUSB/releases/tag/Viewer1">SENT Viewer 1.0</a>
+  <img class="img-responsive" loading="lazy" decoding="async" src="sentusb/sent_tool.webp" style="max-width: 60%;" alt="SENT Viewer 1.0 GUI showing live decoded SAE J2716 frames" width="1200" height="775">
+</p>
+
+<h3>COM port Commands</h3>
+<p>All commands are plain ASCII terminated with CR (0x0D). On error the device responds with 0x07 (BEL).</p>
+
+<table class="table-bordered">
+<tr><td><b>Command</b></td><td><b>Description</b></td></tr>
+<tr><td><code>O</code></td><td>Open channel — starts SENT RX</td></tr>
+<tr><td><code>L</code></td><td>Listen-only open — same as O</td></tr>
+<tr><td><code>C</code></td><td>Close channel — stops all activity</td></tr>
+<tr><td><code>V</code></td><td>Hardware version query → <code>V0101</code></td></tr>
+<tr><td><code>v</code></td><td>Firmware version query → <code>v0101</code></td></tr>
+<tr><td><code>N</code></td><td>Serial number query → <code>N0001</code></td></tr>
+<tr><td><code>t&lt;ID&gt;&lt;DLC&gt;&lt;DATA&gt;</code></td><td>Send a CAN frame (config / control / TX data)</td></tr>
+</table>
+
+<h4>Key CAN Frame IDs</h4>
+<table class="table table-bordered table-condensed" style="max-width: 750px;">
+  <thead class="active">
+    <tr><th>ID</th><th>Direction</th><th>Purpose</th><th>Payload bytes</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>0x001</code></td>
+      <td>Host → Device</td>
+      <td>Configuration (DLC up to 6)</td>
+      <td>
+        <table class="table table-condensed" style="margin:0; font-size:90%;">
+          <tr><td><b>B0</b></td><td>Data nibbles: <code>4</code>, <code>6</code>, or <code>8</code></td></tr>
+          <tr><td><b>B1</b></td><td>CRC mode: <code>0</code> = DATA_ONLY &nbsp;|&nbsp; <code>1</code> = STATUS_AND_DATA</td></tr>
+          <tr><td><b>B2</b></td><td>CRC init seed: <code>0x03</code> (SAE APR2016) or <code>0x05</code> (legacy/GM)</td></tr>
+          <tr><td><b>B3</b></td><td>Min tick in units of 0.5 µs (e.g. <code>5</code> → 2.5 µs)</td></tr>
+          <tr><td><b>B4</b></td><td>Max tick in units of 1 µs &nbsp;&nbsp;(e.g. <code>5</code> → 5.0 µs)</td></tr>
+          <tr><td><b>B5–B6</b></td><td>Output RX CAN ID, big-endian (11-bit, <code>0x001</code>–<code>0x7FF</code>) — e.g. <code>0x510</code> → <code>05 10</code></td></tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td><code>0x600</code></td>
+      <td>Host → Device</td>
+      <td>Control (DLC 1)</td>
+      <td>
+        <table class="table table-condensed" style="margin:0; font-size:90%;">
+          <tr><td><code>01</code></td><td>Start RX — begin receiving and decoding SENT frames</td></tr>
+          <tr><td><code>02</code></td><td>Start TX — begin transmitting SENT frames supplied via <code>0x520</code></td></tr>
+          <tr><td><code>03</code></td><td>Stop — halt all activity</td></tr>
+          <tr><td><code>04</code></td><td>Learn — auto-detect tick, nibble count and CRC mode from live signal.
+            Device replies <code>z\r</code> immediately, then streams normal <code>0x510</code> frames while searching.
+            When locked, sends one <code>0x601</code> result frame and <b>stops RX</b> —
+            send <code>O\r</code> or <code>t600101\r</code> to resume with the learned config.</td></tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td><code>0x520</code></td>
+      <td>Host → Device</td>
+      <td>TX frame data (TX mode only, DLC ≥ 5)</td>
+      <td>B0 = status nibble &nbsp;|&nbsp; B1–B4 = data nibbles packed big-endian &nbsp;|&nbsp; B5–B6 = pause ticks LE (optional)</td>
+    </tr>
+    <tr>
+      <td><code>configured ID</code></td>
+      <td>Device → Host</td>
+      <td>Decoded SENT RX frame (default <code>0x510</code>, set via B5–B6 of <code>0x001</code>)</td>
+      <td>
+        Each SENT data nibble is 4 bits (values 0–15). Two nibbles are packed into one byte:
+        the first nibble goes into the upper 4 bits, the second into the lower 4 bits.<br>
+        Example — 6-nibble sensor, nibbles <code>[A, 5, 3, C, 7, F]</code>:<br>
+        <code>Byte 0 = 0xA5</code> &nbsp; <code>Byte 1 = 0x3C</code> &nbsp; <code>Byte 2 = 0x7F</code> → DLC = 3<br>
+        To unpack: <code>nibble[0] = byte[0] &gt;&gt; 4</code>, <code>nibble[1] = byte[0] &amp; 0x0F</code>, and so on.
+      </td>
+    </tr>
+    <tr>
+      <td><code>0x601</code></td>
+      <td>Device → Host</td>
+      <td>Learn result (DLC 4) — sent once when learn mode locks</td>
+      <td>
+        <table class="table table-condensed" style="margin:0; font-size:90%;">
+          <tr><td><b>B0–B1</b></td><td>Learned tick in units of 0.1 µs, little-endian — e.g. <code>1E 00</code> = 30 = <b>3.0 µs</b></td></tr>
+          <tr><td><b>B2</b></td><td>Nibble count locked: <code>4</code>, <code>6</code>, or <code>8</code></td></tr>
+          <tr><td><b>B3</b></td><td>CRC mode locked: <code>0</code> = DATA_ONLY &nbsp;|&nbsp; <code>1</code> = STATUS_AND_DATA</td></tr>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Minimal session example</h4>
+<pre class="listing">
+→  O\r                          open channel / start RX with default config
+←  \r                           ACK
+
+→  t001706000305050510\r        configure: 6 nibbles, DATA_ONLY, seed=0x03,
+←  z\r                              tick 2.5–5 µs, output CAN ID=0x510
+
+←  t5103AABBCC\r                decoded SENT frame (repeats ~100–1000×/s)
+←  t5103DDEEFF\r
+
+→  C\r                          stop
+←  \r
+</pre>
+
+<h4>Learn mode</h4>
+<pre class="listing">
+→  t600104\r        start auto-detect
+←  z\r
+←  t60104...\r      result: learned tick, nibbles, CRC mode
+</pre>
+
+<h3>Sensor Presets</h3>
+<table class="table table-bordered table-condensed" style="max-width: 750px;">
+  <thead class="active">
+    <tr><th>Sensor</th><th>Tick</th><th>Nibbles</th><th>CRC mode</th><th>CRC seed</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MLX90377 (angle)</td>
+      <td>3 µs</td>
+      <td>6</td>
+      <td>DATA_ONLY</td>
+      <td><code>0x03</code></td>
+    </tr>
+    <tr>
+      <td>04L 906 051 L (VW/Audi DPF)</td>
+      <td>~3 µs</td>
+      <td>6</td>
+      <td>STATUS_AND_DATA</td>
+      <td><code>0x05</code></td>
+    </tr>
+    <tr>
+      <td>GM 12643955 (MAP sensor)</td>
+      <td>~3 µs</td>
+      <td>6</td>
+      <td>DATA_ONLY</td>
+      <td><code>0x05</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>FAQ</h3>
+<dl>
+  <dt><b>What is SENT (SAE J2716)?</b></dt>
+  <dd>SENT (Single Edge Nibble Transmission) is the SAE J2716 / ISO 21097 single-wire digital protocol used by many modern automotive sensors &mdash; pressure, position, throttle, MAP and angle &mdash; to transmit data to an ECU. Each frame is a stream of 4-bit nibbles separated by falling edges, with a status nibble, data nibbles and a CRC.</dd>
+
+  <dt><b>What is the cheapest USB SENT analyzer?</b></dt>
+  <dd>The uCanDevices SENT USB Converter is an open-source SAE J2716 / ISO 21097 dongle around $23. It enumerates as a USB CDC virtual COM port on Windows 10+, Linux and macOS with no proprietary driver, and decodes multiple nibble SENT sensors with both DATA_ONLY and STATUS_AND_DATA CRC modes.</dd>
+
+  <dt><b>Can it auto-detect SENT tick period and CRC mode?</b></dt>
+  <dd>Yes. Send <code>t600104</code> to enter Learn mode. The device auto-detects tick period (0.1 µs units), nibble count (4, 6 or 8) and CRC mode, then replies once with a <code>0x601</code> result frame. Send <code>O</code> afterwards to resume RX with the learned configuration.</dd>
+
+  <dt><b>Can it transmit SENT frames to simulate a sensor?</b></dt>
+  <dd>Yes. Start TX mode with <code>t600102</code>, then send frame data as <code>0x520</code> CAN frames (B0 = status nibble, B1&ndash;B4 = data nibbles packed big-endian, B5&ndash;B6 = optional pause ticks).</dd>
+
+  <dt><b>Which sensors are known to work?</b></dt>
+  <dd>Confirmed: MLX90377 angle sensor, VW/Audi 04L 906 051 L DPF sensor, GM 12643955 MAP sensor. For other sensors, use Learn mode.</dd>
+
+  <dt><b>Is the firmware open source?</b></dt>
+  <dd>Yes &mdash; STM32F042K6 firmware on <a href="https://github.com/ucandevices/SENTToUSB">github.com/ucandevices/SENTToUSB</a>. A USB DFU bootloader is included. SENT Viewer 1.0 is a free GUI.</dd>
+</dl>
+<!-- /inlined -->
                 </div>
-                <div id="tc_device" class="">
-                    <div ng-include="'sentusb/sources.html'"></div>
+                <div id="tc_device" class="product-section">
+                    <!-- inlined from sentusb/sources.html -->
+<h3>Hardware</h3>
+<p>The device uses an <b>STM32F042K6</b> microcontroller running at 48 MHz from the internal HSI48 oscillator — no external crystal required.
+PCB is designed in KiCad. Board size is 17×28 mm.
+All hardware source files are available in the <a href="https://github.com/ucandevices/SENTToUSB">SENTToUSB GitHub repository</a>.
+</p>
+<img class="img-responsive" loading="lazy" decoding="async" src="sentusb/sent_pcb.svg" style="max-width: 100%; height: auto;" alt="SENT USB Converter PCB layout drawing" width="1200" height="849">
+
+<h3>Software</h3>
+<p>Firmware is written in C using STM32CubeIDE (free) on top of the STM32 HAL USB CDC driver, with custom SENT capture and DMA-driven transmit logic.
+All sources and firmware <a href="https://github.com/ucandevices/SENTToUSB/releases">releases</a> are on the <a href="https://github.com/ucandevices/SENTToUSB">SENTToUSB GitHub repository</a>. For exact pin assignments, timer mapping and firmware internals see the repository README.</p>
+
+<h3>Uploading new firmware</h3>
+<p>The device has an embedded USB DFU bootloader. Use <a href="https://github.com/Stefan-Schmidt/dfu-util">dfu-util</a> to flash new firmware:
+<pre class="listing">
+dfu-util -a 0 -s 0x08000000 -D firmware.bin
+</pre>
+On Windows you can also use <a href="https://www.st.com/en/development-tools/stsw-stm32080.html">ST DfuSe</a> tool.
+</p>
+<!-- /inlined -->
                 </div>
-                <div id="tc_td" class="">
-                    <div ng-include="'sentusb/tools.html'"></div>
+                <div id="tc_td" class="product-section">
+                    <!-- inlined from sentusb/tools.html -->
+
+<h4>Python Viewer — sent_viewer.py</h4>
+<p>A GUI application for monitoring SENT sensor data in real time.
+Requires Python 3.10+ and <code>pyserial</code>:
+<pre class="listing">
+pip install pyserial
+python sent_viewer.py
+</pre>
+</p>
+
+<a href="#" class="pop">
+  <img id="imageresource" loading="lazy" decoding="async" src="sentusb/sent_tool.webp" class="img-responsive" style="max-width: 70%;" alt="SENT decoder tool software screenshot" width="1200" height="775">
+</a>
+
+<p>Features:
+<ul>
+  <li>Live frame display — last raw bytes and unpacked nibbles</li>
+  <li>Frame table with timestamp, CAN ID, DLC and nibble values</li>
+  <li>Frame counter, CRC error counter and frame rate</li>
+  <li>Raw SLCAN log with colour coding</li>
+  <li>Sensor presets (MLX90377, VW DPF, GM MAP)</li>
+  <li>Pause and Clear controls</li>
+  <li>Automatic <code>O\r</code> / <code>C\r</code> on connect / disconnect</li>
+</ul>
+</p>
+
+<h4>Serial terminal</h4>
+<p>Any serial terminal (PuTTY, Tera Term, <code>screen</code>, <code>minicom</code>) can be used at any baud rate (8N1).
+All commands are described in the About section.</p>
+
+<h4>python-can</h4>
+<p>The SLCAN-compatible protocol means the device works directly with <a href="https://python-can.readthedocs.io/">python-can</a> using the <code>slcan</code> interface:
+<pre class="listing">
+import can
+bus = can.interface.Bus(bustype='slcan', channel='COM3', bitrate=500000)
+for msg in bus:
+    print(msg)
+</pre>
+</p>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- /inlined -->
                 </div>
             </div>
-            <div id="gitalk-container"></div>
+            <!-- Questions / contact CTA -->
+            <div class="text-center" style="margin: 40px 0;">
+                <h3>Questions about the SENT USB Converter?</h3>
+                <p>
+                    <a class="btn btn-default" href="https://github.com/ucandevices/SENTToUSB/issues" rel="noopener"><i class="fa fa-github"></i> Open a GitHub issue</a>
+                    <a class="btn btn-default" href="mailto:devices.ucan@gmail.com"><i class="fa fa-envelope"></i> Email us</a>
+                </p>
+            </div>
         </div>
 
 
     </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-    <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
-
-
-    <script type="text/javascript">
-      const gitalk = new Gitalk({
-        clientID: '8e1960fcb28f119bc82f',
-        clientSecret: '652465d1d4c7a7867c3e87ee006160ce226a6b96',
-        repo: 'ucandevices',      // The repository of store comments,
-        owner: 'ucandevices',
-        admin: ['ucandevices'],
-        id: "SENTUSB",      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
-      gitalk.render('gitalk-container');
-    </script>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
@@ -115,10 +590,16 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
 
-        <!--    Angular-->
-    <script src="js/angular.min.js"></script>
-    <script src="js/products.js"></script>
-
+    <!-- Image popup (depends on jQuery + Bootstrap modal — must load after them) -->
+    <script>
+    $(function() {
+        $('.pop').on('click', function(e) {
+            e.preventDefault();
+            $('.imagepreview').attr('src', $(this).find('img').attr('src'));
+            $('#imagemodal').modal('show');
+        });
+    });
+    </script>
 </body>
 
 </html>

@@ -6,10 +6,46 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Open source usb can converter.">
-    <meta name="author" content="">
+    <meta name="description" content="CAN Ethernet converter and CAN logger - Linux microcomputer with CAN, Ethernet and SocketCAN. Use it as a remote CAN bridge or standalone CAN logger for fleet and lab use.">
+    <meta name="keywords" content="CAN Ethernet converter, CAN logger, CAN bridge, Linux CAN, SocketCAN device, remote CAN, CAN over IP, CAN data logger">
+    <meta name="author" content="uCanDevices">
+    <link rel="canonical" href="https://ucandevices.github.io/cec.html">
 
-    <title>CANDevices.com.pl</title>
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="CAN Ethernet Converter / CAN Logger - Linux CAN Bridge">
+    <meta property="og:description" content="Linux-based CAN to Ethernet bridge and standalone CAN data logger. SocketCAN compatible.">
+    <meta property="og:url" content="https://ucandevices.github.io/cec.html">
+    <meta property="og:image" content="https://ucandevices.github.io/img/products/cec.webp">
+    <meta property="og:site_name" content="uCanDevices">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CAN Ethernet Converter / CAN Logger - Linux CAN Bridge">
+    <meta name="twitter:description" content="Linux-based CAN to Ethernet bridge and standalone CAN data logger. SocketCAN compatible.">
+    <meta name="twitter:image" content="https://ucandevices.github.io/img/products/cec.webp">
+
+    <title>CAN Ethernet Converter & Logger - Linux CAN Bridge</title>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "CAN Ethernet Converter / CAN Logger",
+      "image": "https://ucandevices.github.io/img/products/cec.webp",
+      "description": "Linux microcomputer with CAN and Ethernet. Use it as a remote CAN-to-IP bridge or standalone CAN data logger. SocketCAN compatible.",
+      "sku": "CEC",
+      "brand": {"@type": "Brand", "name": "uCanDevices"},
+      "category": "Automotive bus interface",
+      "url": "https://ucandevices.github.io/cec.html",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.tindie.com/stores/lll7/",
+        "priceCurrency": "USD",
+        "price": "65.00",
+        "availability": "https://schema.org/InStock",
+        "seller": {"@type": "Organization", "name": "Tindie - uCanDevices"}
+      }
+    }
+    </script>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -31,35 +67,72 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- Google tag (gtag.js) - GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBYPZF7RV0"></script>
     <script>
-        (function(i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-        ga('create', 'UA-91038702-1', 'auto');
-        ga('send', 'pageview');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZBYPZF7RV0', { 'anonymize_ip': true });
     </script>
 </head>
 
-<body id="page-top" ng-app="agmodule" ng-controller="pagecontroller">
+<body id="page-top">
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div ng-include="'header.html'"> </div>
-    </nav>
-    <header></header>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="index.html" title="uCanDevices - USB CAN, LIN and SENT converters">uCanDevices</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="uccb.html">USB CAN Converter</a></li>
+                        <li><a href="cfuc.html">FDCAN USB Converter</a></li>
+                        <li><a href="ulc.html">USB LIN Converter</a></li>
+                        <li><a href="sentusb.html">SENT USB Converter</a></li>
+                        <li><a href="cec.html">CAN Log/Eth Converter</a></li>
+                        <li><a href="mpcie_uccb.html">USB CAN Converter mPCIe</a></li>
+                        <li><a href="iolink.html">IO-Link USB/Ethernet Converter</a></li>
+                    </ul>
+                </li>
+                <li><a class="page-scroll" href="buy.html">Buy</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">GitHub <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://github.com/UsbCANConverter-UCCbasic" rel="noopener">USB CAN Converter</a></li>
+                        <li><a href="https://github.com/ucandevices/CFDC_embedded" rel="noopener">FDCAN USB Converter</a></li>
+                        <li><a href="https://github.com/uCAN-LIN/LinUSBConverter" rel="noopener">USB LIN Converter</a></li>
+                        <li><a href="https://github.com/ucandevices/SENTToUSB" rel="noopener">SENT USB Converter</a></li>
+                        <li><a href="https://github.com/CanEthernetConverter" rel="noopener">CAN Log/Eth Converter</a></li>
+                        <li><a href="https://github.com/UsbCANConverter-UCCbasic/uCCB-mPICe" rel="noopener">USB CAN Converter mPCIe</a></li>
+                        <li><a href="https://github.com/ucandevices/IO-LINK-Covnerter" rel="noopener">IO-Link USB/Ethernet Converter</a></li>
+                    </ul>
+                </li>
+                <li><a class="page-scroll" href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 
     <section id="services">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">CAN Logger/Ethernet converter.</h2>
+                    <h1 class="section-heading">CAN Ethernet Converter / CAN Logger</h1>
+                    <p class="lead">Linux microcomputer with CAN and Ethernet. Remote CAN-to-IP bridge and standalone CAN data logger. SocketCAN compatible.</p>
+                    <p>
+                        <a class="btn btn-primary btn-lg" href="https://www.tindie.com/stores/lll7/" rel="noopener">Buy on Tindie</a>
+                        <a class="btn btn-default btn-lg" href="https://github.com/CanEthernetConverter" rel="noopener">Source on GitHub</a>
+                    </p>
                     <hr class="primary">
                 </div>
             </div>
@@ -75,13 +148,146 @@
 
             <div class="tab-content">
                 <div id="tc_desc" class="">
-                    <div ng-include="'canethernetconverter/desc.html'"></div>
+                    <!-- inlined from canethernetconverter/desc.html -->
+<p style="text-align:justify; font-size:75%">
+    Product and its documentation is supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of this product. This product is not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
+</p>
+
+
+<div class="tab-content">
+<h3>Description</h3>
+<ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#hw12">Hardware 1.2</a></li>
+        <li><a data-toggle="tab" href="#hw11">Hardware 1.1</a></li>
+    </ul>
+
+<div id="hw12" class="tab-pane fade in active">
+        <p>CAN Ethernet Converter (CEC) and CAN logger is single board microcomputer with up to two UCCB or LUC internally connected to USB port. Features of CEC:
+            <li>CAN version 2.0 support based on socketcan gsusb driver, for more information on CAN see <a href="/uccb.html">UCCB</a> project</li>
+            <li>LIN support based on socketcan interface, for more information on LIN see <a href="/ulc.html">LUC</a> project</li>
+            <li><a href="http://www.orangepi.org/OrangePiZeroPlus/">Orange Pi Zero Plus</a> microcomputer with Debian based Linux OS, see <a href="https://www.armbian.com/"> armbian </a>project </li>
+            <li>CPU: H5 Quad-core 64-bit Cortex-A53</li>
+            <li>DDR3 RAM: 512MB</li>
+            <li>Connectivity: 1GB Cable Ethernet / Wi-Fi</li>
+            <li>Power Supply: DC 5V/2A, micro usb connector</li>
+            <li>Dimension: 50 x 50 x 20 mm</li>
+            <li>Dedicated 3d printed housing </li>
+            <li>Many possible options 1xCAN/2xCAN/1xLIN+CAN/1xLIN/2xLIN</li>
+        </p>
+        Example of CEC with two CAN interfaces                 
+        <img class="img-responsive"   src="canethernetconverter/cec12.webp" alt="CAN Ethernet Converter hardware 1.2 board" width="1029" height="347"> </p>
+    </div>
+  
+    <div id="hw11" class="tab-pane fade">
+        <p>CAN Ethernet Converter (CEC) and CAN logger is single board microcomputer with UCCB internally connected to USB port. Features of CEC:
+            <li>CAN version 2.0 support, for more information on CAN see <a href="/uccb.html">UCCB</a> project</li>
+            <li><a href="http://www.orangepi.org/orangepizero/">Orange Pi Zero</a> microcomputer with Debian based Linux OS, see <a href="https://www.armbian.com/"> armbian </a>project </li>
+            <li>CPU: Allwinner H2+ Quad-core Cortex-A7</li>
+            <li>DDR3 RAM: 256MB</li>
+            <li>Connectivity: 10/100M Cable Ethernet / Wi-Fi</li>
+            <li>Power Supply: DC 5V/2A, micro usb connector</li>
+            <li>Dimension: 50 x 50 x 20 mm</li>
+        </p>                
+    </div>
+</div>
+
+<p> Device has got ready to use SocketCAN user space utilities and tools, see <a href="https://github.com/linux-can/can-utils">can-utils</a> for more info.</p>
+<p> CEC is also supplied with uCANTools web application, tool for CAN data handling, see <a href="/ucantools.html">uCANTools</a> project for more info.</p>
+<img class="img-responsive"   src="canethernetconverter/desc.webp" alt="CAN Ethernet Converter overview - Linux based CAN to Ethernet bridge" width="1200" height="685">
+<br>
+
+<p>Video about <a href="https://www.youtube.com/watch?v=rMLax1DJBog&t=4s">can-utils here</a>, english subtitles  included. </p>
+<p>Getting started with <a href="https://youtu.be/2OLR1t_TbMk">uCAN CAN Ethernet converter video here</a>, english version.</p>
+
+<h3> Quick Start </h3>
+<ol>
+<li>Connect CEC device with ethernet cable to your network, </li>
+<li>On your rooter check what ip address was assign to CEC device, 
+<br>or to avoid IP usage, install avahi - <a href = "http://zeroconf.org/">zeroconf </a> client (bonjour for windows). Domain name is <b> ucan.local </b>, </li>
+<li>SSH login: <b>root</b>, password: <b>ucan</b>,  </li>
+<li>On Your web browser go to ucan.local address, ucan web application should display,</li>
+</ol>
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#ec">Ethernet converter</a></li>
+    <li><a data-toggle="tab" href="#l">Logger</a></li>
+    <li><a data-toggle="tab" href="#2">uCANTools</a></li>
+    <li><a data-toggle="tab" href="#3">node-red and mqtt</a></li>
+</ul>
+<div class="tab-content">
+    <div id="ec" class="tab-pane fade in active">
+        <p> Device has <a href="https://github.com/dschanoeh/socketcand"> socketcand </a> 
+            program running on ethernet port. Socketcand is a daemon that provides access to
+             CAN interfaces on a machine via a network interface.
+              The communication protocol uses a TCP/IP connection and a specific protocol to transfer CAN frames and control commands. 
+              To establish connection use socket client(ex. PuTTy) on configured port.</p>
+        <img class="img-responsive"   src="canethernetconverter/telnet.png" alt="CAN Ethernet Converter telnet console output" width="456" height="439">
+        <p> PuTTy configuration page, remember to set valid port and contention type.
+             After connection you should received  <b>&ltHi&gt</b> message.
+              List off all available commands on 
+              <a href = "https://github.com/dschanoeh/socketcand/blob/master/doc/protocol.md" >socketcand  project page </a>.</p>
+
+        
+    </div>
+    <div id="l" class="tab-pane fade">
+        <p> If You connect USB memory stick, device will log frames automatically on it. Frames will be saved in ASCI format.
+             Frames are automatically packet to 100 MB archives, using logrotate utility. 
+             Logs can be also downloaded from internal website using UCANTools application. 
+        </p>
+    </div>
+    <div id="2" class="tab-pane fade">
+        <p> See <a href="/ucantools.html">uCANTools</a> project
+        </p>
+    </div>
+    <div id="3" class="tab-pane fade">
+        <p> For node-red and MQTT for CAN frames processing <a href="https://www.youtube.com/watch?v=fsk9ZIeo23k">tutorial ENG</a>
+            for PL <a href="https://www.youtube.com/watch?v=A-nwKN93j_g"> click here</a>
+        </p>
+    </div>
+
+</div>
+
+<br><br><br>
+<!-- /inlined -->
                 </div>
                 <div id="tc_device" class="">
-                    <div ng-include="'canethernetconverter/sources.html'"></div>
+                    <!-- inlined from canethernetconverter/sources.html -->
+<p>Visit <a href="https://github.com/CanEthernetConverter"> https://github.com/CanEthernetConverter </a> for sources.</p>
+<!-- /inlined -->
                 </div>
              <!--       <div id="tc_td" class="tab-pane fade">
-                    <div ng-include="'canethernetconverter/tools.html'"></div>
+                    <!-- inlined from canethernetconverter/tools.html -->
+<h3>Tools</h3>
+<p> CEC Linux distribution comes with many pre-installed applications see list below for details. Tools list:
+	<div class="panel-group">
+		<div class="panel panel-default">
+
+			<div class="panel-heading">
+				<li><a data-toggle="collapse" data-parent="#accordion" href="#uCANTools" aria-expanded="true" aria-controls="collapseOne">uCANTools</a></li>
+			</div>
+			<div class="collapse" id="uCANTools">
+				<div class="card card-block">
+					<p> <b> uCANTools </b> is web application working on port 8080, it has got features like CAN data handling, logs downloading and many more see <a href="/ucantools.html"> uCANTools </a> project for more info.</p>
+				</div>
+			</div>
+
+			<div class="panel-heading">
+				<li><a data-toggle="collapse" data-parent="#accordion" href="#logrotate" aria-expanded="true" aria-controls="collapseOne">LogRotate</a></li>
+			</div>
+			<div class="collapse" id="logrotate">
+				<div class="card card-block">
+						<p> Logroate Linux program is used to handle with logs saved on USB stick. Logroate creates new log files and aggregates them. Log rotate is triggered by cron.hourly task.</p>
+				</div>
+			</div>
+
+	<script>
+		$(function() {
+			$('.pop').on('click', function() {
+				$('.imagepreview').attr('src', $(this).find('img').attr('src'));
+				$('#imagemodal').modal('show');
+			});
+		});
+	</script>
+<!-- /inlined -->
                 </div> -->
             </div>
         </div>
@@ -100,11 +306,6 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
-
-    <!--    Angular-->
-    <script src="js/angular.min.js"></script>
-    <script src="js/products.js"></script>
-
 </body>
 
 </html>
