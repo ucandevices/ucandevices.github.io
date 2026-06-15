@@ -171,7 +171,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="uccb.html">USB CAN Converter</a></li>
-                        <li><a href="cfuc.html">FDCAN USB Converter</a></li>
+                        <li><a href="cfuc.html">CANFD / CAN USB Converter</a></li>
                         <li><a href="ulc.html">USB LIN Converter</a></li>
                         <li><a href="sentusb.html">SENT USB Converter</a></li>
                         <li><a href="cec.html">CAN Log/Eth Converter</a></li>
@@ -184,7 +184,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">GitHub <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="https://github.com/UsbCANConverter-UCCbasic" rel="noopener">USB CAN Converter</a></li>
-                        <li><a href="https://github.com/ucandevices/CFDC_embedded" rel="noopener">FDCAN USB Converter</a></li>
+                        <li><a href="https://github.com/ucandevices/CFDC_embedded" rel="noopener">CANFD / CAN USB Converter</a></li>
                         <li><a href="https://github.com/uCAN-LIN/LinUSBConverter" rel="noopener">USB LIN Converter</a></li>
                         <li><a href="https://github.com/ucandevices/SENTToUSB" rel="noopener">SENT USB Converter</a></li>
                         <li><a href="https://github.com/CanEthernetConverter" rel="noopener">CAN Log/Eth Converter</a></li>
@@ -206,6 +206,7 @@
                     <h1 class="section-heading">USB LIN Converter</h1>
                     <p class="lead">Open source LIN 2.1 master, slave and bus monitor dongle. SLCAN compatible. Plug-and-play on Windows, Linux and macOS.</p>
                     <p>
+                        <a class="btn btn-success btn-lg stripe-buy-btn" href="https://buy.stripe.com/8x200c3gD3h93Z1aTmgw001" rel="noopener">Buy with Card</a>
                         <a class="btn btn-primary btn-lg" href="https://www.tindie.com/products/lll7/usb-lin-converter/" rel="noopener">Buy on Tindie</a>
                         <a class="btn btn-default btn-lg" href="https://lectronz.com/stores/ucandevices" rel="noopener">Buy on Lectronz</a>
                         <a class="btn btn-default btn-lg" href="https://github.com/uCAN-LIN/LinUSBConverter" rel="noopener">Source on GitHub</a>
@@ -461,15 +462,14 @@ T0005013AABBCC
 <p>You can use LUC on any operating system with serial terminal program like for 
 	example putty. Description of all available commands can be found in About section. 
 	All commands are the same as for USB-CAN converter so all tools can be reused, see UCAN USB-CAN converter project for libs and tools. LUC is also compatible with LINUX CAN-UTILS and SOCKET CAN.
-	Device have its own terminal written in JAVA, 
+	Device have its own terminal,
 	<a data-toggle="collapse" data-parent="#accordion" href="#java" aria-expanded="true" aria-controls="collapseOne">uCCBViewer</a>. </p>
-	
+
 <div class="card card-block">
-	<p><b>UCCBViewer</b> is GUI program for both uCAN CAN and LIN converters. For USB-LIN converter uCCBViewer functionalities are: 
-		frame reception, transmission, master table setup. To run this program Java Runtime Enviroment(JRE) needs to be installed.
-    To run <b>UCCBViewer</b> on Linux remember to run this program as superuser. <code>sudo java -jar uCCBViewer-2.1.jar </code><br>
-    <a href="https://github.com/UsbCANConverter-UCCbasic/uCCBViewer/releases"><i class="fa fa-github-square"></i> Newest release of UCCBViewer  </a>
-	<a href="#" class="pop"> <img id="imageresource"  src="usblinconverter/UCCBViewer.webp" class="img-responsive" alt="UCCBViewer software showing LIN bus frames" width="632" height="551"> </a>
+	<p><b>UCCBViewer</b> is a GUI program for both uCAN CAN and LIN converters. For USB-LIN converter uCCBViewer functionalities are:
+		frame reception, transmission, master table setup, LIN schedule table and UDS / diagnostics. The viewer is now written in Python, so Java is no longer required.<br>
+    <a href="https://github.com/UsbCANConverter-UCCbasic/uCCBViewer/releases/tag/p2.6"><i class="fa fa-github-square"></i> Newest release of UCCBViewer (p2.6)  </a>
+	<a href="#" class="pop"> <img id="imageresource"  src="usblinconverter/UCCBViewer.webp" class="img-responsive" alt="UCCBViewer software showing LIN bus frames" width="947" height="900"> </a>
     </p>
 </div>
 
@@ -521,6 +521,7 @@ $(function() {
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
+    <script src="js/stripe-buy.js"></script>
 </body>
 
 </html>

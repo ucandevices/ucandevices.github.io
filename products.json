@@ -1,73 +1,79 @@
 [
     {
-     "title":"USB CAN CONVERTER",
-     "desc": "Converter CAN signals with USB and UART interfaces",
-     "category": "DEVICES",
-     "img":"img/products/uccb.webp",
-     "link": "uccb.html",
-     "github": "https://github.com/UsbCANConverter-UCCbasic",
-     "canbuy": true,
-     "cost": 18
+        "title": "CAN / CANFD USB Converter",
+        "desc": "Convert CAN and CAN FD signals to USB",
+        "category": "DEVICES",
+        "img": "img/products/cfuc.webp",
+        "link": "cfuc.html",
+        "github": "https://github.com/ucandevices/CFDC_embedded",
+        "canbuy": false,
+        "cost": 20,
+        "stripeUrl": "https://buy.stripe.com/dRmaEQ8AX9Fx7bdf9Cgw004"
     },
     {
-      "title":"FDCAN USB CONVERTER",
-      "desc": "Convert FDCAN signals to USB",
-      "category": "DEVICES",
-      "img":"img/products/cfuc.webp",
-      "link": "cfuc.html",
-      "github": "https://github.com/ucandevices/CFDC_embedded",
-      "canbuy": false,
-      "cost": 30
-     },
-
-   {
-    "title":"USB LIN CONVERTER",
-    "desc": "LIN network master and monitoring device as USB dongle",
-    "category": "DEVICES",
-    "img":"img/products/ulc.webp",
-    "link": "ulc.html",
-    "github": "https://github.com/uCAN-LIN/LinUSBConverter",
-    "canbuy": true,
-    "cost": 21
-   },
-   {
-    "title":"SENT USB CONVERTER",
-    "desc": "SAE J2716 SENT automotive sensor to USB/SLCAN bridge",
-    "category": "DEVICES",
-    "img":"img/products/sent.webp",
-    "link": "sentusb.html",
-    "github": "https://github.com/ucandevices/SENTToUSB",
-    "canbuy": false,
-    "cost": 25
-   },
-   {
-    "title":"CAN LOG/ETH CONVERTER",
-    "desc": "Linux microcomputer with Ethernet and CAN",
-    "category": "DEVICES",
-    "img":"img/products/cec.webp",
-    "link": "cec.html",
-    "github": "https://github.com/CanEthernetConverter",
-    "canbuy": false,
-    "cost": 40
-  },
-   {
-    "title":"USB CAN CONVERTER mPCIe adapter",
-    "desc": "Converter CAN signals with USB interface mini PIC express adapter",
-    "category": "DEVICES",
-    "img":"img/products/mpcie_uccb.webp",
-    "link": "mpcie_uccb.html",
-    "github": "https://github.com/UsbCANConverter-UCCbasic/uCCB-mPICe",
-    "canbuy": true,
-    "cost": 30
-   },
-   {
-    "title":"IO-LINK USB/Ethernet converter",
-    "desc": "Converter IO-LINK signals to USB/Ethernet interface ",
-    "category": "DEVICES",
-    "img":"img/products/iolink.webp",
-    "link": "iolink.html",
-    "github": "https://github.com/ucandevices/IO-LINK-Covnerter",
-    "canbuy": true,
-    "cost": 30
-   }
+        "title": "USB LIN CONVERTER",
+        "desc": "LIN network master and monitoring device as USB dongle",
+        "category": "DEVICES",
+        "img": "img/products/ulc.webp",
+        "link": "ulc.html",
+        "github": "https://github.com/uCAN-LIN/LinUSBConverter",
+        "canbuy": false,
+        "cost": 21,
+        "stripeUrl": "https://buy.stripe.com/8x200c3gD3h93Z1aTmgw001"
+    },
+    {
+        "title": "SENT USB CONVERTER",
+        "desc": "SAE J2716 SENT automotive sensor to USB/SLCAN bridge",
+        "category": "DEVICES",
+        "img": "img/products/sent.webp",
+        "link": "sentusb.html",
+        "github": "https://github.com/ucandevices/SENTToUSB",
+        "canbuy": false,
+        "cost": 20,
+        "stripeUrl": "https://buy.stripe.com/dRm28kaJ5aJB7bd0eIgw005"
+    },
+    {
+        "title": "CAN LOG/ETH CONVERTER",
+        "desc": "Linux microcomputer with Ethernet and CAN",
+        "category": "DEVICES",
+        "img": "img/products/cec.webp",
+        "link": "cec.html",
+        "github": "https://github.com/CanEthernetConverter",
+        "canbuy": false,
+        "cost": 40,
+        "stripeUrl": ""
+    },
+    {
+        "title": "USB CAN CONVERTER mPCIe adapter",
+        "desc": "Converter CAN signals with USB interface mini PIC express adapter",
+        "category": "DEVICES",
+        "img": "img/products/mpcie_uccb.webp",
+        "link": "mpcie_uccb.html",
+        "github": "https://github.com/UsbCANConverter-UCCbasic/uCCB-mPICe",
+        "canbuy": false,
+        "cost": 30,
+        "stripeUrl": "https://buy.stripe.com/4gMfZa04rcRJ3Z15z2gw002"
+    },
+    {
+        "title": "IO-LINK USB/Ethernet converter",
+        "desc": "Converter IO-LINK signals to USB/Ethernet interface ",
+        "category": "DEVICES",
+        "img": "img/products/iolink.webp",
+        "link": "iolink.html",
+        "github": "https://github.com/ucandevices/IO-LINK-Covnerter",
+        "canbuy": false,
+        "cost": 30,
+        "stripeUrl": "https://buy.stripe.com/bJebIUeZldVN0MPaTmgw003"
+    },
+    {
+        "title": "USB CAN CONVERTER",
+        "desc": "Converter CAN signals with USB and UART interfaces",
+        "category": "DEVICES",
+        "img": "img/products/uccb.webp",
+        "link": "uccb.html",
+        "github": "https://github.com/UsbCANConverter-UCCbasic",
+        "canbuy": false,
+        "cost": 18,
+        "stripeUrl": "https://buy.stripe.com/8x228kdVh6tl8fh3qUgw000"
+    }
 ]

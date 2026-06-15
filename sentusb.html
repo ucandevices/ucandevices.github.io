@@ -47,7 +47,9 @@
           "url": "https://www.tindie.com/stores/lll7/",
           "priceCurrency": "USD",
           "price": "23.00",
+          "priceValidUntil": "2027-05-22",
           "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
           "seller": {"@type": "Organization", "name": "Tindie - uCanDevices"}
         },
         {
@@ -55,7 +57,9 @@
           "url": "https://lectronz.com/stores/ucandevices",
           "priceCurrency": "EUR",
           "price": "22.00",
+          "priceValidUntil": "2027-05-22",
           "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
           "seller": {"@type": "Organization", "name": "Lectronz - uCanDevices"}
         }
       ]
@@ -172,6 +176,28 @@
       ]
     }
     </script>
+
+    <!-- VideoObject structured data - YouTube intro video -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "SENT (SAE J2716) USB Converter introduction",
+      "description": "Introduction to the uCanDevices SENT USB Converter: decoding SAE J2716 / ISO 21097 automotive sensor signals over a USB virtual COM port, Learn mode for auto-detecting tick period and CRC mode, and TX mode for sensor simulation.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/C2tTHNFDXZ8/maxresdefault.jpg",
+      "uploadDate": "2024-01-01",
+      "embedUrl": "https://www.youtube.com/embed/C2tTHNFDXZ8",
+      "contentUrl": "https://www.youtube.com/watch?v=C2tTHNFDXZ8",
+      "publisher": {
+        "@type": "Organization",
+        "name": "uCanDevices",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ucandevices.github.io/favicon.ico"
+        }
+      }
+    }
+    </script>
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 
@@ -214,7 +240,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="uccb.html">USB CAN Converter</a></li>
-                        <li><a href="cfuc.html">FDCAN USB Converter</a></li>
+                        <li><a href="cfuc.html">CANFD / CAN USB Converter</a></li>
                         <li><a href="ulc.html">USB LIN Converter</a></li>
                         <li><a href="sentusb.html">SENT USB Converter</a></li>
                         <li><a href="cec.html">CAN Log/Eth Converter</a></li>
@@ -227,7 +253,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">GitHub <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="https://github.com/UsbCANConverter-UCCbasic" rel="noopener">USB CAN Converter</a></li>
-                        <li><a href="https://github.com/ucandevices/CFDC_embedded" rel="noopener">FDCAN USB Converter</a></li>
+                        <li><a href="https://github.com/ucandevices/CFDC_embedded" rel="noopener">CANFD / CAN USB Converter</a></li>
                         <li><a href="https://github.com/uCAN-LIN/LinUSBConverter" rel="noopener">USB LIN Converter</a></li>
                         <li><a href="https://github.com/ucandevices/SENTToUSB" rel="noopener">SENT USB Converter</a></li>
                         <li><a href="https://github.com/CanEthernetConverter" rel="noopener">CAN Log/Eth Converter</a></li>
@@ -249,9 +275,10 @@
                     <h1 class="section-heading">SENT (SAE J2716) USB Converter</h1>
                     <p class="lead">Decode automotive SENT sensors over USB. Auto-learn tick and CRC, multiple nibble support, TX mode. Plug-and-play on Windows, Linux and macOS.</p>
                     <p>
-                        <a class="btn btn-primary btn-lg" href="https://www.tindie.com/products/lll7/sent-j2716-usb-converter/" rel="noopener">Buy on Tindie</a>
-                        <a class="btn btn-default btn-lg" href="https://lectronz.com/stores/ucandevices" rel="noopener">Buy on Lectronz</a>
-                        <a class="btn btn-default btn-lg" href="https://github.com/ucandevices/SENTToUSB" rel="noopener">Source on GitHub</a>
+                        <a class="btn btn-success btn-lg stripe-buy-btn" href="https://buy.stripe.com/dRm28kaJ5aJB7bd0eIgw005" rel="noopener">Buy with Card</a>
+                        <a class="btn btn-primary btn-lg" href="https://www.tindie.com/products/lll7/sent-j2716-usb-converter/" target="_blank" rel="noopener">Buy on Tindie</a>
+                        <a class="btn btn-default btn-lg" href="https://lectronz.com/stores/ucandevices" target="_blank" rel="noopener">Buy on Lectronz</a>
+                        <a class="btn btn-default btn-lg" href="https://github.com/ucandevices/SENTToUSB" target="_blank" rel="noopener">Source on GitHub</a>
                     </p>
                     <hr class="primary">
                 </div>
@@ -262,20 +289,13 @@
             <nav aria-label="Breadcrumb" class="breadcrumb-nav" style="margin: 10px 0; font-size: 90%;">
                 <a href="index.html">Home</a> &rsaquo; <span aria-current="page">SENT USB Converter</span>
             </nav>
-            <ul class="nav nav-tabs">
-                <li><a href="#tc_desc">About</a></li>
-                <li><a href="#tc_device">Sources</a></li>
-                <li><a href="#tc_td">Tools</a></li>
-            </ul>
-            <div class="product-content">
-                <div id="tc_desc" class="product-section">
-                    <!-- inlined from sentusb/desc.html -->
+            <!-- inlined from sentusb/desc.html -->
 
 <p style="text-align:justify; font-size:75%">
     Product and its documentation is supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of this product. This product is not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
 </p>
 
-<h3>Description</h3>
+<h2>Description</h2>
 <p>SENT to USB converter decodes <b>SAE J2716 / ISO 21097 SENT</b> automotive sensor signals and streams them to a PC over a standard USB serial (CDC) port using the SLCAN text protocol.
 No custom driver is needed — it enumerates as a Virtual COM Port on Windows 10+, Linux and macOS.
 </p>
@@ -296,7 +316,7 @@ No custom driver is needed — it enumerates as a Virtual COM Port on Windows 10
 
 <h3>Introduction video</h3>
 <div class="video-container">
-<iframe loading="lazy" src="https://www.youtube.com/embed/C2tTHNFDXZ8?rel=0&amp;" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe title="SENT (SAE J2716) USB Converter introduction video" loading="lazy" src="https://www.youtube.com/embed/C2tTHNFDXZ8?rel=0&amp;" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>
 
 <h3>Details</h3>
@@ -327,7 +347,7 @@ No custom driver is needed — it enumerates as a Virtual COM Port on Windows 10
   <img class="img-responsive" loading="lazy" decoding="async" src="sentusb/sent_tool.webp" style="max-width: 60%;" alt="SENT Viewer 1.0 GUI showing live decoded SAE J2716 frames" width="1200" height="775">
 </p>
 
-<h3>COM port Commands</h3>
+<h2>COM port Commands</h2>
 <p>All commands are plain ASCII terminated with CR (0x0D). On error the device responds with 0x07 (BEL).</p>
 
 <table class="table-bordered">
@@ -433,7 +453,7 @@ No custom driver is needed — it enumerates as a Virtual COM Port on Windows 10
 ←  t60104...\r      result: learned tick, nibbles, CRC mode
 </pre>
 
-<h3>Sensor Presets</h3>
+<h2>Sensor Presets</h2>
 <table class="table table-bordered table-condensed" style="max-width: 750px;">
   <thead class="active">
     <tr><th>Sensor</th><th>Tick</th><th>Nibbles</th><th>CRC mode</th><th>CRC seed</th></tr>
@@ -463,7 +483,7 @@ No custom driver is needed — it enumerates as a Virtual COM Port on Windows 10
   </tbody>
 </table>
 
-<h3>FAQ</h3>
+<h2>FAQ</h2>
 <dl>
   <dt><b>What is SENT (SAE J2716)?</b></dt>
   <dd>SENT (Single Edge Nibble Transmission) is the SAE J2716 / ISO 21097 single-wire digital protocol used by many modern automotive sensors &mdash; pressure, position, throttle, MAP and angle &mdash; to transmit data to an ECU. Each frame is a stream of 4-bit nibbles separated by falling edges, with a status nibble, data nibbles and a CRC.</dd>
@@ -484,17 +504,16 @@ No custom driver is needed — it enumerates as a Virtual COM Port on Windows 10
   <dd>Yes &mdash; STM32F042K6 firmware on <a href="https://github.com/ucandevices/SENTToUSB">github.com/ucandevices/SENTToUSB</a>. A USB DFU bootloader is included. SENT Viewer 1.0 is a free GUI.</dd>
 </dl>
 <!-- /inlined -->
-                </div>
-                <div id="tc_device" class="product-section">
-                    <!-- inlined from sentusb/sources.html -->
-<h3>Hardware</h3>
+
+<!-- inlined from sentusb/sources.html -->
+<h2>Hardware</h2>
 <p>The device uses an <b>STM32F042K6</b> microcontroller running at 48 MHz from the internal HSI48 oscillator — no external crystal required.
 PCB is designed in KiCad. Board size is 17×28 mm.
 All hardware source files are available in the <a href="https://github.com/ucandevices/SENTToUSB">SENTToUSB GitHub repository</a>.
 </p>
 <img class="img-responsive" loading="lazy" decoding="async" src="sentusb/sent_pcb.svg" style="max-width: 100%; height: auto;" alt="SENT USB Converter PCB layout drawing" width="1200" height="849">
 
-<h3>Software</h3>
+<h2>Software</h2>
 <p>Firmware is written in C using STM32CubeIDE (free) on top of the STM32 HAL USB CDC driver, with custom SENT capture and DMA-driven transmit logic.
 All sources and firmware <a href="https://github.com/ucandevices/SENTToUSB/releases">releases</a> are on the <a href="https://github.com/ucandevices/SENTToUSB">SENTToUSB GitHub repository</a>. For exact pin assignments, timer mapping and firmware internals see the repository README.</p>
 
@@ -506,11 +525,11 @@ dfu-util -a 0 -s 0x08000000 -D firmware.bin
 On Windows you can also use <a href="https://www.st.com/en/development-tools/stsw-stm32080.html">ST DfuSe</a> tool.
 </p>
 <!-- /inlined -->
-                </div>
-                <div id="tc_td" class="product-section">
-                    <!-- inlined from sentusb/tools.html -->
 
-<h4>Python Viewer — sent_viewer.py</h4>
+<!-- inlined from sentusb/tools.html -->
+<h2>Tools</h2>
+
+<h3>Python Viewer — sent_viewer.py</h3>
 <p>A GUI application for monitoring SENT sensor data in real time.
 Requires Python 3.10+ and <code>pyserial</code>:
 <pre class="listing">
@@ -535,11 +554,11 @@ python sent_viewer.py
 </ul>
 </p>
 
-<h4>Serial terminal</h4>
+<h3>Serial terminal</h3>
 <p>Any serial terminal (PuTTY, Tera Term, <code>screen</code>, <code>minicom</code>) can be used at any baud rate (8N1).
 All commands are described in the About section.</p>
 
-<h4>python-can</h4>
+<h3>python-can</h3>
 <p>The SLCAN-compatible protocol means the device works directly with <a href="https://python-can.readthedocs.io/">python-can</a> using the <code>slcan</code> interface:
 <pre class="listing">
 import can
@@ -561,8 +580,7 @@ for msg in bus:
 </div>
 
 <!-- /inlined -->
-                </div>
-            </div>
+
             <!-- Questions / contact CTA -->
             <div class="text-center" style="margin: 40px 0;">
                 <h3>Questions about the SENT USB Converter?</h3>
@@ -589,6 +607,7 @@ for msg in bus:
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
+    <script src="js/stripe-buy.js"></script>
 
     <!-- Image popup (depends on jQuery + Bootstrap modal — must load after them) -->
     <script>

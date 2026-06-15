@@ -57,7 +57,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="uccb.html">USB CAN Converter</a></li>
-                        <li><a href="cfuc.html">FDCAN USB Converter</a></li>
+                        <li><a href="cfuc.html">CANFD / CAN USB Converter</a></li>
                         <li><a href="ulc.html">USB LIN Converter</a></li>
                         <li><a href="sentusb.html">SENT USB Converter</a></li>
                         <li><a href="cec.html">CAN Log/Eth Converter</a></li>
@@ -70,7 +70,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">GitHub <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="https://github.com/UsbCANConverter-UCCbasic" rel="noopener">USB CAN Converter</a></li>
-                        <li><a href="https://github.com/ucandevices/CFDC_embedded" rel="noopener">FDCAN USB Converter</a></li>
+                        <li><a href="https://github.com/ucandevices/CFDC_embedded" rel="noopener">CANFD / CAN USB Converter</a></li>
                         <li><a href="https://github.com/uCAN-LIN/LinUSBConverter" rel="noopener">USB LIN Converter</a></li>
                         <li><a href="https://github.com/ucandevices/SENTToUSB" rel="noopener">SENT USB Converter</a></li>
                         <li><a href="https://github.com/CanEthernetConverter" rel="noopener">CAN Log/Eth Converter</a></li>
@@ -93,11 +93,25 @@
     </p>
 </div>
 
+<!-- Direct purchase with card (Stripe) -->
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 class="section-heading">Buy Direct with Card</h1>
+                <p class="lead">Pay by card via Stripe. Shipping address is collected at checkout. Worldwide shipping.</p>
+                <hr class="primary">
+            </div>
+        </div>
+        <div class="row" id="stripe-products"></div>
+    </div>
+
+<br>
+
 <!-- vendors Buy -->
     <div class="container text-center">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1 class="section-heading">Where to Buy uCanDevices Converters</h1>
+                <h1 class="section-heading">Or Buy from a Distributor</h1>
                 <p class="lead">Order USB CAN, CAN FD, LIN, SENT and IO-Link converters from one of our official distributors below. Worldwide shipping from Tindie and Lectronz; EU/PL shipping from Elty and Kamami.</p>
                 <hr class="primary">
             </div>
@@ -145,6 +159,35 @@
 
 </section>
     <script>
+    (function () {
+        var container = document.getElementById('stripe-products');
+        if (!container) return;
+        fetch('products.json').then(function (r) { return r.json(); }).then(function (products) {
+            var html = products.filter(function (p) {
+                return p.canbuy && p.stripeUrl && p.stripeUrl.indexOf('https://') === 0;
+            }).map(function (p) {
+                var safeTitle = p.title.replace(/</g, '&lt;');
+                var safeDesc = p.desc.replace(/</g, '&lt;');
+                return '' +
+                    '<div class="col-lg-4 col-md-6 col-xs-12 text-center" style="margin-bottom:30px;">' +
+                        '<div class="service-box">' +
+                            '<a href="' + p.link + '"><img class="img-responsive" src="' + p.img + '" alt="' + safeTitle + '" style="margin:0 auto; max-height:160px;"></a>' +
+                            '<h3 style="margin-top:15px;">' + safeTitle + '</h3>' +
+                            '<p>' + safeDesc + '</p>' +
+                            '<p><strong>' + p.cost + ' USD</strong></p>' +
+                            '<a class="btn btn-primary btn-lg" href="' + p.stripeUrl + '" rel="noopener">Buy with Card</a>' +
+                        '</div>' +
+                    '</div>';
+            }).join('');
+            if (!html) {
+                container.innerHTML = '<div class="col-lg-12 text-center"><p><em>Direct card payment coming soon.</em></p></div>';
+            } else {
+                container.innerHTML = html;
+            }
+        }).catch(function () {
+            container.innerHTML = '<div class="col-lg-12 text-center"><p><em>Could not load products.</em></p></div>';
+        });
+    })();
     </script>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>

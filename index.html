@@ -51,13 +51,13 @@
       "@context": "https://schema.org",
       "@type": "ItemList",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "url": "https://ucandevices.github.io/uccb.html",       "name": "USB CAN Converter (UCCB)"},
-        {"@type": "ListItem", "position": 2, "url": "https://ucandevices.github.io/cfuc.html",       "name": "USB CAN FD Converter (CFUC)"},
-        {"@type": "ListItem", "position": 3, "url": "https://ucandevices.github.io/ulc.html",        "name": "USB LIN Converter"},
-        {"@type": "ListItem", "position": 4, "url": "https://ucandevices.github.io/sentusb.html",    "name": "SENT (SAE J2716) USB Converter"},
-        {"@type": "ListItem", "position": 5, "url": "https://ucandevices.github.io/cec.html",        "name": "CAN Ethernet Converter / Logger"},
-        {"@type": "ListItem", "position": 6, "url": "https://ucandevices.github.io/mpcie_uccb.html", "name": "USB CAN Converter - mPCIe"},
-        {"@type": "ListItem", "position": 7, "url": "https://ucandevices.github.io/iolink.html",     "name": "IO-Link USB / Ethernet Converter"}
+        {"@type": "ListItem", "position": 1, "url": "https://ucandevices.github.io/cfuc.html",       "name": "CANFD / CAN USB Converter (CFUC)"},
+        {"@type": "ListItem", "position": 2, "url": "https://ucandevices.github.io/ulc.html",        "name": "USB LIN Converter"},
+        {"@type": "ListItem", "position": 3, "url": "https://ucandevices.github.io/sentusb.html",    "name": "SENT (SAE J2716) USB Converter"},
+        {"@type": "ListItem", "position": 4, "url": "https://ucandevices.github.io/cec.html",        "name": "CAN Ethernet Converter / Logger"},
+        {"@type": "ListItem", "position": 5, "url": "https://ucandevices.github.io/mpcie_uccb.html", "name": "USB CAN Converter - mPCIe"},
+        {"@type": "ListItem", "position": 6, "url": "https://ucandevices.github.io/iolink.html",     "name": "IO-Link USB / Ethernet Converter"},
+        {"@type": "ListItem", "position": 7, "url": "https://ucandevices.github.io/uccb.html",       "name": "USB CAN Converter (UCCB)"}
       ]
     }
     </script>
@@ -116,7 +116,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="uccb.html">USB CAN Converter</a></li>
-                        <li><a href="cfuc.html">FDCAN USB Converter</a></li>
+                        <li><a href="cfuc.html">CANFD / CAN USB Converter</a></li>
                         <li><a href="ulc.html">USB LIN Converter</a></li>
                         <li><a href="sentusb.html">SENT USB Converter</a></li>
                         <li><a href="cec.html">CAN Log/Eth Converter</a></li>
@@ -129,7 +129,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">GitHub <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="https://github.com/UsbCANConverter-UCCbasic" rel="noopener">USB CAN Converter</a></li>
-                        <li><a href="https://github.com/ucandevices/CFDC_embedded" rel="noopener">FDCAN USB Converter</a></li>
+                        <li><a href="https://github.com/ucandevices/CFDC_embedded" rel="noopener">CANFD / CAN USB Converter</a></li>
                         <li><a href="https://github.com/uCAN-LIN/LinUSBConverter" rel="noopener">USB LIN Converter</a></li>
                         <li><a href="https://github.com/ucandevices/SENTToUSB" rel="noopener">SENT USB Converter</a></li>
                         <li><a href="https://github.com/CanEthernetConverter" rel="noopener">CAN Log/Eth Converter</a></li>
@@ -188,32 +188,31 @@
     </section>
 <!-- PRODUCTS LIST -->
     <section class="no-padding" id="portfolio">
+        <style>
+            #portfolio .row.no-gutter { display: flex; flex-wrap: wrap; }
+            #portfolio .row.no-gutter > [class*="col-"] { display: flex; }
+            #portfolio .row.no-gutter .portfolio-box { width: 100%; display: flex; flex-direction: column; }
+            #portfolio .row.no-gutter .portfolio-box > img {
+                flex-shrink: 0;
+                width: 100%;
+                height: 260px;
+                object-fit: contain;
+                object-position: center;
+            }
+        </style>
         <div class="container-fluid">
             <div class="row no-gutter">
                 <div class="col-lg-4 col-sm-6 col-img-center">
-                    <a href="uccb.html" class="portfolio-box" title="USB CAN Converter - CAN bus to USB virtual COM port, SLCAN compatible">
-                        <img src="img/products/uccb.webp" class="img-responsive" alt="USB CAN Converter (UCCB) - SLCAN compatible CAN to USB dongle" width="1200" height="718" loading="lazy">
+                    <a href="cfuc.html" class="portfolio-box" title="CANFD / CAN USB Converter - CAN FD and classic CAN to USB">
+                        <img src="img/products/cfuc.webp" class="img-responsive" alt="CANFD / CAN USB Converter (CFUC) - CAN FD and classic CAN to USB" width="800" height="522" loading="lazy">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">DEVICES</div>
-                                <div class="project-name">USB CAN CONVERTER</div>
+                                <div class="project-name">CANFD / CAN USB CONVERTER</div>
                             </div>
                         </div>
-                        <h3 class="text-center">USB CAN CONVERTER</h3>
-                        <p class="text-center text-muted">Converter CAN signals with USB and UART interfaces</p>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-img-center">
-                    <a href="cfuc.html" class="portfolio-box" title="FDCAN USB Converter - CAN FD to USB">
-                        <img src="img/products/cfuc.webp" class="img-responsive" alt="FDCAN USB Converter (CFUC) - CAN FD and classic CAN to USB" width="800" height="522" loading="lazy">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">DEVICES</div>
-                                <div class="project-name">FDCAN USB CONVERTER</div>
-                            </div>
-                        </div>
-                        <h3 class="text-center">FDCAN USB CONVERTER</h3>
-                        <p class="text-center text-muted">Convert FDCAN signals to USB</p>
+                        <h3 class="text-center">CANFD / CAN USB CONVERTER</h3>
+                        <p class="text-center text-muted">Convert CAN and CAN FD signals to USB</p>
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6 col-img-center">
@@ -279,6 +278,19 @@
                         </div>
                         <h3 class="text-center">IO-LINK USB/Ethernet converter</h3>
                         <p class="text-center text-muted">Converter IO-LINK signals to USB/Ethernet interface</p>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-img-center">
+                    <a href="uccb.html" class="portfolio-box" title="USB CAN Converter - CAN bus to USB virtual COM port, SLCAN compatible">
+                        <img src="img/products/uccb.webp" class="img-responsive" alt="USB CAN Converter (UCCB) - SLCAN compatible CAN to USB dongle" width="1200" height="718" loading="lazy">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">DEVICES</div>
+                                <div class="project-name">USB CAN CONVERTER</div>
+                            </div>
+                        </div>
+                        <h3 class="text-center">USB CAN CONVERTER</h3>
+                        <p class="text-center text-muted">Converter CAN signals with USB and UART interfaces</p>
                     </a>
                 </div>
             </div>
