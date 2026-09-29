@@ -6,14 +6,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="USB-C 12-channel servo controller with rail current and voltage monitoring, on-board scripts and a desktop GUI. Open source hardware and firmware.">
-    <meta name="keywords" content="USB servo controller, 12 channel servo controller, USB-C servo driver, Maestro alternative, RC servo PWM, CH32V203, open source servo controller">
+    <meta name="description" content="USB-C 12-channel servo controller, compatible with Pololu Maestro serial protocols, with rail current and voltage monitoring, on-board scripts and a desktop GUI. Open source hardware and firmware.">
+    <meta name="keywords" content="USB servo controller, 12 channel servo controller, USB-C servo driver, Maestro alternative, Pololu Maestro compatible, maestro.py, RC servo PWM, CH32V203, open source servo controller">
     <meta name="author" content="uCanDevices">
     <link rel="canonical" href="https://ucandevices.github.io/servo.html">
 
     <meta property="og:type" content="product">
     <meta property="og:title" content="USB Servo Controller - 12 Channels, USB-C">
-    <meta property="og:description" content="Drive 12 hobby servos from a PC over USB-C. Rail current and voltage monitoring, on-board scripts, desktop GUI.">
+    <meta property="og:description" content="Drive 12 hobby servos from a PC over USB-C. Pololu Maestro protocol compatible, rail current and voltage monitoring, on-board scripts, desktop GUI.">
     <meta property="og:url" content="https://ucandevices.github.io/servo.html">
     <meta property="og:image" content="https://ucandevices.github.io/img/products/servo.webp">
     <meta property="og:site_name" content="uCanDevices">
@@ -31,7 +31,7 @@
       "@type": "Product",
       "name": "USB Servo Controller",
       "image": "https://ucandevices.github.io/img/products/servo.webp",
-      "description": "12-channel hobby servo controller over USB-C. Measures servo rail current and voltage, runs stored scripts without a PC, controlled from a desktop GUI, Python or any serial terminal.",
+      "description": "12-channel hobby servo controller over USB-C, compatible with the Pololu Maestro serial protocols. Measures servo rail current and voltage, runs stored scripts without a PC, controlled from a desktop GUI, Python or any serial terminal.",
       "sku": "SERVO12",
       "brand": {"@type": "Brand", "name": "uCanDevices"},
       "category": "Servo controller",
@@ -147,9 +147,10 @@
     Product and its documentation is supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of this product. This product is not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
 </p>
 <h3>Description</h3>
-<p>12-channel RC servo controller in the spirit of the Pololu Mini Maestro 12, with USB-C and rail monitoring added. Shows up as a virtual COM port and takes simple text commands.</p>
+<p>12-channel RC servo controller, an open alternative to the Pololu Mini Maestro 12 that speaks its serial protocols &ndash; with USB-C and rail monitoring added. Shows up as a virtual COM port; use Maestro libraries or simple text commands.</p>
 <ul>
-  <li>12 servo outputs, 500&ndash;2500 &micro;s at 50 Hz, 0.5 &micro;s resolution</li>
+  <li><b>Pololu Maestro compatible:</b> Compact, Pololu and Mini SSC serial protocols with speed and acceleration, so Maestro libraries (Python <code>maestro.py</code>, ROS drivers&hellip;) work unchanged. Maestro Control Center is not supported.</li>
+  <li>12 servo outputs at 50 Hz, 0.5 &micro;s resolution; travel limits per channel, 64&ndash;4080 &micro;s, stored on the board</li>
   <li>Channels 0&ndash;7 can be analog inputs (0&ndash;3.3 V)</li>
   <li>Servo rail current and voltage measurement, with overcurrent and undervoltage cut-off</li>
   <li>Scripts stored on the board run without a PC, optionally at power-up</li>
@@ -173,7 +174,7 @@
 <p>The board has its own USB bootloader, so updates need no programmer and no jumper.</p>
 <ul>
   <li><b>Normal update</b> &ndash; in the GUI open the <b>Firmware</b> tab and press <b>Flash firmware</b> (takes about 3 s). The firmware file comes with the GUI download.</li>
-  <li><b>Blank chip or recovery</b> &ndash; fit a jumper on <b>BOOT0_SEL</b>, plug in USB and flash the <a href="https://github.com/ucandevices/UsbServoController/releases/download/v0.3/USBServoController-ch32-full.bin">full image</a> with the WCH ROM bootloader (<a href="https://github.com/ch32-rs/wchisp" rel="noopener">wchisp</a>). Then remove the jumper and replug.</li>
+  <li><b>Blank chip or recovery</b> &ndash; fit a jumper on <b>BOOT0_SEL</b>, plug in USB and flash the <a href="https://github.com/ucandevices/UsbServoController/releases/download/v0.4/USBServoController-ch32-full.bin">full image</a> with the WCH ROM bootloader (<a href="https://github.com/ch32-rs/wchisp" rel="noopener">wchisp</a>). Then remove the jumper and replug.</li>
 </ul>
                     </div>
                     <div id="tc_td" class="">
@@ -195,10 +196,10 @@
 <p><small>Click a screenshot to enlarge.</small></p>
 <h3>Download</h3>
 <div class="card card-block">
-    <p><a href="https://github.com/ucandevices/UsbServoController/releases/download/v0.3/ServoGUI-windows-x64.zip"><i class="glyphicon glyphicon-download-alt"></i> Windows (x64)</a><br>
-    <a href="https://github.com/ucandevices/UsbServoController/releases/download/v0.3/ServoGUI-linux-x64.tar.gz"><i class="glyphicon glyphicon-download-alt"></i> Linux (x64)</a> &ndash; add your user to the <code>dialout</code> group for serial access<br>
-    <a href="https://github.com/ucandevices/UsbServoController/releases/download/v0.3/USBServoController-ch32.bin"><i class="glyphicon glyphicon-download-alt"></i> Firmware 0.3</a> &ndash; application image, for the GUI's Firmware tab<br>
-    <a href="https://github.com/ucandevices/UsbServoController/releases/download/v0.3/USBServoController-ch32-full.bin"><i class="glyphicon glyphicon-download-alt"></i> Firmware 0.3, full image</a> &ndash; bootloader + application, for a blank chip or recovery<br>
+    <p><a href="https://github.com/ucandevices/UsbServoController/releases/download/v0.4/ServoGUI-windows-x64.zip"><i class="glyphicon glyphicon-download-alt"></i> Windows (x64)</a><br>
+    <a href="https://github.com/ucandevices/UsbServoController/releases/download/v0.4/ServoGUI-linux-x64.tar.gz"><i class="glyphicon glyphicon-download-alt"></i> Linux (x64)</a> &ndash; add your user to the <code>dialout</code> group for serial access<br>
+    <a href="https://github.com/ucandevices/UsbServoController/releases/download/v0.4/USBServoController-ch32.bin"><i class="glyphicon glyphicon-download-alt"></i> Firmware 0.4</a> &ndash; application image, for the GUI's Firmware tab<br>
+    <a href="https://github.com/ucandevices/UsbServoController/releases/download/v0.4/USBServoController-ch32-full.bin"><i class="glyphicon glyphicon-download-alt"></i> Firmware 0.4, full image</a> &ndash; bootloader + application, for a blank chip or recovery<br>
     <a href="https://github.com/ucandevices/UsbServoController/releases" rel="noopener">All releases on GitHub</a></p>
 </div>
 <h3>Other tools</h3>

@@ -317,10 +317,14 @@ testing.
 Canonical URL: https://ucandevices.github.io/servo.html
 GitHub: https://github.com/ucandevices/UsbServoController
 
-12-channel hobby servo controller over USB-C, in the spirit of the Pololu Mini
-Maestro 12. Appears as a USB CDC virtual COM port and takes one-line ASCII
-commands (e.g. "S 0 1500" centres channel 0). 500-2500 us pulses at 50 Hz with
-0.5 us resolution; channels 0-7 can be read as 0-3.3 V analog inputs.
+12-channel hobby servo controller over USB-C, an open alternative to the Pololu
+Mini Maestro 12. Appears as a USB CDC virtual COM port and speaks the Pololu
+Maestro serial protocols (Compact, Pololu device 12, Mini SSC) with on-board
+speed and acceleration, so Maestro client libraries (e.g. maestro.py, ROS
+drivers) work unchanged; Pololu's Maestro Control Center is not supported. It
+also takes one-line ASCII commands (e.g. "S 0 1500" centres channel 0). 50 Hz
+pulses with 0.5 us resolution and per-channel travel limits (64-4080 us, stored
+on the board); channels 0-7 can be read as 0-3.3 V analog inputs.
 Measures servo-rail current and voltage and switches all servos off on
 overcurrent or LiPo undervoltage. Scripts stored on the board run without a
 PC, optionally at power-up. Firmware updates over USB through its own

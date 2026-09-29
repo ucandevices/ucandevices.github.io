@@ -21,7 +21,7 @@ Distributors: Tindie (https://www.tindie.com/stores/lll7/), Lectronz (https://le
 - [CAN Ethernet Converter / CAN Logger](https://ucandevices.github.io/cec.html): Linux microcomputer with CAN and Ethernet. Remote CAN-to-IP bridge and standalone CAN data logger. SocketCAN compatible. ~$65.
 - [USB CAN Converter - mini PCIe (UCCB-mPCIe)](https://ucandevices.github.io/mpcie_uccb.html): UCCB in a mini PCI Express form factor for industrial PCs. ~$30.
 - [IO-Link USB / Ethernet Converter](https://ucandevices.github.io/iolink.html): IO-Link master interface over USB or Ethernet. Lab and prototyping tool for IEC 61131-9 IO-Link sensors. ~$30.
-- [USB Servo Controller](https://ucandevices.github.io/servo.html): 12-channel hobby servo controller over USB-C (virtual COM port, text commands). Servo rail current and voltage monitoring with cut-off, on-board scripts that run without a PC, 8 analog inputs. CH32V203 RISC-V. Desktop GUI for Windows and Linux. Source: https://github.com/ucandevices/UsbServoController
+- [USB Servo Controller](https://ucandevices.github.io/servo.html): 12-channel hobby servo controller over USB-C (virtual COM port). Speaks the Pololu Maestro serial protocols (Compact, Pololu, Mini SSC), so Maestro libraries work unchanged, plus simple text commands. Servo rail current and voltage monitoring with cut-off, on-board scripts that run without a PC, 8 analog inputs. CH32V203 RISC-V. Desktop GUI for Windows and Linux. Source: https://github.com/ucandevices/UsbServoController
 
 ## Software and tools
 
