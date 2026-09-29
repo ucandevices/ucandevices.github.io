@@ -316,6 +316,7 @@ testing.
 
 Canonical URL: https://ucandevices.github.io/servo.html
 GitHub: https://github.com/ucandevices/UsbServoController
+Video: https://www.youtube.com/watch?v=J-3VjcItKfA
 
 12-channel hobby servo controller over USB-C, an open alternative to the Pololu
 Mini Maestro 12. Appears as a USB CDC virtual COM port and speaks the Pololu
