@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="USB-C 12-channel servo controller with rail current and voltage monitoring, on-board scripts and a desktop GUI. Open source hardware and firmware.">
+    <meta name="keywords" content="USB servo controller, 12 channel servo controller, USB-C servo driver, Maestro alternative, RC servo PWM, CH32V203, open source servo controller">
+    <meta name="author" content="uCanDevices">
+    <link rel="canonical" href="https://ucandevices.github.io/servo.html">
+
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="USB Servo Controller - 12 Channels, USB-C">
+    <meta property="og:description" content="Drive 12 hobby servos from a PC over USB-C. Rail current and voltage monitoring, on-board scripts, desktop GUI.">
+    <meta property="og:url" content="https://ucandevices.github.io/servo.html">
+    <meta property="og:image" content="https://ucandevices.github.io/img/products/servo.webp">
+    <meta property="og:site_name" content="uCanDevices">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="USB Servo Controller - 12 Channels, USB-C">
+    <meta name="twitter:description" content="Drive 12 hobby servos from a PC over USB-C. Rail current and voltage monitoring, on-board scripts.">
+    <meta name="twitter:image" content="https://ucandevices.github.io/img/products/servo.webp">
+
+    <title>USB Servo Controller - 12 Channels, USB-C</title>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "USB Servo Controller",
+      "image": "https://ucandevices.github.io/img/products/servo.webp",
+      "description": "12-channel hobby servo controller over USB-C. Measures servo rail current and voltage, runs stored scripts without a PC, controlled from a desktop GUI, Python or any serial terminal.",
+      "sku": "SERVO12",
+      "brand": {"@type": "Brand", "name": "uCanDevices"},
+      "category": "Servo controller",
+      "url": "https://ucandevices.github.io/servo.html"
+    }
+    </script>
+<!-- Coments CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/creative.css" type="text/css">
+    <link rel="stylesheet" href="css/simple-sidebar.css" type="text/css">
+
+    
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<!-- Google tag (gtag.js) - GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBYPZF7RV0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZBYPZF7RV0', { 'anonymize_ip': true });
+</script>
+</head>
+
+<body id="page-top">
+	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="index.html" title="uCanDevices - USB CAN, LIN and SENT converters">uCanDevices</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="uccb.html">USB CAN Converter</a></li>
+                        <li><a href="cfuc.html">CANFD / CAN USB Converter</a></li>
+                        <li><a href="ulc.html">USB LIN Converter</a></li>
+                        <li><a href="sentusb.html">SENT USB Converter</a></li>
+                        <li><a href="cec.html">CAN Log/Eth Converter</a></li>
+                        <li><a href="mpcie_uccb.html">USB CAN Converter mPCIe</a></li>
+                        <li><a href="iolink.html">IO-Link USB/Ethernet Converter</a></li>
+                        <li><a href="servo.html">USB Servo Controller</a></li>
+                    </ul>
+                </li>
+                <li><a class="page-scroll" href="buy.html">Buy</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">GitHub <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://github.com/UsbCANConverter-UCCbasic" rel="noopener">USB CAN Converter</a></li>
+                        <li><a href="https://github.com/ucandevices/CFDC_embedded" rel="noopener">CANFD / CAN USB Converter</a></li>
+                        <li><a href="https://github.com/uCAN-LIN/LinUSBConverter" rel="noopener">USB LIN Converter</a></li>
+                        <li><a href="https://github.com/ucandevices/SENTToUSB" rel="noopener">SENT USB Converter</a></li>
+                        <li><a href="https://github.com/CanEthernetConverter" rel="noopener">CAN Log/Eth Converter</a></li>
+                        <li><a href="https://github.com/UsbCANConverter-UCCbasic/uCCB-mPICe" rel="noopener">USB CAN Converter mPCIe</a></li>
+                        <li><a href="https://github.com/ucandevices/IO-LINK-Covnerter" rel="noopener">IO-Link USB/Ethernet Converter</a></li>
+                        <li><a href="https://github.com/ucandevices/UsbServoController" rel="noopener">USB Servo Controller</a></li>
+                    </ul>
+                </li>
+                <li><a class="page-scroll" href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="section-heading">USB Servo Controller</h1>
+                    <p class="lead">Drive 12 hobby servos from a PC over USB-C. Watches the servo supply and runs scripts on its own.</p>
+                    <p>
+                        <a class="btn btn-primary btn-lg" href="index.html#contact">Ask about availability</a>
+                        <a class="btn btn-default btn-lg" href="https://github.com/ucandevices/UsbServoController" rel="noopener">Source on GitHub</a>
+                    </p>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+
+
+<!--        page contents tabs-->
+        <div class="container-fluid">
+            <ul class="nav nav-tabs">
+                <li><a  href="#tc_desc">About</a></li>
+                <li><a  href="#tc_device">Hardware</a></li>
+                <li><a  href="#tc_td">Tools</a></li>
+            </ul>
+                <div class="tab-content">
+                    <div id="tc_desc" class="">
+<p style="text-align:justify; font-size:75%">
+    Product and its documentation is supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of this product. This product is not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
+</p>
+<h3>Description</h3>
+<p>12-channel RC servo controller in the spirit of the Pololu Mini Maestro 12, with USB-C and rail monitoring added. Shows up as a virtual COM port and takes simple text commands.</p>
+<ul>
+  <li>12 servo outputs, 500&ndash;2500 &micro;s at 50 Hz, 0.5 &micro;s resolution</li>
+  <li>Channels 0&ndash;7 can be analog inputs (0&ndash;3.3 V)</li>
+  <li>Servo rail current and voltage measurement, with overcurrent and undervoltage cut-off</li>
+  <li>Scripts stored on the board run without a PC, optionally at power-up</li>
+  <li>USB-C virtual COM port, no drivers on Windows 10+, Linux and macOS</li>
+  <li>Firmware update over USB, no programmer needed</li>
+  <li>Desktop GUI for Windows and Linux: sliders, live current graph, poses and sequences, script editor, one-click firmware update</li>
+  <li>Separate servo supply on a screw terminal, up to ~5 A total</li>
+  <li>WCH CH32V203 RISC-V MCU, 66 &times; 38 mm board, 4 &times; M3 holes</li>
+</ul>
+<div class="row" style="max-width:900px">
+    <div class="col-sm-6"><img class="img-responsive" src="servo/top.webp" alt="USB Servo Controller - top side" width="436" height="249"></div>
+    <div class="col-sm-6"><img class="img-responsive" src="servo/bottom.webp" alt="USB Servo Controller - bottom side" width="425" height="250"></div>
+</div>
+                    </div>
+                    <div id="tc_device" class="">
+<h3>Schematic</h3>
+<p>USB-C with ESD protection, 3.3 V LDO, CH32V203 MCU, 220 &Omega; series resistors on every servo signal, and an INA180 shunt amplifier plus divider for rail current and voltage.</p>
+<a href="servo/schematic.webp" title="Open full size"><img class="img-responsive" style="max-width:480px; width:100%" src="servo/schematic.webp" alt="USB Servo Controller schematic" width="2076" height="1520" loading="lazy"></a>
+<p><small>Click to enlarge. Two-layer board, all parts on the top side, designed in KiCad. Schematic, PCB, firmware and tools: <a href="https://github.com/ucandevices/UsbServoController" rel="noopener">GitHub</a>.</small></p>
+<h3>Uploading new software</h3>
+<p>The board has its own USB bootloader, so updates need no programmer and no jumper.</p>
+<ul>
+  <li><b>Normal update</b> &ndash; in the GUI open the <b>Firmware</b> tab and press <b>Flash firmware</b> (takes about 3 s). The firmware file comes with the GUI download.</li>
+  <li><b>Blank chip or recovery</b> &ndash; fit a jumper on <b>BOOT0_SEL</b>, plug in USB and flash the <a href="https://github.com/ucandevices/UsbServoController/releases/download/v0.3/USBServoController-ch32-full.bin">full image</a> with the WCH ROM bootloader (<a href="https://github.com/ch32-rs/wchisp" rel="noopener">wchisp</a>). Then remove the jumper and replug.</li>
+</ul>
+                    </div>
+                    <div id="tc_td" class="">
+<h3>Servo GUI</h3>
+<p>One file, no install, for Windows and Linux. Also runs without a board (<code>--mock</code>) for trying things out.</p>
+<ul>
+  <li><b>Channels</b> &ndash; switch each channel on, drag its slider; set name, travel limits and speed per channel, or make channels 0&ndash;7 analog inputs</li>
+  <li><b>Rail</b> &ndash; live current and voltage, 10 s graph with peak hold, overcurrent / undervoltage limits, CSV recording</li>
+  <li><b>Poses &amp; sequence</b> &ndash; save positions as named poses, play them back with move and hold times, upload the sequence to run on the board</li>
+  <li><b>Script</b> &ndash; editor with syntax check for board scripts, upload, run, autorun at power-up</li>
+  <li><b>Firmware</b> &ndash; update the board over USB with one click</li>
+  <li><b>STOP</b> &ndash; space bar or Esc switches every servo off</li>
+</ul>
+<div class="row">
+    <div class="col-sm-4"><a href="servo/gui_rail.webp" title="Open full size"><img class="img-responsive" src="servo/gui_rail.webp" alt="Servo GUI - channel sliders and rail current monitor" width="1560" height="860" loading="lazy"></a></div>
+    <div class="col-sm-4"><a href="servo/gui_poses.webp" title="Open full size"><img class="img-responsive" src="servo/gui_poses.webp" alt="Servo GUI - poses and sequence player" width="1560" height="860" loading="lazy"></a></div>
+    <div class="col-sm-4"><a href="servo/gui_script.webp" title="Open full size"><img class="img-responsive" src="servo/gui_script.webp" alt="Servo GUI - board script editor" width="1560" height="860" loading="lazy"></a></div>
+</div>
+<p><small>Click a screenshot to enlarge.</small></p>
+<h3>Download</h3>
+<div class="card card-block">
+    <p><a href="https://github.com/ucandevices/UsbServoController/releases/download/v0.3/ServoGUI-windows-x64.zip"><i class="glyphicon glyphicon-download-alt"></i> Windows (x64)</a><br>
+    <a href="https://github.com/ucandevices/UsbServoController/releases/download/v0.3/ServoGUI-linux-x64.tar.gz"><i class="glyphicon glyphicon-download-alt"></i> Linux (x64)</a> &ndash; add your user to the <code>dialout</code> group for serial access<br>
+    <a href="https://github.com/ucandevices/UsbServoController/releases/download/v0.3/USBServoController-ch32.bin"><i class="glyphicon glyphicon-download-alt"></i> Firmware 0.3</a> &ndash; application image, for the GUI's Firmware tab<br>
+    <a href="https://github.com/ucandevices/UsbServoController/releases/download/v0.3/USBServoController-ch32-full.bin"><i class="glyphicon glyphicon-download-alt"></i> Firmware 0.3, full image</a> &ndash; bootloader + application, for a blank chip or recovery<br>
+    <a href="https://github.com/ucandevices/UsbServoController/releases" rel="noopener">All releases on GitHub</a></p>
+</div>
+<h3>Other tools</h3>
+<p>Python library and command-line tool, a script compiler for on-board scripts, and an MCP server that lets an AI agent drive the servos. Any serial terminal works too, e.g. send <code>S 0 1500</code> to centre channel 0.</p>
+                    </div>
+                </div>
+                <div id="gitalk-container"></div>
+        </div>
+
+
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+    
+    <script type="text/javascript">
+      const gitalk = new Gitalk({
+        clientID: '8e1960fcb28f119bc82f',
+        clientSecret: '652465d1d4c7a7867c3e87ee006160ce226a6b96',
+        repo: 'ucandevices',      // The repository of store comments,
+        owner: 'ucandevices',
+        admin: ['ucandevices'],
+        id: "SERVO",      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+      gitalk.render('gitalk-container');
+    </script>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/wow.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/creative.js"></script>
+    <script src="js/stripe-buy.js"></script>
+</body>
+
+</html>

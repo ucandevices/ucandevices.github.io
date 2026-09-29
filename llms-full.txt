@@ -312,6 +312,22 @@ IO-Link master interface over USB or Ethernet. Communicate with IO-Link
 (IEC 61131-9) sensors from a PC for lab work, prototyping and integration
 testing.
 
+## USB Servo Controller
+
+Canonical URL: https://ucandevices.github.io/servo.html
+GitHub: https://github.com/ucandevices/UsbServoController
+
+12-channel hobby servo controller over USB-C, in the spirit of the Pololu Mini
+Maestro 12. Appears as a USB CDC virtual COM port and takes one-line ASCII
+commands (e.g. "S 0 1500" centres channel 0). 500-2500 us pulses at 50 Hz with
+0.5 us resolution; channels 0-7 can be read as 0-3.3 V analog inputs.
+Measures servo-rail current and voltage and switches all servos off on
+overcurrent or LiPo undervoltage. Scripts stored on the board run without a
+PC, optionally at power-up. Firmware updates over USB through its own
+bootloader. WCH CH32V203 RISC-V MCU, 66 x 38 mm board. Desktop GUI for Windows
+and Linux (sliders, live current graph, poses and sequences, script editor,
+firmware update), plus a Python library, CLI and MCP server.
+
 ---
 
 ## Where to buy
