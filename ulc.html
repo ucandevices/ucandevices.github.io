@@ -93,7 +93,7 @@
           "name": "Does the uCanDevices USB LIN Converter support master and slave mode?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The uLC supports three modes: monitor (full frame reception plus single-frame transmission), master (up to 15 scheduled frame slots) and slave (up to 15 scheduled frame slots for slave simulation). Modes are selected over the virtual COM port with the O, L and l commands."
+            "text": "Yes. The uLC supports three modes: monitor (full frame reception plus single-frame transmission), master (up to 16 scheduled frame slots) and slave (up to 16 scheduled frame slots for slave simulation). Modes are selected over the virtual COM port with the O, L and l commands."
           }
         },
         {
@@ -109,7 +109,7 @@
           "name": "Which LIN baud rates and LIN version are supported?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "LIN 2.1 is supported, with selectable 9600 and 19200 baud rates. Classic and enhanced checksum can be toggled with the xm command. Custom frame timing (offset and response wait time) is available in master mode."
+            "text": "LIN 2.1 is supported, with selectable 9600 and 19200 baud rates and custom rates such as 10417 baud. Classic and enhanced checksum can be toggled with the r31 / r30 commands. Custom frame timing (offset and response wait time) is available in master mode."
           }
         },
         {
@@ -240,15 +240,17 @@
 Multiple features are supported like:
   <li> LIN 2.1 support</li>
 	<li>Monitor mode, for all frame reception, and sending single frames.</li>
-    <li>Master mode, with up to 15 frame slots</li>
-    <li>Slave mode, with up to 15 frame slots</li>
-    <li>19200/9600 option baud rate</li>	
+    <li>Master mode, with up to 16 frame slots</li>
+    <li>Slave mode, with up to 16 frame slots</li>
+    <li>19200/9600 baud rate, or a custom rate (e.g. 10417)</li>	
   <li><b>Optical isolation for LIN</b></li>
   <li>External 4.5 V to 28 V is needed for LIN network</li>
   <li>Device size is 31x18 mm (without USB connector)</li>
   <li>Termination resistors controlled by software</li>
   <li>USB dfu compatible bootloader for new software</li>
   <li>SLCAN compatible, works with LINUX socket-can and some of CAN-utils</li>
+  <li>No driver installation on Windows 10/11, Linux and macOS (own USB ID <code>1209:2779</code> from <a href="https://pid.codes/1209/2779/">pid.codes</a>)</li>
+  <li>MCP server, so AI agents can sniff and reverse-engineer a LIN bus (see Tools)</li>
 <br>
 
 
@@ -268,7 +270,7 @@ Multiple features are supported like:
 </p>
 
 <h3>Drivers</h3>
-<p>For proper work on Windows you need to install virtual com drivers from <a href="http://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-stm32102.html">ST site </a> or download from <a href="/download/uccb/VirtualComportDriver.zip"><i class="glyphicon glyphicon-download-alt"></i> here </a>.</p>
+<p>No driver is needed on Windows 10/11, Linux or macOS: the built-in USB CDC driver is used. Since firmware 3.5 the device has its own USB ID <code>1209:2779</code> from <a href="https://pid.codes/1209/2779/">pid.codes</a>. Older firmware used ST's generic <code>0483:5740</code>; on Windows 7/8 that needs the virtual COM port driver from the <a href="http://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-stm32102.html">ST site</a> or from <a href="/download/uccb/VirtualComportDriver.zip"><i class="glyphicon glyphicon-download-alt"></i> here</a>. Updating the firmware (see Sources) removes the need for that driver.</p>
 
 <h3>COM port Commands</h3>
 <p>
@@ -276,6 +278,7 @@ Multiple features are supported like:
     USART baud rate is virtual so can be any. 
     All commands are ASCI format. Commands are terminated with newline character CR (0xD). 
     On error the device responses with 0x7 value. 
+    Commands are executed one at a time: wait for the reply (CR, <code>z</code>/<code>Z</code> or 0x7) before sending the next one.
     
 <table class="table-bordered">
 <tr>
@@ -285,7 +288,7 @@ Multiple features are supported like:
 
 <tr>
 <td>O</td>
-<td>Opens device in master mode.</td>
+<td>Opens device in master mode. Add frames to the schedule table, then start it with <code>r1ff0</code>.</td>
 </tr>
 
 <tr>
@@ -360,8 +363,18 @@ l: Data length (0-8)
 </tr>
  
 <tr>
-    <td>xm</td>
-    <td>Swich checksum for classic x2 for enhanced x1 </td>
+    <td>r31 / r30</td>
+    <td>Checksum for all frames: <code>r31</code> classic (LIN 1.x), <code>r30</code> enhanced (LIN 2.x, default). Diagnostic frames 0x3C/0x3D always use classic. Replies <code>Z</code>. Kept until power off.</td>
+</tr>
+
+<tr>
+    <td>t04bbbb</td>
+    <td>Custom LIN baud rate, <code>bbbb</code> = 4 hex digits, e.g. <code>t0428B1</code> = 10417 baud. Send before adding frames. Replies <code>Z</code>.</td>
+</tr>
+
+<tr>
+    <td>T0iipptt0ldd / R0iipptt0l</td>
+    <td>Master mode: frame with explicit delay and response wait time, see Custom frame timing below.</td>
 </tr>
 
 </table>
@@ -371,16 +384,16 @@ l: Data length (0-8)
 
 000005: C  (send close command) <br>
 000006: v  (ask for firmware version)<br>
-000007: v0102 (get version number from device)<br>
+000007: v0308 (get version number from device, here 3.8)<br>
 000008: V   (ask for hardware version)<br>
-000009: V0101<br>
+000009: V01<br>
 000010: N   <br>
 000011: N16000000<br>
 000012: W2D00<br>
 000013:<br>
 000014: S0  (speed setting, 19200)<br>
 000015: <br>
-000016: L   (open in monitor mode)<br>
+000016: l   (open in monitor mode)<br>
 000017: <br>
 000018: r0128 (transmit header with 8 data bytes request, id 0x12)<br>
 000019: z<br>
@@ -403,20 +416,20 @@ l: Data length (0-8)
 </pre>
 
 <h4> Custom frame timing  </h4>
-You can tweek the timing in master mode just type upper letter T instead of t or R instead of r 
-then format is similar  
+In master mode you can set the timing of each slot: use upper case <code>T</code> instead of <code>t</code> or <code>R</code> instead of <code>r</code>, with the format
 <pre class="listing">
-T 0 id id t1 t1 t2 t2 len d0 d0 d1 d1 d2 d2 
+T 0 ii pp tt 0 l dd dd ...
 </pre>
 where: <br>
-id - frame id same as standard <br>
-t1 - frame offset in ms<br>
-t2 - response wait time in ms<br>
-len - frame length <br>
-d0 .... - data   <br>
-example frame with id 1 5 ms offset and 1 ms wait time after sending 3 bytes of data AA BB CC
+ii - frame id, same as standard (hex) <br>
+pp - delay in ms (hex): time from the start of the previous slot's header to this slot's header (firmware 3.4 and later; older firmware counted it from the end of the previous frame)<br>
+tt - response wait time in ms (hex)<br>
+l - frame length <br>
+dd ... - data (only for <code>T</code>) <br>
+Without it (lower case <code>t</code> / <code>r</code>) the delay is 15 ms and the response wait time follows the LIN standard for the frame length.<br>
+Example: frame with id 0x0A, 100 ms delay (0x64), 48 ms wait time (0x30), 1 data byte A5:
 <pre class="listing">
-T0005013AABBCC
+T00A643001A5
 </pre>
 
 <h3>FAQ</h3>
@@ -425,13 +438,13 @@ T0005013AABBCC
   <dd>The uCanDevices USB LIN Converter (uLC) is an open-source LIN dongle around $27 that enumerates as a USB CDC virtual COM port on Linux, macOS and Windows. It speaks an SLCAN-style ASCII protocol so it bridges into SocketCAN via <code>slcand</code> and works with parts of can-utils. No proprietary driver is required.</dd>
 
   <dt><b>Does it support master and slave mode?</b></dt>
-  <dd>Yes &mdash; monitor (full reception plus single-frame transmission), master (up to 15 scheduled slots) and slave (up to 15 slots for slave simulation). Modes are selected over the serial port with the <code>O</code>, <code>L</code> and <code>l</code> commands.</dd>
+  <dd>Yes &mdash; monitor (full reception plus single-frame transmission), master (up to 16 scheduled slots) and slave (up to 16 slots for slave simulation). Modes are selected over the serial port with the <code>O</code>, <code>L</code> and <code>l</code> commands.</dd>
 
   <dt><b>Is the LIN side optically isolated from the USB host?</b></dt>
   <dd>Yes. The LIN transceiver is optically isolated from the PC side, protecting the host from automotive transients. The LIN side needs an external 4.5&ndash;28 V supply since USB only powers the MCU.</dd>
 
   <dt><b>Which LIN baud rates and LIN version are supported?</b></dt>
-  <dd>LIN 2.1, with selectable 9600 and 19200 baud. Classic and enhanced checksum are switchable with the <code>xm</code> command. Custom frame timing is supported in master mode.</dd>
+  <dd>LIN 2.1, with selectable 9600 and 19200 baud and custom rates (e.g. 10417 baud with <code>t0428B1</code>). Classic and enhanced checksum are switchable with the <code>r31</code> / <code>r30</code> commands. Custom frame timing is supported in master mode.</dd>
 
   <dt><b>Is the firmware open source?</b></dt>
   <dd>Yes &mdash; firmware and hardware are open source at <a href="https://github.com/uCAN-LIN/LinUSBConverter">github.com/uCAN-LIN/LinUSBConverter</a>. The device also has a USB DFU bootloader for in-field updates.</dd>
@@ -445,7 +458,7 @@ T0005013AABBCC
 <img class="img-responsive" loading="lazy" decoding="async" src="usblinconverter/schm.svg" alt="USB LIN Converter schematic" width="1200" height="849" style="max-width: 100%; height: auto;">
 </p>
 <h3>Software</h3>
-<p>Converter software is pure C code written in free TrueSTUDIO for STM32.
+<p>Converter software is pure C code, built with free STM32CubeIDE (tested with 1.19). The newest firmware is 3.8; every release lists its changes and how it was tested.
     All sources and <a href="https://github.com/uCAN-LIN/LinUSBConverter/releases">releases</a> with compilation instructions are available in our github <a href="https://github.com/uCAN-LIN/LinUSBConverter">here</a>.</p>
 
 <h3>Uploading new software</h3>
@@ -459,6 +472,14 @@ T0005013AABBCC
 <p> There is dedicated python library for LUC, (uCANLinTools) with: LDF parsing support, LIN frame (PIDs) encoding/decoding, LIN master, slave support. See 
 	<a href="https://pypi.org/project/ucanlintools/"> uCANLinTools</a> for more info, source code and examples see <a href="https://github.com/uCAN-LIN/LinUSBConverter/tree/master/python_lib">here</a>
 </p>
+
+<h4>AI agents (MCP server)</h4>
+<p><a href="https://pypi.org/project/ucan-lin-mcp/">ucan-lin-mcp</a> is an MCP server that lets an AI agent (Claude, ChatGPT, Copilot and other MCP clients) sniff and reverse-engineer a LIN bus: capture traffic with per-id periods and changing bits, log every data change while you press a button, find the bus speed and checksum type automatically, and decode or encode signals from an LDF file.
+It is read-only by default; sending frames and acting as master or slave needs <code>--allow-transmit</code>. Register it with any MCP client as a stdio server:</p>
+<pre class="listing">
+{"mcpServers": {"lin": {"command": "uvx", "args": ["ucan-lin-mcp", "--port", "COM3"]}}}
+</pre>
+<p><code>uvx ucan-lin-mcp --mock</code> runs it on a simulated bus, without a converter. Source and documentation: <a href="https://github.com/uCAN-LIN/LinUSBConverter#ai-agents-mcp-server">here</a>.</p>
 
 <h4>Serial port</h4>
 <p>You can use LUC on any operating system with serial terminal program like for 
