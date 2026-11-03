@@ -250,6 +250,7 @@ Multiple features are supported like:
   <li>USB dfu compatible bootloader for new software</li>
   <li>SLCAN compatible, works with LINUX socket-can and some of CAN-utils</li>
   <li>No driver installation on Windows 10/11, Linux and macOS (own USB ID <code>1209:2779</code> from <a href="https://pid.codes/1209/2779/">pid.codes</a>)</li>
+  <li>Supported by the <a href="https://github.com/Schildkroet/CANgaroo">CANgaroo</a> bus analyzer (master with LDF schedule tables, slave, monitor)</li>
   <li>MCP server, so AI agents can sniff and reverse-engineer a LIN bus (see Tools)</li>
 <br>
 
@@ -472,6 +473,17 @@ T00A643001A5
 <p> There is dedicated python library for LUC, (uCANLinTools) with: LDF parsing support, LIN frame (PIDs) encoding/decoding, LIN master, slave support. See 
 	<a href="https://pypi.org/project/ucanlintools/"> uCANLinTools</a> for more info, source code and examples see <a href="https://github.com/uCAN-LIN/LinUSBConverter/tree/master/python_lib">here</a>
 </p>
+
+<h4>CANgaroo (GUI analyzer)</h4>
+<p><a href="https://github.com/Schildkroet/CANgaroo">CANgaroo</a> is an open source CAN / CAN FD / LIN bus analyzer for Windows and Linux with built-in uLC support.
+The converter is detected automatically and works in all three modes:</p>
+<ul>
+  <li><b>Monitor</b> - frame trace with timestamps, frames nobody answered are marked as NOT RESPONDED, single frames sent from the TX generator</li>
+  <li><b>Master</b> - schedule tables loaded from an LDF file (up to 16 slots), switching between schedule tables, live payload updates</li>
+  <li><b>Slave</b> - simulation of a slave node: publishes its frames from the LDF and receives the master's frames</li>
+  <li>LDF signal decoding, graphs and Python scripting, baud rates from 2400 to 20000 (including 10417), classic or enhanced checksum</li>
+</ul>
+<p>uLC support was merged into CANgaroo in November 2026 and will be part of its next release; until then build CANgaroo from the <a href="https://github.com/Schildkroet/CANgaroo">master branch</a>. Firmware 3.8 or newer is recommended.</p>
 
 <h4>AI agents (MCP server)</h4>
 <p><a href="https://pypi.org/project/ucan-lin-mcp/">ucan-lin-mcp</a> is an MCP server that lets an AI agent (Claude, ChatGPT, Copilot and other MCP clients) sniff and reverse-engineer a LIN bus: capture traffic with per-id periods and changing bits, log every data change while you press a button, find the bus speed and checksum type automatically, and decode or encode signals from an LDF file.
