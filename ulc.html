@@ -230,29 +230,24 @@
                 <div id="tc_desc" class="">
                     <!-- inlined from usblinconverter/desc.html -->
 
-<p style="text-align:justify; font-size:75%">
-    Product and its documentation is supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of this product. This product is not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
-</p>
-
 <h3>Description</h3>
-<p>LIN(Local interconnect network) Usb Converter(LUC) can work both with PC without any additional drivers,
-     it creates virtual COM port that handles LIN communication. 
-Multiple features are supported like:
-  <li> LIN 2.1 support</li>
-	<li>Monitor mode, for all frame reception, and sending single frames.</li>
-    <li>Master mode, with up to 16 frame slots</li>
-    <li>Slave mode, with up to 16 frame slots</li>
-    <li>19200/9600 baud rate, or a custom rate (e.g. 10417)</li>	
+<p>The LIN (Local Interconnect Network) USB Converter (uLC) shows up on the PC as a virtual COM port that handles all LIN communication. Features:</p>
+<ul>
+  <li>LIN 2.1, classic or enhanced checksum</li>
+  <li>Monitor mode: receives all frames, can send single frames</li>
+  <li>Master mode, with up to 16 frame slots</li>
+  <li>Slave mode, with up to 16 frame slots</li>
+  <li>19200/9600 baud rate, or a custom rate (e.g. 10417)</li>
   <li><b>Optical isolation for LIN</b></li>
   <li>External 4.5 V to 28 V is needed for LIN network</li>
   <li>Device size is 31x18 mm (without USB connector)</li>
   <li>Termination resistors controlled by software</li>
-  <li>USB dfu compatible bootloader for new software</li>
-  <li>SLCAN compatible, works with LINUX socket-can and some of CAN-utils</li>
-  <li>No driver installation on Windows 10/11, Linux and macOS (own USB ID <code>1209:2779</code> from <a href="https://pid.codes/1209/2779/">pid.codes</a>)</li>
+  <li>USB DFU bootloader for firmware updates</li>
+  <li>SLCAN compatible, works with Linux SocketCAN and some of can-utils</li>
+  <li>No driver installation on Windows 10/11, Linux and macOS</li>
   <li>Supported by the <a href="https://github.com/Schildkroet/CANgaroo">CANgaroo</a> bus analyzer (master with LDF schedule tables, slave, monitor)</li>
   <li>MCP server, so AI agents can sniff and reverse-engineer a LIN bus (see Tools)</li>
-<br>
+</ul>
 
 
 <h3>Introduction video</h3>
@@ -264,8 +259,8 @@ Multiple features are supported like:
 <p>Board bottom view</p>
 <img class="img-responsive"  style="max-width: 50%;" src="usblinconverter/UCCB11back.webp" alt="USB LIN converter dongle - bottom view of the PCB" width="1200" height="402">
 
-<p>After USB enumeration device creates virtual COM port that is used both for data transfer and converter setup. 
-     Device is be powered directly from USB, but external 4.5-28V is needed to supply LIN transceiver. 
+<p>The virtual COM port is used both for data transfer and converter setup.
+     The device is powered from USB; the LIN transceiver needs the external 4.5-28 V supply.
      Board layout is shown below.<br>
     <img class="img-responsive"   src="usblinconverter/Layout.svg" alt="USB LIN converter PCB layout - pinout for LIN bus, USB and power" width="605" height="582">
 </p>
@@ -275,10 +270,10 @@ Multiple features are supported like:
 
 <h3>COM port Commands</h3>
 <p>
-    Below is list of all available commands. 
-    USART baud rate is virtual so can be any. 
-    All commands are ASCI format. Commands are terminated with newline character CR (0xD). 
-    On error the device responses with 0x7 value. 
+    Below is the list of all available commands.
+    The COM port baud rate is virtual, so any value works.
+    All commands are ASCII, terminated with CR (0xD).
+    On error the device responds with 0x7.
     Commands are executed one at a time: wait for the reply (CR, <code>z</code>/<code>Z</code> or 0x7) before sending the next one.
     
 <table class="table-bordered">
@@ -301,7 +296,7 @@ Multiple features are supported like:
 <td>Sx</td>
 <td>Baud rate selection: <br>
     S2 - 9600<br>
-    S1,S3-S8 - 19200<br>
+    S0, S1, S3-S8 - 19200<br>
 </td>
 </tr>
 
@@ -322,12 +317,12 @@ Multiple features are supported like:
 
 <tr>
 <td>L</td>
-<td>Open device in, slave mode, for LIN slave simulation.</td>
+<td>Open device in slave mode, for LIN slave simulation.</td>
 </tr>
 
 <tr>
 <td>l</td>
-<td>Open device in, monitor mode, message analyzer mode, with single frame sending possibility .</td>
+<td>Open device in monitor mode (bus analyzer), with single frame sending.</td>
 </tr>
 
 <tr>
@@ -378,6 +373,11 @@ l: Data length (0-8)
     <td>Master mode: frame with explicit delay and response wait time, see Custom frame timing below.</td>
 </tr>
 
+<tr>
+    <td>boot</td>
+    <td>Restart into the USB DFU bootloader, for firmware update.</td>
+</tr>
+
 </table>
 
 <h3> Example workflow for Monitor Mode</h3>
@@ -390,30 +390,28 @@ l: Data length (0-8)
 000009: V01<br>
 000010: N   <br>
 000011: N16000000<br>
-000012: W2D00<br>
-000013:<br>
-000014: S0  (speed setting, 19200)<br>
+000012: S0  (speed setting, 19200)<br>
+000013: <br>
 000015: <br>
-000016: l   (open in monitor mode)<br>
-000017: <br>
-000018: r0128 (transmit header with 8 data bytes request, id 0x12)<br>
-000019: z<br>
-000020: t01280011223344556677 (slave responded for header request with 8 byte data frame)<br>
+000014: l   (open in monitor mode)<br>
+000015: <br>
+000016: r0128 (transmit header with 8 data bytes request, id 0x12)<br>
+000017: z<br>
+000018: t01280011223344556677 (slave responded for header request with 8 byte data frame)<br>
 </pre>
 
 <h3> Example workflow for Master Mode</h3>
 <pre class="listing">
-000015: <br>
-000016: O   (open in master mode)<br>
-000017: <br>
-000018: r0018 (add to schedule table frame transmission header with 8 data bytes request, id 0x01)<br>
-000019: z<br>
-000018: r0022 (add to schedule table frame transmission header with 2 data bytes request, id 0x02)<br>
-000019: z<br>
-000020: t01280011223344556677 (add to schedule table frame transmission header + data (slave task) with 8 data bytes, id 0x12)<br>
-000021: z<br>
-000022: r1ff0 (start sending frames)<br>
-000023: z<br>
+000001: O   (open in master mode)<br>
+000002: <br>
+000003: r0018 (add to schedule table: header requesting 8 data bytes, id 0x01)<br>
+000004: z<br>
+000005: r0022 (add to schedule table: header requesting 2 data bytes, id 0x02)<br>
+000006: z<br>
+000007: t01280011223344556677 (add to schedule table: header + 8 data bytes sent by the master, id 0x12)<br>
+000008: z<br>
+000009: r1ff0 (start sending frames)<br>
+000010: z<br>
 </pre>
 
 <h4> Custom frame timing  </h4>
@@ -433,29 +431,15 @@ Example: frame with id 0x0A, 100 ms delay (0x64), 48 ms wait time (0x30), 1 data
 T00A643001A5
 </pre>
 
-<h3>FAQ</h3>
-<dl>
-  <dt><b>What is the cheapest USB LIN bus converter that works on Linux?</b></dt>
-  <dd>The uCanDevices USB LIN Converter (uLC) is an open-source LIN dongle around $27 that enumerates as a USB CDC virtual COM port on Linux, macOS and Windows. It speaks an SLCAN-style ASCII protocol so it bridges into SocketCAN via <code>slcand</code> and works with parts of can-utils. No proprietary driver is required.</dd>
-
-  <dt><b>Does it support master and slave mode?</b></dt>
-  <dd>Yes &mdash; monitor (full reception plus single-frame transmission), master (up to 16 scheduled slots) and slave (up to 16 slots for slave simulation). Modes are selected over the serial port with the <code>O</code>, <code>L</code> and <code>l</code> commands.</dd>
-
-  <dt><b>Is the LIN side optically isolated from the USB host?</b></dt>
-  <dd>Yes. The LIN transceiver is optically isolated from the PC side, protecting the host from automotive transients. The LIN side needs an external 4.5&ndash;28 V supply since USB only powers the MCU.</dd>
-
-  <dt><b>Which LIN baud rates and LIN version are supported?</b></dt>
-  <dd>LIN 2.1, with selectable 9600 and 19200 baud and custom rates (e.g. 10417 baud with <code>t0428B1</code>). Classic and enhanced checksum are switchable with the <code>r31</code> / <code>r30</code> commands. Custom frame timing is supported in master mode.</dd>
-
-  <dt><b>Is the firmware open source?</b></dt>
-  <dd>Yes &mdash; firmware and hardware are open source at <a href="https://github.com/uCAN-LIN/LinUSBConverter">github.com/uCAN-LIN/LinUSBConverter</a>. The device also has a USB DFU bootloader for in-field updates.</dd>
-</dl>
+<p style="text-align:justify; font-size:75%">
+    Product and its documentation is supplied on an as-is basis and no warranty as to their suitability for any particular purpose is either made or implied. Producer will not accept any claim for damages howsoever arising as a result of use or failure of this product. This product is not intended for use in any medical appliance, device or system in which the failure of the product might reasonably be expected to result in personal injury.
+</p>
 <!-- /inlined -->
                 </div>
                 <div id="tc_device" class="">
                     <!-- inlined from usblinconverter/sources.html -->
 <h3>Hardware</h3>
-<p>We are using ST STM32f04264 microcontroller. Device PCB is designed in ki-cad. All source files are available in github <a href="https://github.com/uCAN-LIN/LinUSBConverter">here</a>.
+<p>The converter uses an ST STM32F042 microcontroller. The PCB is designed in KiCad. All source files are available on GitHub <a href="https://github.com/uCAN-LIN/LinUSBConverter">here</a>.
 <img class="img-responsive" loading="lazy" decoding="async" src="usblinconverter/schm.svg" alt="USB LIN Converter schematic" width="1200" height="849" style="max-width: 100%; height: auto;">
 </p>
 <h3>Software</h3>
@@ -463,15 +447,14 @@ T00A643001A5
     All sources and <a href="https://github.com/uCAN-LIN/LinUSBConverter/releases">releases</a> with compilation instructions are available in our github <a href="https://github.com/uCAN-LIN/LinUSBConverter">here</a>.</p>
 
 <h3>Uploading new software</h3>
-<p> ULC have got embedded DFU USB bootloader for usage see <a href="/uccb.html"> UsbCANConverter(UCCB)</a> project see <a href="https://www.youtube.com/watch?v=-gnX25AGyI0">tutorial</a>.
+<p>The uLC has an embedded USB DFU bootloader. Send <code>boot</code> over the COM port to enter it, then flash the <code>.bin</code> from the <a href="https://github.com/uCAN-LIN/LinUSBConverter/releases">latest release</a> with STM32CubeProgrammer, see this <a href="https://www.youtube.com/watch?v=-gnX25AGyI0">tutorial</a>.</p>
 <!-- /inlined -->
                 </div>
                 <div id="tc_td" class="">
                     <!-- inlined from usblinconverter/tools.html -->
 <h3>Tools</h3>
 <h4>Python support</h4>
-<p> There is dedicated python library for LUC, (uCANLinTools) with: LDF parsing support, LIN frame (PIDs) encoding/decoding, LIN master, slave support. See 
-	<a href="https://pypi.org/project/ucanlintools/"> uCANLinTools</a> for more info, source code and examples see <a href="https://github.com/uCAN-LIN/LinUSBConverter/tree/master/python_lib">here</a>
+<p>The <a href="https://pypi.org/project/ucanlintools/">uCANLinTools</a> Python library supports LDF parsing, LIN frame (PID) encoding/decoding, and LIN master and slave. Source code and examples are <a href="https://github.com/uCAN-LIN/LinUSBConverter/tree/master/python_lib">here</a>.
 </p>
 
 <h4>CANgaroo (GUI analyzer)</h4>
@@ -494,11 +477,8 @@ It is read-only by default; sending frames and acting as master or slave needs <
 <p><code>uvx ucan-lin-mcp --mock</code> runs it on a simulated bus, without a converter. Source and documentation: <a href="https://github.com/uCAN-LIN/LinUSBConverter#ai-agents-mcp-server">here</a>.</p>
 
 <h4>Serial port</h4>
-<p>You can use LUC on any operating system with serial terminal program like for 
-	example putty. Description of all available commands can be found in About section. 
-	All commands are the same as for USB-CAN converter so all tools can be reused, see UCAN USB-CAN converter project for libs and tools. LUC is also compatible with LINUX CAN-UTILS and SOCKET CAN.
-	Device have its own terminal,
-	<a data-toggle="collapse" data-parent="#accordion" href="#java" aria-expanded="true" aria-controls="collapseOne">uCCBViewer</a>. </p>
+<p>The uLC works with any serial terminal (e.g. PuTTY) on any operating system; the commands are listed in the About section.
+	The command set follows the uCAN USB-CAN converter, so its tools can be reused.</p>
 
 <div class="card card-block">
 	<p><b>UCCBViewer</b> is a GUI program for both uCAN CAN and LIN converters. For USB-LIN converter uCCBViewer functionalities are:
