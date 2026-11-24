@@ -34,7 +34,7 @@
       "@type": "Product",
       "name": "USB LIN Converter (uLC)",
       "image": "https://ucandevices.github.io/img/products/ulc.webp",
-      "description": "Open source USB LIN converter dongle. Supports LIN 2.2A master, slave and monitor mode, with optical isolation and software-controlled termination. Enumerates as a virtual COM port and is SLCAN compatible, working out of the box on Windows, Linux and macOS.",
+      "description": "Open source USB LIN converter dongle. Supports LIN 2.2A master, slave and monitor mode, with optical isolation and a jumper-selectable 1 kΩ master termination. Enumerates as a virtual COM port and is SLCAN compatible, working out of the box on Windows, Linux and macOS.",
       "sku": "ULC",
       "mpn": "ULC",
       "brand": {"@type": "Brand", "name": "uCanDevices"},
@@ -241,7 +241,7 @@
   <li><b>Optical isolation for LIN</b></li>
   <li>External 4.5 V to 28 V is needed for LIN network</li>
   <li>Device size is 31x18 mm (without USB connector)</li>
-  <li>Termination resistors controlled by software</li>
+  <li>1 kΩ master termination, connected with solder jumper J3 or a jumper on header J5 (close it when the converter is the bus master)</li>
   <li>USB DFU bootloader for firmware updates</li>
   <li>SLCAN compatible, works with Linux SocketCAN and some of can-utils</li>
   <li>No driver installation on Windows 10/11, Linux and macOS</li>
