@@ -6,26 +6,26 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="USB LIN converter dongle - LIN 2.1 master, slave and bus monitor with optical isolation. Works on Windows, Linux and macOS as a virtual COM port (SLCAN compatible). Open source, $27.">
-    <meta name="keywords" content="USB LIN converter, LIN bus sniffer, LIN bus monitor, LIN 2.1 USB, LIN master USB, LIN slave USB, SLCAN LIN, automotive LIN dongle, LIN bus analyzer, cheap LIN tool">
+    <meta name="description" content="USB LIN converter dongle - LIN 2.2A master, slave and bus monitor with optical isolation. Works on Windows, Linux and macOS as a virtual COM port (SLCAN compatible). Open source, $27.">
+    <meta name="keywords" content="USB LIN converter, LIN bus sniffer, LIN bus monitor, LIN 2.2A USB, LIN 2.1 USB, LIN master USB, LIN slave USB, SLCAN LIN, automotive LIN dongle, LIN bus analyzer, cheap LIN tool">
     <meta name="author" content="uCanDevices">
     <link rel="canonical" href="https://ucandevices.github.io/ulc.html">
 
     <!-- Open Graph -->
     <meta property="og:type" content="product">
-    <meta property="og:title" content="USB LIN Converter - LIN 2.1 Master, Slave and Bus Monitor Dongle">
-    <meta property="og:description" content="Open source USB LIN converter dongle. LIN 2.1 master / slave / monitor mode, optical isolation, SLCAN compatible. Plug-and-play on Windows, Linux and macOS.">
+    <meta property="og:title" content="USB LIN Converter - LIN 2.2A Master, Slave and Bus Monitor Dongle">
+    <meta property="og:description" content="Open source USB LIN converter dongle. LIN 2.2A master / slave / monitor mode, optical isolation, SLCAN compatible. Plug-and-play on Windows, Linux and macOS.">
     <meta property="og:url" content="https://ucandevices.github.io/ulc.html">
     <meta property="og:image" content="https://ucandevices.github.io/img/products/ulc.webp">
     <meta property="og:site_name" content="uCanDevices">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="USB LIN Converter - LIN 2.1 Master / Slave / Monitor Dongle">
+    <meta name="twitter:title" content="USB LIN Converter - LIN 2.2A Master / Slave / Monitor Dongle">
     <meta name="twitter:description" content="Open source USB LIN converter. Master, slave and sniffer mode, optical isolation, SLCAN compatible. Plug-and-play on Windows, Linux and macOS.">
     <meta name="twitter:image" content="https://ucandevices.github.io/img/products/ulc.webp">
 
-    <title>USB LIN Converter - LIN 2.1 Master, Slave, Bus Monitor</title>
+    <title>USB LIN Converter - LIN 2.2A Master, Slave, Bus Monitor</title>
 
     <!-- Product structured data -->
     <script type="application/ld+json">
@@ -34,7 +34,7 @@
       "@type": "Product",
       "name": "USB LIN Converter (uLC)",
       "image": "https://ucandevices.github.io/img/products/ulc.webp",
-      "description": "Open source USB LIN converter dongle. Supports LIN 2.1 master, slave and monitor mode, with optical isolation and software-controlled termination. Enumerates as a virtual COM port and is SLCAN compatible, working out of the box on Windows, Linux and macOS.",
+      "description": "Open source USB LIN converter dongle. Supports LIN 2.2A master, slave and monitor mode, with optical isolation and software-controlled termination. Enumerates as a virtual COM port and is SLCAN compatible, working out of the box on Windows, Linux and macOS.",
       "sku": "ULC",
       "mpn": "ULC",
       "brand": {"@type": "Brand", "name": "uCanDevices"},
@@ -109,7 +109,7 @@
           "name": "Which LIN baud rates and LIN version are supported?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "LIN 2.1 is supported, with selectable 9600 and 19200 baud rates and custom rates such as 10417 baud. Classic and enhanced checksum can be toggled with the r31 / r30 commands. Custom frame timing (offset and response wait time) is available in master mode."
+            "text": "LIN 2.2A is supported (LIN 2.1 and 2.0 nodes work the same way, since 2.2 and 2.2A only clarify 2.1), with selectable 9600 and 19200 baud rates and custom rates such as 10417 baud. Classic and enhanced checksum can be toggled with the r31 / r30 commands. Custom frame timing (offset and response wait time) is available in master mode."
           }
         },
         {
@@ -206,7 +206,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h1 class="section-heading">USB LIN Converter</h1>
-                    <p class="lead">Open source LIN 2.1 master, slave and bus monitor dongle. SLCAN compatible. Plug-and-play on Windows, Linux and macOS.</p>
+                    <p class="lead">Open source LIN 2.2A master, slave and bus monitor dongle. SLCAN compatible. Plug-and-play on Windows, Linux and macOS.</p>
                     <p>
                         <a class="btn btn-success btn-lg stripe-buy-btn" href="https://buy.stripe.com/8x200c3gD3h93Z1aTmgw001" rel="noopener">Buy with Card</a>
                         <a class="btn btn-primary btn-lg" href="https://www.tindie.com/products/lll7/usb-lin-converter/" rel="noopener">Buy on Tindie</a>
@@ -233,7 +233,7 @@
 <h3>Description</h3>
 <p>The LIN (Local Interconnect Network) USB Converter (uLC) shows up on the PC as a virtual COM port that handles all LIN communication. Features:</p>
 <ul>
-  <li>LIN 2.1, classic or enhanced checksum</li>
+  <li>LIN 2.2A (also works with LIN 2.1 and 2.0 nodes), classic or enhanced checksum</li>
   <li>Monitor mode: receives all frames, can send single frames</li>
   <li>Master mode, with up to 16 frame slots</li>
   <li>Slave mode, with up to 16 frame slots</li>
@@ -385,7 +385,7 @@ l: Data length (0-8)
 
 000005: C  (send close command) <br>
 000006: v  (ask for firmware version)<br>
-000007: v0308 (get version number from device, here 3.8)<br>
+000007: v0309 (get version number from device, here 3.9)<br>
 000008: V   (ask for hardware version)<br>
 000009: V01<br>
 000010: N   <br>
@@ -443,7 +443,7 @@ T00A643001A5
 <img class="img-responsive" loading="lazy" decoding="async" src="usblinconverter/schm.svg" alt="USB LIN Converter schematic" width="1200" height="849" style="max-width: 100%; height: auto;">
 </p>
 <h3>Software</h3>
-<p>Converter software is pure C code, built with free STM32CubeIDE (tested with 1.19). The newest firmware is 3.8; every release lists its changes and how it was tested.
+<p>Converter software is pure C code, built with free STM32CubeIDE (tested with 1.19). The newest firmware is 3.9; every release lists its changes and how it was tested.
     All sources and <a href="https://github.com/uCAN-LIN/LinUSBConverter/releases">releases</a> with compilation instructions are available in our github <a href="https://github.com/uCAN-LIN/LinUSBConverter">here</a>.</p>
 
 <h3>Uploading new software</h3>

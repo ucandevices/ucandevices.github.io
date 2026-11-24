@@ -23,7 +23,7 @@ with common tooling such as Linux SocketCAN and parts of can-utils.
 
 ### Features
 
-- LIN 2.1 support
+- LIN 2.2A support (also works with LIN 2.1 and 2.0 nodes)
 - Monitor mode: full frame reception and single-frame transmission
 - Master mode: up to 15 scheduled frame slots
 - Slave mode: up to 15 scheduled frame slots
@@ -100,7 +100,7 @@ r1ff0    start sending frames from schedule
 - Reverse-engineering body-electronics LIN buses (seats, mirrors, climate)
 - Replacing or simulating a single LIN slave for bench tests
 - Capturing LIN traffic alongside CAN during ECU development
-- Education and protocol-learning labs (LIN 2.1)
+- Education and protocol-learning labs (LIN 2.2A)
 
 ### Common questions
 
