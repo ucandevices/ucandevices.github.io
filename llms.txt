@@ -26,7 +26,8 @@ Distributors: Tindie (https://www.tindie.com/stores/lll7/), Lectronz (https://le
 ## Software and tools
 
 - [uCAN Tools](https://ucandevices.github.io/ucantools.html): Open source CAN / LIN / SENT sniffer, message generator and analyzer.
-- [SENT Viewer 1.0](https://github.com/ucandevices/SENTToUSB/releases/tag/Viewer1): GUI viewer for live decoded SENT frames.
+- [SENT Viewer 2.0](https://github.com/ucandevices/SENTToUSB/releases/tag/v1.1): GUI viewer for live decoded SENT frames, learn mode and TX.
+- [sentusb](https://pypi.org/project/sentusb/): Python library, CLI and MCP server for the SENT USB Converter (`pip install sentusb`).
 
 ## Where to buy
 

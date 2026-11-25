@@ -129,7 +129,7 @@
           "name": "Is the firmware open source?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Firmware runs on an STM32F042K6 (48 MHz HSI48) and is open source at https://github.com/ucandevices/SENTToUSB. A USB DFU bootloader is available for firmware updates. SENT Viewer 1.0 is a free GUI client."
+            "text": "Yes. Firmware runs on an STM32F042K6 (48 MHz HSI48) and is open source at https://github.com/ucandevices/SENTToUSB. A USB DFU bootloader is available for firmware updates. SENT Viewer 2.0 is a free GUI client, and the sentusb Python library and CLI (pip install sentusb) are MIT licensed."
           }
         }
       ]
@@ -345,8 +345,9 @@ No custom driver is needed — it enumerates as a Virtual COM Port on Windows 10
 
 <h3>Viewer</h3>
 <p>
-  SENT data is supported out of the box with <a href="https://github.com/ucandevices/SENTToUSB/releases/tag/Viewer1">SENT Viewer 1.0</a>
-  <img class="img-responsive" loading="lazy" decoding="async" src="sentusb/sent_tool.webp" style="max-width: 60%;" alt="SENT Viewer 1.0 GUI showing live decoded SAE J2716 frames" width="1200" height="775">
+  SENT data is supported out of the box with <a href="https://github.com/ucandevices/SENTToUSB/releases/tag/v1.1">SENT Viewer 2.0</a> (<code>sent_viewer.exe</code> for Windows, no Python needed).
+  For scripts and automated tests use the <a href="https://pypi.org/project/sentusb/">sentusb</a> Python library and command-line tool (<code>pip install sentusb</code>).
+  <img class="img-responsive" loading="lazy" decoding="async" src="sentusb/sent_tool.webp" style="max-width: 60%;" alt="SENT Viewer GUI showing live decoded SAE J2716 frames" width="1200" height="775">
 </p>
 
 <h2>COM port Commands</h2>
@@ -503,7 +504,7 @@ No custom driver is needed — it enumerates as a Virtual COM Port on Windows 10
   <dd>Confirmed: MLX90377 angle sensor, VW/Audi 04L 906 051 L DPF sensor, GM 12643955 MAP sensor. For other sensors, use Learn mode.</dd>
 
   <dt><b>Is the firmware open source?</b></dt>
-  <dd>Yes &mdash; STM32F042K6 firmware on <a href="https://github.com/ucandevices/SENTToUSB">github.com/ucandevices/SENTToUSB</a>. A USB DFU bootloader is included. SENT Viewer 1.0 is a free GUI.</dd>
+  <dd>Yes &mdash; STM32F042K6 firmware on <a href="https://github.com/ucandevices/SENTToUSB">github.com/ucandevices/SENTToUSB</a>. A USB DFU bootloader is included. <a href="https://github.com/ucandevices/SENTToUSB/releases/tag/v1.1">SENT Viewer 2.0</a> is a free GUI, and <a href="https://pypi.org/project/sentusb/">sentusb</a> (<code>pip install sentusb</code>) is a free Python library and CLI.</dd>
 </dl>
 <!-- /inlined -->
 
@@ -533,9 +534,10 @@ On Windows you can also use <a href="https://www.st.com/en/development-tools/sts
 
 <p><b>Python library, CLI and MCP server:</b> <code>pip install sentusb</code> &mdash; see <a href="https://pypi.org/project/sentusb/" rel="noopener">sentusb on PyPI</a> and the <a href="https://github.com/ucandevices/SENTToUSB/blob/four-channel/sentusb/README.md" rel="noopener">documentation</a>.</p>
 
-<h3>Python Viewer — sent_viewer.py</h3>
-<p>A GUI application for monitoring SENT sensor data in real time.
-Requires Python 3.10+ and <code>pyserial</code>:
+<h3>SENT Viewer 2.0 — sent_viewer.exe / sent_viewer.py</h3>
+<p>A GUI application for monitoring and sending SENT data in real time.
+On Windows download <code>sent_viewer.exe</code> from the <a href="https://github.com/ucandevices/SENTToUSB/releases/tag/v1.1">v1.1 release</a> (no Python needed).
+From source (any OS) it needs Python 3.10+ and <code>pyserial</code>:
 <pre class="listing">
 pip install pyserial
 python sent_viewer.py
@@ -548,13 +550,14 @@ python sent_viewer.py
 
 <p>Features:
 <ul>
-  <li>Live frame display — last raw bytes and unpacked nibbles</li>
-  <li>Frame table with timestamp, CAN ID, DLC and nibble values</li>
-  <li>Frame counter, CRC error counter and frame rate</li>
-  <li>Raw SLCAN log with colour coding</li>
+  <li>Live frame display — last raw bytes, unpacked nibbles, status nibble and slow-channel messages</li>
+  <li>Frame table with timestamp, CAN ID, DLC and nibble values; CSV recording</li>
+  <li>Frame counter, CRC / sync error counters and frame rate</li>
+  <li>Learn mode: detects tick time, nibble count and CRC variant of an unknown sensor</li>
+  <li>TX: single frame or periodic (holds the set period, e.g. 10 ms) for ECU bench tests</li>
   <li>Sensor presets (MLX90377, VW DPF, GM MAP)</li>
-  <li>Pause and Clear controls</li>
-  <li>Automatic <code>O\r</code> / <code>C\r</code> on connect / disconnect</li>
+  <li>Raw SLCAN log with colour coding; Pause and Clear controls</li>
+  <li>Automatic <code>O\r</code> / <code>C\r</code> on connect / disconnect; COM port pre-selected by USB ID</li>
 </ul>
 </p>
 

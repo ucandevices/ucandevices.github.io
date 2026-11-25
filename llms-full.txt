@@ -167,8 +167,12 @@ SENTToUSB repository on GitHub: https://github.com/ucandevices/SENTToUSB
 
 ### Viewer
 
-SENT data is supported out of the box with SENT Viewer 1.0:
-https://github.com/ucandevices/SENTToUSB/releases/tag/Viewer1
+SENT data is supported out of the box with SENT Viewer 2.0 (sent_viewer.exe
+for Windows, no Python needed): https://github.com/ucandevices/SENTToUSB/releases/tag/v1.1
+
+For scripts, production tests and AI agents there is the sentusb Python
+library, CLI and MCP server (MIT): pip install sentusb
+https://pypi.org/project/sentusb/
 
 ### COM port commands
 
